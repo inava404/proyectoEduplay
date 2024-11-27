@@ -1,0 +1,200 @@
+body {
+    background-color: #f8f9fa;
+    justify-content: center;
+    display: flexbox;
+  }
+  
+  .navbar {
+    background-color: #86bbff;
+    justify-content: center;
+    display: flex;
+    padding: 0%;
+  }
+  
+  .header-section {
+    background-color: #d4a207;
+    padding: 30px;
+    text-align: center;
+    color: #660000;
+  }
+  
+  .header-section h1 {
+    font-size: 3em;
+  }
+  
+  .section-inicio{
+    text-align: center;
+    justify-content: center;
+    font-family: cursive;
+    display: flexbox;
+    padding: 0%;
+    margin-top: 15vh;
+    height: 30vh;
+  }
+
+  .section-inicio h1{
+    color: #c9c9c9;
+    font-size: 70px;
+    font-weight:bold;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #4c4c4c;
+
+  }
+  
+  .section-inicio-btns{
+    display: flexbox;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .search-section input {
+    width: 150px;
+    margin: 5px;
+  }
+  
+  /* Agregar esta clase en tu archivo de estilos o dentro de una etiqueta <style> */
+  .small-dropdown {
+    padding: 5px;
+    font-size: 14px;
+    min-height: 40px;
+  }
+  
+  /* Estilo para el dropdown de iniciar sesión */
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Corrección: usar 100% para que se posicione justo debajo */
+    right: 0;
+    left: auto;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px; /* Agregar borde redondeado */
+    min-width: 500px;
+    z-index: 9999;
+  }
+  
+  /* Corrección: eliminar reglas que ocultan las filas */
+  .row {
+    display: flex; /* Mostrar las filas */
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    width: auto;
+  }
+  
+  .dropdown-menu .row {
+    width: 100%; /* Ajusta el ancho según sea necesario */
+    margin: 0 auto;
+  }
+  
+  .dropdown-menu .col-md-5 {
+    padding-right: 10px; /* Agregar padding a la derecha */
+    padding-left: 10px; /* Agregar padding a la izquierda */
+    width: 100px;
+  }
+  
+  .dropdown-menu form {
+    width: 100%; /* Los formularios ocupan el 100% del ancho de la columna */
+    padding: 20px;
+  }
+  
+  .dropdown-menu button {
+    background-color: #660000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group{
+    width: 30%;
+    left: 40vh;
+    margin: 0 auto;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 15px; /* Agregar margen inferior */
+    margin-top: 15px;
+    text-align: start;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+  }
+  
+  .form-control:focus {
+    background-color: #fff;
+    border-color: #660000;
+    box-shadow: 0 0 10px rgba(102, 0, 0, 0.6);
+  }
+  
+  .form-control {
+    background-color: #f2f2f2;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 10px; /* Ajustar padding */
+    font-size: 1rem; /* Ajustar tamaño de fuente */
+    height: auto; /* Altura automática */
+    width: 100%; /* Los inputs ocupan el 100% del ancho del contenedor */
+  }
+  
+  .container {
+    width: 600px;
+  }
+  
+  /*resultados de busqueda
+  */
+  #search-results {
+    position: absolute; /* Para que se posicione debajo del input */
+    top: 110%; /* Justo debajo del input */
+    left: 565px; /* Alineado con el input */
+    width: 405px; /* Mismo ancho del input */
+    z-index: 1000; /* Sobre otros elementos */
+    background-color: white; /* Fondo blanco para destacar */
+    border: 1px solid #ccc; /* Bordes del desplegable */
+    border-radius: 0 0 5px 5px; /* Bordes redondeados en la parte inferior */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para efecto flotante */
+    max-height: 300px; /* Límite de altura con scroll */
+    overflow-y: auto; /* Habilita scroll si hay muchos resultados */
+    display: none; /* Ocultar por defecto */
+    padding: 0; /* Sin espacio adicional */
+  }
+  
+  #search-results .list-group-item {
+    padding: 10px 15px; /* Espaciado interno */
+    border-bottom: 1px solid #eee; /* Separación entre elementos */
+    cursor: pointer; /* Cambiar el cursor al pasar */
+  }
+  #search-results .list-group-item:last-child {
+    border-bottom: none; /* Sin borde en el último elemento */
+  }
+  #search-results .list-group-item:hover {
+    background-color: #f8f9fa; /* Efecto hover */
+  }
+  
+  #search-input{
+    left: 560px; /* Alineado con el input */
+    width: 1000px;
+  }
+  
+  #top-books, #genres-list {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  
+  #search-results {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  #action-container {
+    width: 96%; /* Cambia al ancho deseado */
+    max-width: 1900px; /* Define un ancho máximo si es necesario */
+    height: auto;
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    display: none; /* Inicialmente oculto */
+  }
+  
+  .back-arrow:hover {
+    color: #0056b3;
+  }
