@@ -2,6 +2,7 @@ body {
     background-color: #f8f9fa;
     justify-content: center;
     display: flexbox;
+    font-family: cursive;
   }
   
   .navbar {
@@ -25,11 +26,10 @@ body {
   .section-inicio{
     text-align: center;
     justify-content: center;
-    font-family: cursive;
     display: flexbox;
     padding: 0%;
     margin-top: 15vh;
-    height: 30vh;
+    height: 23vh;
   }
 
   .section-inicio h1{
@@ -38,14 +38,62 @@ body {
     font-weight:bold;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #4c4c4c;
-
   }
   
+
+  /*Diseño de botones*/
   .section-inicio-btns{
-    display: flexbox;
-    text-align: center;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
+
+  .section-inicio-btns a{
+    position: relative;
+    width: 300px;
+    height: 75px;
+    margin: 25px 0;
+    font-size: 24px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.5s;
+    color: #4c4c4c;
+    font-weight:bold;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #4c4c4c;
+  }
+
+  .section-inicio-btns a:hover{
+    color: #fff;
+    -webkit-text-stroke-color: #fff;
+  }
+
+  .section-inicio-btns a:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: url(img/btn-img-2.png);
+    background-size: cover; 
+    transform-origin: left;
+    transition: 0.5s;
+  }
+
+  .section-inicio-btns a:hover:before{
+    width: 100%;
+  }
+
+  .section-inicio-btns a span{
+    position: relative;
+    z-index: 1;
+  }
+
+
 
   .search-section input {
     width: 150px;
