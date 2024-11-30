@@ -16,8 +16,8 @@
         <h1>¡BIENVENIDO!</h1>
     </div>
     <div class="section-inicio-btns">
-      <a href="#"><span>Iniciar Sesión</span></a>
-      <a href="#"><span>Registrarse</span></a>
+      <a href="login.php"><span>Iniciar Sesión</span></a>
+      <a href="signup.php"><span>Registrarse</span></a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
