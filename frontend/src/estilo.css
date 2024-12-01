@@ -575,8 +575,9 @@ flex-direction: column; /* Cambia según tus necesidades */
 }
 
 .section-retos h3{
-  width: 57vh;
+  width: 62vh;
   text-align: left;
+  font-size: 30px;
   font-weight:bold;
   color: #fff;
   -webkit-text-stroke-width: 1px;
@@ -605,11 +606,52 @@ flex-direction: column; /* Cambia según tus necesidades */
   z-index: 2; /* Nivel más alto para superponerse */
 }
 
-.retos-progreso h3 {
-  font-size: 24px;
+.progreso-retos{
+  flex: 1 1 250px; /* Asegura que el avatar y la info ocupen espacio proporcional */
+  align-items: center;
+  background-color: #ebeef9;
+  border-color: #6d93c2;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 25px;
+  padding: 15px;
+}
+
+.progreso-retos span{
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  gap: 5px;
+  font-size: 28px;
   color: #fff;
+  font-weight:bold;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #4c4c4c;
+}
+
+.retos-check{
+  margin-bottom: 10px;
+}
+
+.retos-check ul{
+  margin-top: 10px;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.retos-check ul li{
+  font-size: 22px;
+  color: #4c4c4c;
   margin-bottom: 10px;
   font-weight:bold;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #4c4c4c;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.check{ /* Tamaño de imagen para check (La palomita pues) */
+  width: 25px;
+  height: 25px;
+  margin-left: 15px;
 }
