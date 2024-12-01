@@ -24,7 +24,6 @@
         </ul>
     </aside>
 
-
     <div class="section-principal"> 
         <h2 style="padding-top: 20px">Escoge el tema de hoy</h2>
         <div class="section-inicio-btns">
