@@ -194,7 +194,6 @@
   margin: 0;
   font-size: 24px;
 }
-
 /*----------------------------------sidebar------------------------------------------*/
 .sidebar {
   flex: 0 0 auto; /* Para que el aside no cambie de tamaño */
@@ -306,10 +305,28 @@
   gap: 20px;
 }
 
-.perfil-info {
-  flex: 1 1 250px; /* Asegura que el avatar y la info ocupen espacio proporcional */
-  display: flex;
+.perfil-avatar {
+  width: 57vh;
+  height: 32vh;
+  border-radius: 25px;
+  margin-right: 15px;
+  padding-top: 10px;
   align-items: center;
+  background-color: #ebeef9;
+  border-color: #6d93c2;
+  border-style: solid;
+  border-width: 7px;
+}
+
+.perfil-avatar-icon{
+  width: 210px;
+  height: 100%;
+  align-items: center;
+}
+
+.perfil-detalles {
+  flex: 1 1 180px; /* Asegura que el avatar y la info ocupen espacio proporcional */
+  text-align: center;
   background-color: #ebeef9;
   border-color: #6d93c2;
   border-style: solid;
@@ -318,24 +335,23 @@
   padding: 15px;
 }
 
-.perfil-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin-right: 15px;
-}
-
-.perfil-detalles p {
-  margin: 5px 0;
-  font-size: 14px;
-  color: #333;
+.perfil-detalles h3 {
+  margin: 10px 0;
+  font-size: 20px;
+  color: #4c4c4c;
+  font-weight:bold;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #4c4c4c;
 }
 
 .perfil-progreso {
   flex: 2 1 400px; /* Mayor prioridad en el ancho para progreso */
   background-color: #6d93c2;
-  border-radius: 10px;
-  padding: 15px;
+  border-radius: 25px;
+  padding: 7px;
+  margin-top: -20px;
+  position: relative; /* Asegura que esté en el flujo del diseño */
+  z-index: 2; /* Nivel más alto para superponerse */
 }
 
 .perfil-progreso h3 {
@@ -347,6 +363,42 @@
   -webkit-text-stroke-color: #4c4c4c;
 }
 
+.section-progreso{
+  margin-top: 15px;
+}
+
+.section-progreso h3{
+  width: 57vh;
+  text-align: left;
+  font-weight:bold;
+  color: #fff;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #4c4c4c;
+  padding-left: 20px;
+  padding-top: 5px;
+  align-items: center;
+  background-color: #6d93c2;
+  border-color: #6d93c2;
+  border-style: solid;
+  border-width: 7px;
+  border-radius: 15px;
+  margin-bottom: -32px;
+  padding-bottom: 30px;
+  position: relative; /* Asegúrate de que el elemento esté posicionado */
+  z-index: 1; /* Este será el nivel más bajo */
+}
+
+.progreso-cursos{
+  flex: 1 1 250px; /* Asegura que el avatar y la info ocupen espacio proporcional */
+  align-items: center;
+  background-color: #ebeef9;
+  border-color: #6d93c2;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 25px;
+  padding: 15px;
+}
+
 .curso {
   margin-bottom: 15px;
 }
@@ -354,9 +406,20 @@
 .curso span {
   display: flex;
   align-items: center;
+  padding-left: 5px;
   gap: 5px;
-  font-size: 14px;
-  color: #333;
+  font-size: 25px;
+  color: #fff;
+  font-weight:bold;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #4c4c4c;
+}
+
+.curso-img{
+  width: 32px;
+  height: 32px;
+  margin-left: 5px;
+  margin-top: 2px;
 }
 
 .barra-progreso {
@@ -373,41 +436,6 @@
   border-radius: 5px;
 }
 
-.progreso:nth-child(2) {
-  background-color: #f44336;
-}
-
-.progreso:nth-child(3) {
-  background-color: #2196f3;
-}
-
-.section-progreso{
-  margin-top: 15px;
-}
-
-.section-progreso h3{
-  width: 57vh;
-  text-align: left;
-  padding-left: 20px;
-  margin: 0;
-  align-items: center;
-  background-color: #6d93c2;
-  border-color: #6d93c2;
-  border-style: solid;
-  border-width: 7px;
-  border-radius: 15px;
-}
-
-.progreso-cursos{
-  flex: 1 1 250px; /* Asegura que el avatar y la info ocupen espacio proporcional */
-  align-items: center;
-  background-color: #ebeef9;
-  border-color: #6d93c2;
-  border-style: solid;
-  border-width: 7px;
-  border-radius: 25px;
-  padding: 15px;
-}
 
 /*-----------------------------------forms---------------------------------------*/
 .formulario-materias{
