@@ -417,9 +417,110 @@ background-repeat: no-repeat; /* Evita que la imagen se repita (Mosaico) */
 background-position: center 65px; /* Centra la imagen en la pantalla y mueve la imagen hacia abajo 50px */
 text-align: center;
 padding-top: 25px;
-height: 91.5vh;
+height: 100vh;
 margin-left: 290px; /* Comienza justo al lado del aside */
 width: calc(100% - 290px); /* Ocupa el resto del espacio */
 display: flex;
 flex-direction: column; /* Cambia según tus necesidades */
+}
+
+.materias-wrapper{ /* Diseño del formulario */
+  width: 430px;
+  padding: 2rem 1rem;
+  margin: 5px auto;
+  background-color: fff;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  color: #c9c9c9;
+  font-weight:bold;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #4c4c4c;
+}
+
+.form-group{
+  margin-bottom: 5px;
+}
+
+.form-images{
+  margin-bottom: 5px;
+}
+
+.form-images img{
+  width: 40px;
+  height: 40px;
+}
+
+ /*----------------------------------Botones-forms------------------------------------------*/
+ .form-btns{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-btns a{
+  position: relative;
+  width: 300px;
+  height: 75px;
+  margin: 0;
+  font-size: 24px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: 0.5s;
+  color: #4c4c4c;
+  font-weight:bold;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #4c4c4c;
+}
+
+.form-btns a:hover{
+  color: #fff;
+  -webkit-text-stroke-color: #fff;
+}
+
+.form-btns a:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: url(img/btn-img-2.png);
+  background-size: cover; 
+  transform-origin: left;
+  transition: 0.5s;
+}
+
+.form-btns a:hover:before{
+  width: 100%;
+}
+
+.form-btns a span{
+  position: relative;
+  z-index: 1;
+}
+
+.form-btns ul{
+  margin-top: 10px;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.form-btns ul li{
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center; /* Alinea imagen y texto verticalmente */
+  gap: 10px; /* Espacio entre la imagen y el texto */
+  text-decoration: none; /* Opcional: quitar subrayado del enlace */
+  color: inherit; /* Opcional: mantener el color original del texto */
+}
+
+.form-btns ul li img{
+  width: 75px;
+  height: auto; /* Mantener proporción de la imagen */
 }

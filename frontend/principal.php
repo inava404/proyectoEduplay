@@ -10,7 +10,7 @@
 <body style="background-image: none;">
     <header>
         <div class="top-bar">
-            <h1>Página Principal</h1>
+            <h1>Cursos</h1>
         </div>
     </header>
 
