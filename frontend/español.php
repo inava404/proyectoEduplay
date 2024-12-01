@@ -17,10 +17,10 @@
     <aside class="sidebar">
         <img src="src/img/EduplayLogo.png" alt="Eduplay Logo" width="270px">
         <ul>
-            <li><a href="#">Cursos <img src="src/img/cursos.png" alt="Logo cursos" width="40px"></a></li>
-            <li><a href="#">Retos <img src="src/img/retos.png" alt="Logo retos" width="40px"></a></li>
-            <li><a href="#">Perfil <img src="src/img/perfil.png" alt="Logo perfil" width="40px"></a></li>
-            <li><a href="#">Más <img src="src/img/Más.png" alt="Logo más" width="40px"></a></li>
+            <li><a href="principal.php">Cursos <img src="src/img/cursos.png" alt="Logo cursos" width="40px"></a></li>
+            <li><a href="retos.php">Retos <img src="src/img/retos.png" alt="Logo retos" width="40px"></a></li>
+            <li><a href="perfil.php">Perfil <img src="src/img/perfil.png" alt="Logo perfil" width="40px"></a></li>
+            <li><a href="mas.php">Más <img src="src/img/Más.png" alt="Logo más" width="40px"></a></li>
         </ul>
     </aside>
 
@@ -29,9 +29,9 @@
         <h2 style="padding-top: 20px">Escoge el tema de hoy</h2>
         <div class="section-inicio-btns">
             <ul>
-                <li><a href="#"><span>Colores</span></a><img src="src/img/colores.png" alt="Logo colores"></li>
-                <li><a href="#"><span>Animales</span></a><img src="src/img/animales.png" alt="Logo animales"></li>
-                <li><a href="#"><span>Vocabulario</span></a><img src="src/img/vocabulario.png" alt="Logo vocabulario"></li>
+                <li><a href="formulario_colores.php"><span>Colores</span></a><img src="src/img/colores.png" alt="Logo colores"></li>
+                <li><a href="formulario_animales.php"><span>Animales</span></a><img src="src/img/animales.png" alt="Logo animales"></li>
+                <li><a href="formulario_vocabulario.php"><span>Vocabulario</span></a><img src="src/img/vocabulario.png" alt="Logo vocabulario"></li>
             </ul>
         </div>
     </div>

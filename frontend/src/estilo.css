@@ -344,6 +344,8 @@
   -webkit-text-stroke-color: #4c4c4c;
 }
 
+/*-----------------------------------section-perfil-progreso---------------------------------------*/
+
 .perfil-progreso {
   flex: 2 1 400px; /* Mayor prioridad en el ancho para progreso */
   background-color: #6d93c2;
@@ -552,3 +554,6 @@ flex-direction: column; /* Cambia según tus necesidades */
   width: 75px;
   height: auto; /* Mantener proporción de la imagen */
 }
+
+
+/*-----------------------------------section-retos---------------------------------------*/
