@@ -22,7 +22,7 @@
         </div>
       </form>
       <div class="section-inicio-btns">
-        <a href="#"><span>Iniciar Sesión</span></a>
+        <a id="login" href="#"><span>Iniciar Sesión</span></a>
       </div>
       <div class="member">
         ¿No tienes cuenta? <a href="signup.php">

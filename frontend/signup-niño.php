@@ -26,7 +26,7 @@
         </select>
       </form>
       <div class="section-inicio-btns">
-        <a href="#"><span>Registrar niño</span></a>
+        <a id="signup-nino" href="#"><span>Registrar niño</span></a>
       </div>
       <div class="member">
         ¿Ya tienes cuenta? <a href="login.php">
