@@ -557,3 +557,59 @@ flex-direction: column; /* Cambia según tus necesidades */
 
 
 /*-----------------------------------section-retos---------------------------------------*/
+.retos{
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #85b4f0;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.retos h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.section-retos h3{
+  width: 57vh;
+  text-align: left;
+  font-weight:bold;
+  color: #fff;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #4c4c4c;
+  padding-left: 20px;
+  padding-top: 5px;
+  align-items: center;
+  background-color: #6d93c2;
+  border-color: #6d93c2;
+  border-style: solid;
+  border-width: 7px;
+  border-radius: 15px;
+  margin-bottom: -32px;
+  padding-bottom: 30px;
+  position: relative; /* Asegúrate de que el elemento esté posicionado */
+  z-index: 1; /* Este será el nivel más bajo */
+}
+
+.retos-progreso {
+  flex: 2 1 400px; /* Mayor prioridad en el ancho para progreso */
+  background-color: #6d93c2;
+  border-radius: 25px;
+  padding: 7px;
+  margin-top: -20px;
+  position: relative; /* Asegura que esté en el flujo del diseño */
+  z-index: 2; /* Nivel más alto para superponerse */
+}
+
+.retos-progreso h3 {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight:bold;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #4c4c4c;
+}

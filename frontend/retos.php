@@ -26,7 +26,14 @@
 
 
     <div class="section-principal"> 
-        
+        <section class="retos">
+            <div class="section-retos">
+                <h3>Progreso de retos</h3>
+                <div class="retos-progreso">
+                    
+                </div>
+                </div>
+        </section>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
