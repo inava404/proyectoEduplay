@@ -13,17 +13,20 @@
     </nav>
 
     <div class="wrapper"> 
-      <h1>Registrarse</h1>
+      <h1>Registrar niño</h1>
       <form action="#">
-        <input type="text" placeholder="Email">
         <input type="text" placeholder="Nombre(s)">
         <input type="text" placeholder="Apellidos">
         <input type="text" placeholder="Fecha de Nacimiento">
-        <input type="password" placeholder="Contraseña">
-        <input type="password" placeholder="Confirmar contraseña">
+        <select class="select-form" name="Grado">
+          <option value="" disabled selected>Selecciona el grado en curso del niño</option>
+          <option value="1">Primer grado</option>
+          <option value="2">Segundo grado</option>
+          <option value="3">Tercer grado</option>
+        </select>
       </form>
       <div class="section-inicio-btns">
-        <a href="signup-niño.php"><span>Registrarme</span></a>
+        <a href="#"><span>Registrar niño</span></a>
       </div>
       <div class="member">
         ¿Ya tienes cuenta? <a href="login.php">

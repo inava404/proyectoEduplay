@@ -4,6 +4,7 @@
     background-repeat: no-repeat; /* Evita que la imagen se repita (Mosaico) */
     background-position: center 65px; /* Centra la imagen en la pantalla y mueve la imagen hacia abajo 50px */
     margin: 0; /* Elimina los márgenes predeterminados */
+    padding: 0;
     height: 85vh; 
     background-color: #ffffff00;
     justify-content: center;
@@ -36,7 +37,7 @@
   }
   
 
-  /*Diseño de botones*/
+ /*----------------------------------Botones animados------------------------------------------*/
   .section-inicio-btns{
     display: flex;
     justify-content: center;
@@ -88,8 +89,28 @@
     z-index: 1;
   }
 
+  .section-inicio-btns ul{
+    margin-top: 20px;
+    list-style-type: none;
+    padding-left: 0;
+  }
 
-/*Diseño de login*/
+  .section-inicio-btns ul li{
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center; /* Alinea imagen y texto verticalmente */
+    gap: 10px; /* Espacio entre la imagen y el texto */
+    text-decoration: none; /* Opcional: quitar subrayado del enlace */
+    color: inherit; /* Opcional: mantener el color original del texto */
+  }
+  
+  .section-inicio-btns ul li img{
+    width: 75px;
+    height: auto; /* Mantener proporción de la imagen */
+  }
+
+ /*----------------------------------Login------------------------------------------*/
 .wrapper{
   width: 330px;
   padding: 2rem 1rem;
@@ -147,6 +168,246 @@
   -webkit-text-stroke-width: 0.7px;
   -webkit-text-stroke-color: #4c4c4c;
  }
+
+ .select-form{
+  width: 92%;
+  outline: none;
+  border: 1px solid #fff;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  background-color: #e4e4e4;
+  color: #626262;
+  font-size: 0.9em;
+ }
+
+ /*----------------------------------top-bar------------------------------------------*/
+.top-bar {
+  background-color: #cbcbcb;  /* Color azul */
+  color: white;
+  padding: 15px;
+  text-align: center;
+  height: 56px;
+}
+
+.top-bar h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+/*----------------------------------sidebar------------------------------------------*/
+.sidebar {
+  flex: 0 0 auto; /* Para que el aside no cambie de tamaño */
+  width: 290px;
+  background-color: #86bbff;  /* Otro tono de azul */
+  color: white;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+  display: grid;
+  justify-content: top center;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.sidebar ul li {
+  padding: 10px;
+  text-align: center;
+}
+
+.sidebar ul li a {
+  color: #252525;
+  -webkit-text-stroke-width: 0.7px;
+  -webkit-text-stroke-color: #252525;
+  font-weight:bold;
+  background-color: #5186cd;
+  text-decoration: none;
+  display: inline-block;
+  margin: 25px 0 25px 0;
+  padding-top: 2.5px;
+  width: 220px;
+  height: 47px;
+  font-size: 25px;
+  border-radius: 4px;
+  align-items: center center;
+  text-align: center center;
+}
+
+.sidebar ul li a:hover {
+  background-color: #2d5588;
+  color: #fff;
+  -webkit-text-stroke-color: #fff;
+}
+
+/*----------------------------------------top-bar--------------------------------------------*/
+.top-bar{
+  text-align: center;
+  padding-left: 50vh;
+}
+
+.top-bar h1{
+  text-align: center;
+  color: #F4F4F4;
+  font-weight:bold;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #F4F4F4;
+}
+
+/*-----------------------------------section-principal---------------------------------------*/
+.section-principal{
+  background-image: url(img/FondoNubes.png);
+  background-size: contain; /* Asegura que la imagen cubra toda la pantalla */
+  background-repeat: no-repeat; /* Evita que la imagen se repita (Mosaico) */
+  background-position: center 65px; /* Centra la imagen en la pantalla y mueve la imagen hacia abajo 50px */
+  text-align: center;
+  padding-top: 25px;
+  height: 91.5vh;
+  margin-left: 290px; /* Comienza justo al lado del aside */
+  width: calc(100% - 290px); /* Ocupa el resto del espacio */
+  display: flex;
+  flex-direction: column; /* Cambia según tus necesidades */
+}
+
+.section-principal h2{
+  color: #c9c9c9;
+  font-size: 50px;
+  font-weight:bold;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #4c4c4c;
+}
+
+
+/*-----------------------------------section-perfil---------------------------------------*/
+.perfil {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #85b4f0; /* Fondo del contenedor */
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.perfil h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.perfil-container {
+  display: flex;
+  flex-wrap: wrap; /* Adaptable en pantallas pequeñas */
+  gap: 20px;
+}
+
+.perfil-info {
+  flex: 1 1 250px; /* Asegura que el avatar y la info ocupen espacio proporcional */
+  display: flex;
+  align-items: center;
+  background-color: #ebeef9;
+  border-color: #6d93c2;
+  border-style: solid;
+  border-width: 7px;
+  border-radius: 25px;
+  padding: 15px;
+}
+
+.perfil-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.perfil-detalles p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.perfil-progreso {
+  flex: 2 1 400px; /* Mayor prioridad en el ancho para progreso */
+  background-color: #6d93c2;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.perfil-progreso h3 {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight:bold;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #4c4c4c;
+}
+
+.curso {
+  margin-bottom: 15px;
+}
+
+.curso span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.barra-progreso {
+  background-color: #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 15px;
+  margin-top: 5px;
+}
+
+.progreso {
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 5px;
+}
+
+.progreso:nth-child(2) {
+  background-color: #f44336;
+}
+
+.progreso:nth-child(3) {
+  background-color: #2196f3;
+}
+
+.section-progreso{
+  margin-top: 15px;
+}
+
+.section-progreso h3{
+  width: 57vh;
+  text-align: left;
+  padding-left: 20px;
+  margin: 0;
+  align-items: center;
+  background-color: #6d93c2;
+  border-color: #6d93c2;
+  border-style: solid;
+  border-width: 7px;
+  border-radius: 15px;
+}
+
+.progreso-cursos{
+  flex: 1 1 250px; /* Asegura que el avatar y la info ocupen espacio proporcional */
+  align-items: center;
+  background-color: #ebeef9;
+  border-color: #6d93c2;
+  border-style: solid;
+  border-width: 7px;
+  border-radius: 25px;
+  padding: 15px;
+}
 
   .search-section input {
     width: 150px;
