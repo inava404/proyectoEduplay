@@ -11,8 +11,8 @@
 <body style="background-image: none;">
     <header>
         <div class="top-bar" style="height: 62px">
-            <h1>Vocabulario  <img src="src/img/vocabulario.png" alt="Logo español" width= "33.6px" height= "33.6px;"></h1>
-            <a href="español.php"><img src="src/img/salir.png" alt="Salir" width= "33.6px" height= "33.6px;" class="salir-btn"></a>
+            <h1>Figuras  <img src="src/img/figuras.png" alt="Logo español" width= "33.6px" height= "33.6px;"></h1>
+            <a href="matematicas.php"><img src="src/img/salir.png" alt="Salir" width= "33.6px" height= "33.6px;" class="salir-btn"></a>
         </div>
     </header>
 
@@ -29,63 +29,58 @@
 
     <div class="formulario-materias">
         <div class="materias-wrapper">
-            <form>
-                <div class="form-group">
-                    <label>¿Cómo se llama el lugar donde estudias?</label><br>
-                    <div class="form-images">
-                        <img src="src/img/parque.png" alt="Parque">
-                        <img src="src/img/escuela.png" alt="Escuela">
-                        <img src="src/img/casa.png" alt="Casa">
-                        <img src="src/img/tienda.png" alt="Tienda">
-                    </div>
-                    <input type="radio" name="pregunta1" value="A"> A) Parque<br>
-                    <input type="radio" name="pregunta1" value="B"> B) Escuela<br>
-                    <input type="radio" name="pregunta1" value="C"> C) Casa<br>
-                    <input type="radio" name="pregunta1" value="D"> D) Tienda
+        <form>
+            <div class="form-group">
+                <label>¿Qué figura es un círculo?</label>
+                <div class="form-images">
+                    <img src="src/img/cuadrado-azul.png" alt="Cuadrado">
+                    <img src="src/img/circulo.png" alt="Círculo">
+                    <img src="src/img/triangulo-verde.png" alt="Triángulo">
+                    <img src="src/img/rectangulo.png" alt="Rectángulo">
                 </div>
+                <input type="radio" name="pregunta1" value="A"> A) Cuadrado<br>
+                <input type="radio" name="pregunta1" value="B"> B) Círculo<br>
+                <input type="radio" name="pregunta1" value="C"> C) Triángulo<br>
+                <input type="radio" name="pregunta1" value="D"> D) Rectángulo
+            </div>
 
-                <div class="form-group">
-                    <label>¿Qué palabra es el nombre de un juguete?</label>
-                    <div class="form-images">
-                        <img src="src/img/pelota.png" alt="Pelota">
-                    </div>
-                    <input type="radio" name="pregunta2" value="A"> A) Pelota<br>
-                    <input type="radio" name="pregunta2" value="B"> B) Escuela<br>
-                    <input type="radio" name="pregunta2" value="C"> C) Avión<br>
-                    <input type="radio" name="pregunta2" value="D"> D) Sol
+            <div class="form-group">
+                <label>¿Qué figura tiene tres lados?</label>
+                <div class="form-images">
+                    <img src="src/img/cuadrado.png" alt="Cuadrado">
+                    <img src="src/img/circulo-azul.png" alt="Círculo">
+                    <img src="src/img/triangulo.png" alt="Triángulo">
+                    <img src="src/img/rectangulo-rosa.png" alt="Rectángulo">
                 </div>
+                <input type="radio" name="pregunta2" value="A"> A) Cuadrado<br>
+                <input type="radio" name="pregunta2" value="B"> B) Círculo<br>
+                <input type="radio" name="pregunta2" value="C"> C) Triángulo<br>
+                <input type="radio" name="pregunta2" value="D"> D) Rectángulo
+            </div>
 
-                <div class="form-group">
-                    <label>¿Qué haces cuando tienes sueño?</label>
-                    <div class="form-images">
-                        <img src="src/img/correr.png" alt="Correr">
-                        <img src="src/img/nadar.png" alt="Nadar">
-                        <img src="src/img/dormir.png" alt="Dormir">
-                        <img src="src/img/jugar.png" alt="Jugar">
-                    </div>
-                    <input type="radio" name="pregunta3" value="A"> A) Correr<br>
-                    <input type="radio" name="pregunta3" value="B"> B) Nadar<br>
-                    <input type="radio" name="pregunta3" value="C"> C) Dormir<br>
-                    <input type="radio" name="pregunta3" value="D"> D) Jugar
+            <div class="form-group">
+                <label>¿Cuál de estas figuras es más grande?</label>
+                <div class="form-images">
+                    <img src="src/img/triangulo-rojo.png" alt="Triangulo Grande">
+                    <img src="src/img/cuadrado-azul.png" alt="Cuadrado Pequeño" style="width: 30px; height: 30px;">
                 </div>
+                <input type="radio" name="pregunta3" value="A"> A) Cuadrado<br>
+                <input type="radio" name="pregunta3" value="B"> B) Triangulo
+            </div>
 
-                <div class="form-group">
-                    <label>¿Con que escribes?</label>
-                    <div class="form-images">
-                        <img src="src/img/lapiz.png" alt="Lapiz">
-                        <img src="src/img/goma.png" alt="Goma">
-                        <img src="src/img/tijeras.png" alt="Tijeras">
-                        <img src="src/img/pegamento.png" alt="Pegamento">
-                    </div>
-                    <input type="radio" name="pregunta4" value="A"> A) Lapiz<br>
-                    <input type="radio" name="pregunta4" value="B"> B) Goma<br>
-                    <input type="radio" name="pregunta4" value="C"> C) Pegamento<br>
-                    <input type="radio" name="pregunta4" value="D"> D) Tijeras
+            <div class="form-group">
+                <label>¿La figura de color rojo es un...</label>
+                <div class="form-images">
+                    <img src="src/img/circulo.png" alt="Circulo">
                 </div>
-                <div class="form-btns">
-                    <a href="#"><span>¡He terminado!</span></a>
-                </div>
-            </form>
+                <input type="radio" name="pregunta4" value="A"> A) Triangulo<br>
+                <input type="radio" name="pregunta4" value="B"> B) Cuadrado<br>
+                <input type="radio" name="pregunta4" value="C"> D) Circulo
+            </div>
+            <div class="form-btns">
+                <a href="#"><span>¡He terminado!</span></a>
+            </div>
+        </form>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"

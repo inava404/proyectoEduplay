@@ -11,8 +11,8 @@
 <body style="background-image: none;">
     <header>
         <div class="top-bar" style="height: 62px">
-            <h1>Vocabulario  <img src="src/img/vocabulario.png" alt="Logo español" width= "33.6px" height= "33.6px;"></h1>
-            <a href="español.php"><img src="src/img/salir.png" alt="Salir" width= "33.6px" height= "33.6px;" class="salir-btn"></a>
+            <h1>Números  <img src="src/img/numeros.png" alt="Logo español" width= "33.6px" height= "33.6px;"></h1>
+            <a href="matematicas.php"><img src="src/img/salir.png" alt="Salir" width= "33.6px" height= "33.6px;" class="salir-btn"></a>
         </div>
     </header>
 
@@ -84,6 +84,9 @@
                 <input type="radio" name="pregunta4" value="B"> B) 4<br>
                 <input type="radio" name="pregunta4" value="C"> C) 6<br>
                 <input type="radio" name="pregunta4" value="D"> D) 8
+            </div>
+            <div class="form-btns">
+                <a href="#"><span>¡He terminado!</span></a>
             </div>
         </form>
         </div>

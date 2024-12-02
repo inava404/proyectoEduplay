@@ -11,8 +11,8 @@
 <body style="background-image: none;">
     <header>
         <div class="top-bar" style="height: 62px">
-            <h1>Vocabulario  <img src="src/img/vocabulario.png" alt="Logo español" width= "33.6px" height= "33.6px;"></h1>
-            <a href="español.php"><img src="src/img/salir.png" alt="Salir" width= "33.6px" height= "33.6px;" class="salir-btn"></a>
+            <h1>Sumas y Restas  <img src="src/img/operaciones.png" alt="Logo español" width= "33.6px" height= "33.6px;"></h1>
+            <a href="matematicas.php"><img src="src/img/salir.png" alt="Salir" width= "33.6px" height= "33.6px;" class="salir-btn"></a>
         </div>
     </header>
 
