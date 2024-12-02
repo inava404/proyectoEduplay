@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
     
     // SE ASIGNA EL EVENTO CLICK AL BOTON DE INICIAR SESIÖN
@@ -121,9 +120,51 @@ $(document).ready(function() {
                 alert("Hubo un error al procesar el registro.");
             }
         });
-    });        
-
     });
+    
+    // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO
+    $('#form_vocabulario').sumbit(function(e){
+        e.preventDefault();
+
+        // Obtener las respuestas seleccionadas para cada pregunta
+        var respuestas = {
+            materia: "español",
+            tipo_material: "vocabulario",
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
+        };
+
+        // Validar que se haya seleccionado una respuesta para cada pregunta
+        for (var pregunta in respuestas) {
+            if (!respuestas[pregunta]) {
+                alert("Por favor, responde a la pregunta " + pregunta.substring(8));
+                return;  // Detener la ejecución si falta una respuesta
+            }
+        }
+
+        // Enviar las respuestas al servidor mediante AJAX
+        $.ajax({
+            url: '../backend/eduplay-verifResp',
+            type: 'POST',
+            data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
+            success: function(response) {
+                // Procesar la respuesta del servidor
+                if (response.status === 'correcto') {
+                    alert("¡Respuestas correctas!");
+                } else {
+                    alert("Algunas respuestas son incorrectas.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", status, error);
+                alert("Hubo un error al enviar las respuestas.");
+            }
+        });
+    });
+
+});
 
 
     //AREA DE VALIDACIONES
