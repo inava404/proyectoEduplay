@@ -10,8 +10,8 @@ $(document).ready(function() {
         //}
 
         //SE OBTIENEN LOS VALORES DE LOS INPUTS
-        let email = $('#email').val();
-        let password = $('#password').val();
+        let email = $('input[placeholder="Email"]').val();
+        let password = $('input[placeholder="Contraseña"]').val();
     
         // CREAR UN OBJETO JSON
         let finalJSON = {
@@ -26,13 +26,13 @@ $(document).ready(function() {
             contentType: 'application/json; charset=utf-8', // Enviar como JSON
             success: function(response) {
                 console.log(response);  // Mostrar la respuesta del servidor
+                let result = JSON.parse(response);  // Parsear la respuesta JSON
                 if (result.status === 'success') {
-                    alert('Registro exitoso.');
-                    window.location.href = '../frontend/principal.php';  // Redirigir al login o a otra página
+                    alert('Login exitoso.');
+                    window.location.href = '../frontend/principal.php';  // Redirigir a la página principal
                 } else {
-                    alert('Error en el login: ' + result.message);
+                    alert('Error en el login: ' + result.message);  // Mostrar el mensaje de error
                 }
-                
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.error('Error en la solicitud:', textStatus, errorThrown);  // Manejo de errores

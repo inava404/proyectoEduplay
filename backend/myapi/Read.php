@@ -13,16 +13,18 @@ class Read extends DataBase {
     public function encontrarUsuario($jsonOBJ) {
         // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
         if ( $result = $this->conexion->query("SELECT * FROM sesiones WHERE usuario = '{$jsonOBJ->email}' AND contrasena = '{$jsonOBJ->password}'") ) {
-            // SE OBTIENEN LOS RESULTADOS
-            $rows = $result->fetch_all(MYSQLI_ASSOC);
-
-            if(!is_null($rows)) {
-                // SE CODIFICAN A UTF-8 LOS DATOS Y SE MAPEAN AL ARREGLO DE RESPUESTA
-                foreach($rows as $num => $row) {
-                    foreach($row as $key => $value) {
-                        $this->data[$num][$key] = $value;
-                    }
+             // Verificar si se encontró un usuario
+            if ($result->num_rows > 0) {
+                // Si se encuentran resultados, almacenar los datos en el array $data
+                while ($row = $result->fetch_assoc()) {
+                    $this->data[] = $row;  // Guardamos cada fila de la consulta en el arreglo de datos
                 }
+                $this->data['status'] = 'success';
+                $this->data['message'] = 'Usuario encontrado';
+            } else {
+                // Si no se encuentra el usuario
+                $this->data['status'] = 'error';
+                $this->data['message'] = 'Usuario o contraseña incorrectos.';
             }
         $result->free();
         } else {

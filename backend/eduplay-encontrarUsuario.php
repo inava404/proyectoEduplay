@@ -2,7 +2,9 @@
     use EDUPLAY\MYAPI\Read;
     require_once __DIR__.'/vendor/autoload.php';
 
+    $data = json_decode(file_get_contents("php://input"));
+
     $edu = new Read('eduplay');
-    $edu->encontrarUsuario( json_decode( json_encode($_POST) ) );
+    $edu->encontrarUsuario( $data);
     echo $edu->getData();
 ?>
