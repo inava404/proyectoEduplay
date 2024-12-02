@@ -30,7 +30,7 @@
 
     <div class="formulario-materias">
         <div class="materias-wrapper">
-            <form id="vocabulario">
+            <form id="form_vocabulario_es">
                 <div class="form-group">
                     <label>¿Cómo se llama el lugar donde estudias?</label><br>
                     <div class="form-images">
@@ -94,6 +94,6 @@
     crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src=""></script>
+    <script src="../backend/app.js"></script>
 </body>
 </html>

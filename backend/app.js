@@ -1,13 +1,12 @@
-
 $(document).ready(function() {
-    
+    let id_sesion = 0;
     // SE ASIGNA EL EVENTO CLICK AL BOTON DE INICIAR SESIÖN
     $('#login').click(function(e){
         e.preventDefault();
         
-        //if(!verifFinal(edit)){
-            //return;
-        //}
+        if(!verifFinalLogin()){
+            return;
+        }
 
         //SE OBTIENEN LOS VALORES DE LOS INPUTS
         let email = $('input[placeholder="Email"]').val();
@@ -28,6 +27,7 @@ $(document).ready(function() {
                 console.log(response);  // Mostrar la respuesta del servidor
                 let result = JSON.parse(response);  // Parsear la respuesta JSON
                 if (result.status === 'success') {
+                    id_sesion = result.id;
                     alert('Login exitoso.');
                     window.location.href = '../frontend/principal.php';  // Redirigir a la página principal
                 } else {
@@ -45,6 +45,10 @@ $(document).ready(function() {
     $('#signup-tutor').on('click', function(e){
         e.preventDefault();
         
+        if(!verifFinalsignup_tut()){
+            return;
+        }
+
         // Obtener los valores de los inputs
         let email = $('input[placeholder="Email"]').val();
         let nombre = $('input[placeholder="Nombre(s)"]').val();
@@ -73,9 +77,14 @@ $(document).ready(function() {
         window.location.href = '../frontend/signup-niño.php';
     });
 
+    // SE ASIGNA EL EVENTO CLICK AL BOTON DE REGISTRAR NIÑO
     $('#signup-nino').on('click', function(e){
         e.preventDefault();
         
+        if(!verifFinalsignup_alu()){
+            return;
+        }
+
         // Obtener los valores de los inputs del formulario del niño
         let grado = $('select[name="Grado"]').val();
         let nombre_nino = $('input[placeholder="Nombre(s)"]').val();
@@ -121,63 +130,500 @@ $(document).ready(function() {
                 alert("Hubo un error al procesar el registro.");
             }
         });
-    });        
-
     });
+    
+    // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE VOCABULARIO ESPAÑOL
+    $('#form_vocabulario_es').submit(function(e){
+        e.preventDefault();
+        console.log("Formulario de vocabulario español enviado.");
 
+        // Obtener las respuestas seleccionadas para cada pregunta
+        var respuestas = {
+            materia: "español",
+            tipo_material: "vocabulario",
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
+        };
 
-    //AREA DE VALIDACIONES
-    // VALIDAR NOMBRE
-    $("#name").on("blur",function() {
-        verifNombre(edit).then(function(isValid) {
-            if (isValid) {
-                return;
+        // Validar que se haya seleccionado una respuesta para cada pregunta
+        for (var pregunta in respuestas) {
+            if (!respuestas[pregunta]) {
+                alert("Por favor, responde a la pregunta " + pregunta.substring(8));
+                return;  // Detener la ejecución si falta una respuesta
+            }
+        }
+
+        // Enviar las respuestas al servidor mediante AJAX
+        $.ajax({
+            url: '../backend/eduplay-verifResp.php',
+            type: 'POST',
+            data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
+            success: function(response) {
+                // Procesar la respuesta del servidor
+                if (response.status === 'correcto') {
+                    alert("¡Todas tus respuestas son correctas!");
+                    window.location.href = '../frontend/principal.php';  // Redirigir a la página principal
+                } else {
+                    alert("Algunas respuestas son incorrectas. Vuelve a intentarlo.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", status, error);
+                alert("Hubo un error al enviar las respuestas.");
             }
         });
     });
 
-    // VALIDAR PRECIO
-    $("#precio").on("blur", function() {
-        if(verifPrecio()){
-            return;
-        }
+    // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE VOCABULARIO ESPAÑOL
+    $('#form_animales_es').submit(function(e){
+        e.preventDefault();
+
+        // Obtener las respuestas seleccionadas para cada pregunta
+        var respuestas = {
+            materia: "español",
+            tipo_material: "animales",
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
+        };
+    
+        // Validar que se haya seleccionado una respuesta para cada pregunta
+        for (var pregunta in respuestas) {
+            if (pregunta.startsWith("pregunta") && !respuestas[pregunta]) {
+                alert("Por favor, responde a la pregunta " + pregunta.substring(8));
+                return;  // Detener la ejecución si falta una respuesta
+            }
+        }    
+
+        // Enviar las respuestas al servidor mediante AJAX
+        $.ajax({
+            url: '../backend/eduplay-verifResp.php',
+            type: 'POST',
+            data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
+            success: function(response) {
+                // Procesar la respuesta del servidor
+                if (response.status === 'correcto') {
+                    alert("¡Respuestas correctas!");
+                } else {
+                    alert("Algunas respuestas son incorrectas.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", status, error);
+                alert("Hubo un error al enviar las respuestas.");
+            }
+        });
     });
 
-    //VALIDAR UNIDADES
-    $("#unidades").on("blur", function() {
-        if(verifUnidades()){
-            return;
+
+    // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE VOCABULARIO ESPAÑOL
+    $('#form_colores_es').submit(function(e){
+        e.preventDefault();
+
+        // Obtener las respuestas seleccionadas para cada pregunta
+        var respuestas = {
+            materia: "español",
+            tipo_material: "colores",
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
+        };
+
+        // Validar que se haya seleccionado una respuesta para cada pregunta
+        for (var pregunta in respuestas) {
+            if (!respuestas[pregunta]) {
+                alert("Por favor, responde a la pregunta " + pregunta.substring(8));
+                return;  // Detener la ejecución si falta una respuesta
+            }
         }
+
+        // Enviar las respuestas al servidor mediante AJAX
+        $.ajax({
+            url: '../backend/eduplay-verifResp.php',
+            type: 'POST',
+            data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
+            success: function(response) {
+                // Procesar la respuesta del servidor
+                if (response.status === 'correcto') {
+                    alert("¡Respuestas correctas!");
+                } else {
+                    alert("Algunas respuestas son incorrectas.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", status, error);
+                alert("Hubo un error al enviar las respuestas.");
+            }
+        });
     });
 
-    // VALIDAR MODELO
-    $("#modelo").on("blur",function() {
-        if(verifModelo()){
-            return;
+    // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE VOCABULARIO MATEMATICAS
+    $('#form_vocabulario_mat').submit(function(e){
+        e.preventDefault();
+
+        // Obtener las respuestas seleccionadas para cada pregunta
+        var respuestas = {
+            materia: "matematicas",
+            tipo_material: "vocabulario",
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
+        };
+
+        // Validar que se haya seleccionado una respuesta para cada pregunta
+        for (var pregunta in respuestas) {
+            if (!respuestas[pregunta]) {
+                alert("Por favor, responde a la pregunta " + pregunta.substring(8));
+                return;  // Detener la ejecución si falta una respuesta
+            }
         }
+
+        // Enviar las respuestas al servidor mediante AJAX
+        $.ajax({
+            url: '../backend/eduplay-verifResp.php',
+            type: 'POST',
+            data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
+            success: function(response) {
+                // Procesar la respuesta del servidor
+                if (response.status === 'correcto') {
+                    alert("¡Todas tus respuestas son correctas!");
+                    window.location.href = '../frontend/principal.php';  // Redirigir a la página principal
+                } else {
+                    alert("Algunas respuestas son incorrectas. Vuelve a intentarlo.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", status, error);
+                alert("Hubo un error al enviar las respuestas.");
+            }
+        });
     });
 
-    //VALIDAR MARCA
-    $("#marca").on("blur",function() {
-        if(verifMarca()){
-            return;
+    // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE ANIMALES MATEMATICAS
+    $('#form_animales_mat').submit(function(e){
+        e.preventDefault();
+
+        // Obtener las respuestas seleccionadas para cada pregunta
+        var respuestas = {
+            materia: "matematicas",
+            tipo_material: "animales",
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
+        };
+
+        // Validar que se haya seleccionado una respuesta para cada pregunta
+        for (var pregunta in respuestas) {
+            if (!respuestas[pregunta]) {
+                alert("Por favor, responde a la pregunta " + pregunta.substring(8));
+                return;  // Detener la ejecución si falta una respuesta
+            }
         }
+
+        // Enviar las respuestas al servidor mediante AJAX
+        $.ajax({
+            url: '../backend/eduplay-verifResp.php',
+            type: 'POST',
+            data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
+            success: function(response) {
+                // Procesar la respuesta del servidor
+                if (response.status === 'correcto') {
+                    alert("¡Todas tus respuestas son correctas!");
+                    window.location.href = '../frontend/principal.php';  // Redirigir a la página principal
+                } else {
+                    alert("Algunas respuestas son incorrectas. Vuelve a intentarlo.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", status, error);
+                alert("Hubo un error al enviar las respuestas.");
+            }
+        });
     });
 
-    //VALIDAR DETALLES
-    $("#detalles").on("blur",function() {
-        if(verifDetalles()){
-            return;
+    // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE COLORES MATEMATICAS
+    $('#form_colores_mat').submit(function(e){
+        e.preventDefault();
+
+        // Obtener las respuestas seleccionadas para cada pregunta
+        var respuestas = {
+            materia: "matematicas",
+            tipo_material: "colores",
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
+        };
+
+        // Validar que se haya seleccionado una respuesta para cada pregunta
+        for (var pregunta in respuestas) {
+            if (!respuestas[pregunta]) {
+                alert("Por favor, responde a la pregunta " + pregunta.substring(8));
+                return;  // Detener la ejecución si falta una respuesta
+            }
         }
+
+        // Enviar las respuestas al servidor mediante AJAX
+        $.ajax({
+            url: '../backend/eduplay-verifResp.php',
+            type: 'POST',
+            data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
+            success: function(response) {
+                // Procesar la respuesta del servidor
+                if (response.status === 'correcto') {
+                    alert("¡Todas tus respuestas son correctas!");
+                    window.location.href = '../frontend/principal.php';  // Redirigir a la página principal
+                } else {
+                    alert("Algunas respuestas son incorrectas. Vuelve a intentarlo.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", status, error);
+                alert("Hubo un error al enviar las respuestas.");
+            }
+        });
     });
 
-    //VALIDAR IMAGEN
-    $("#imagen").on("blur",function() {
-        if(verifImagen()){
-            return;
+    // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE VOCABULARIO ING
+    $('#form_vocabulario_ing').submit(function(e){
+        e.preventDefault();
+
+        // Obtener las respuestas seleccionadas para cada pregunta
+        var respuestas = {
+            materia: "ingles",
+            tipo_material: "vocabulario",
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
+        };
+
+        // Validar que se haya seleccionado una respuesta para cada pregunta
+        for (var pregunta in respuestas) {
+            if (!respuestas[pregunta]) {
+                alert("Por favor, responde a la pregunta " + pregunta.substring(8));
+                return;  // Detener la ejecución si falta una respuesta
+            }
         }
+
+        // Enviar las respuestas al servidor mediante AJAX
+        $.ajax({
+            url: '../backend/eduplay-verifResp.php',
+            type: 'POST',
+            data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
+            success: function(response) {
+                // Procesar la respuesta del servidor
+                if (response.status === 'correcto') {
+                    alert("¡Todas tus respuestas son correctas!");
+                    window.location.href = '../frontend/principal.php';  // Redirigir a la página principal
+                } else {
+                    alert("Algunas respuestas son incorrectas. Vuelve a intentarlo.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", status, error);
+                alert("Hubo un error al enviar las respuestas.");
+            }
+        });
     });
 
+    // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE ANIMALES ING
+    $('#form_animales_ing').submit(function(e){
+        e.preventDefault();
+
+        // Obtener las respuestas seleccionadas para cada pregunta
+        var respuestas = {
+            materia: "ingles",
+            tipo_material: "animales",
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
+        };
+
+        // Validar que se haya seleccionado una respuesta para cada pregunta
+        for (var pregunta in respuestas) {
+            if (!respuestas[pregunta]) {
+                alert("Por favor, responde a la pregunta " + pregunta.substring(8));
+                return;  // Detener la ejecución si falta una respuesta
+            }
+        }
+
+        // Enviar las respuestas al servidor mediante AJAX
+        $.ajax({
+            url: '../backend/eduplay-verifResp.php',
+            type: 'POST',
+            data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
+            success: function(response) {
+                // Procesar la respuesta del servidor
+                if (response.status === 'correcto') {
+                    alert("¡Todas tus respuestas son correctas!");
+                    window.location.href = '../frontend/principal.php';  // Redirigir a la página principal
+                } else {
+                    alert("Algunas respuestas son incorrectas. Vuelve a intentarlo.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", status, error);
+                alert("Hubo un error al enviar las respuestas.");
+            }
+        });
+    });
+
+    // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE COLORES ING
+    $('#form_colores_ing').submit(function(e){
+        e.preventDefault();
+
+        // Obtener las respuestas seleccionadas para cada pregunta
+        var respuestas = {
+            materia: "ingles",
+            tipo_material: "colores",
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
+        };
+
+        // Validar que se haya seleccionado una respuesta para cada pregunta
+        for (var pregunta in respuestas) {
+            if (!respuestas[pregunta]) {
+                alert("Por favor, responde a la pregunta " + pregunta.substring(8));
+                return;  // Detener la ejecución si falta una respuesta
+            }
+        }
+
+        // Enviar las respuestas al servidor mediante AJAX
+        $.ajax({
+            url: '../backend/eduplay-verifResp.php',
+            type: 'POST',
+            data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
+            success: function(response) {
+                // Procesar la respuesta del servidor
+                if (response.status === 'correcto') {
+                    alert("¡Todas tus respuestas son correctas!");
+                    window.location.href = '../frontend/principal.php';  // Redirigir a la página principal
+                } else {
+                    alert("Algunas respuestas son incorrectas. Vuelve a intentarlo.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", status, error);
+                alert("Hubo un error al enviar las respuestas.");
+            }
+        });
+    });
+
+    // Al cargar la página, obtener el perfil del usuario
+    if (window.location.pathname.includes('../frontend/perfil.php')) {
+        // Obtener el ID de sesión desde localStorage
+        if (id_sesion == 0) {
+            alert("No se encontró una sesión activa.");
+            window.location.href = '../frontend/login.php'; // Redirigir al login si no hay sesión
+            return;
+        }
+
+        // Solicitar datos del perfil
+        $.ajax({
+            url: '../backend/eduplay-listAlumn.php',
+            type: 'POST',
+            data: JSON.stringify({ id_sesion: id_sesion }),
+            contentType: 'application/json; charset=utf-8',
+            success: function(response) {
+                let result = JSON.parse(response);
+                if (result.status === 'success') {
+                    // Actualizar el DOM con los datos del perfil
+                    $('.perfil-avatar').attr('src', result.avatar || 'img/default-avatar.png');
+                    $('.perfil-detalles').html(`
+                        <p><strong>${result.nombre}</strong></p>
+                        <p>Apodo: ${result.apodo}</p>
+                        <p>Grado: ${result.grado}</p>
+                        <p>Edad: ${result.edad}</p>
+                    `);
+
+                    // Actualizar progreso en cursos
+                    let cursos = result.cursos || [];
+                    let progresoHtml = '';
+                    cursos.forEach(curso => {
+                        progresoHtml += `
+                            <div class="curso">
+                                <span>${curso.nombre} <img src="img/${curso.icono}" alt="${curso.nombre}"></span>
+                                <div class="barra-progreso">
+                                    <div class="progreso" style="width: ${curso.progreso}%;"></div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    $('.perfil-progreso').html(progresoHtml);
+                } else {
+                    alert(result.message || 'Error al cargar el perfil.');
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Error en la solicitud:', textStatus, errorThrown);
+                alert("Hubo un error al cargar el perfil.");
+            }
+        });
+    }
+
+
+});
+
+
+    //AREA DE VALIDACIONES
+//VALIDAR EMAIL
+$('input[placeholder="Email"]').on("blur",function() {
+verifUsuario().then(function(isValid) {
+    if(isValid) {
+        return;
+        }
+    });
+});
+
+//VALIDAR CONTRASEÑA
+$('input[placeholder="Contraseña"]').on('blur', function() {
+    const { final, status, message } = verifContr();
+    if (!final) {
+        alert(message);
+    }
+});
+
+//VALIDAR CONFIRMACION DE CONTRASEÑA
+$('input[placeholder="Confirmar contraseña"]').on('blur', function() {
+    const { final, status, message } = verifConfirmContr();
+    if (!final) {
+        alert(message);
+    }
+});
+
+//VALIDAR NOMBRE
+$('input[placeholder="Nombre(s)"]').on('blur', function() {
+    const { final, status, message } = verifNombre();
+    if (!final) {
+        alert(message);
+    }
+});
+
+//VALIDAR APELLIDOS
+$('input[placeholder="Apellidos"]').on('blur', function() {
+    const { final, status, message } = verifAped();
+    if (!final) {
+        alert(message);
+    }
+});
+
+//VALIDAR FECHA DE NACIMIENTO
+$('input[placeholder="Fecha de Nacimiento"]').on('blur', function() {
+    const { final, status, message } = verifFecha();
+    if (!final) {
+        alert(message);
+    }
+});
 
 async function verifUsuario(){
     var final = true;
@@ -200,7 +646,6 @@ async function verifUsuario(){
             try {
                  // Esperamos la respuesta de la validación asincrónica
                 const usuario = await verificarCorreoAsy(correo);
- 
                 if (usuario && usuario.length > 0) {
                     status = "error";
                     message = "El correo ya está registrado";
@@ -246,206 +691,117 @@ function verificarCorreoAsy(correo) {
 }
 
 
-function verifPrecio(){
-var final = true;
-let status = 'success';
-let message = "Validación de precio exitosa"
-var precio = document.getElementById('precio').value;
+function verifContr() {
+    var final = true;
+    let status = 'success';
+    let message = "Validación de contraseña exitosa";
+    var password = document.querySelector('input[placeholder="Contraseña"]').value;
 
-    if(precio.length == 0){
+    if (password.length === 0) {
         status = 'error';
-        message = 'El modelo es un requisito requerido.';
+        message = 'La contraseña es un requisito obligatorio.';
+        final = false;
+    } else if (password.length < 6) {
+        status = 'error';
+        message = 'La contraseña debe tener al menos 6 caracteres.';
         final = false;
     }
-    else{
-        var aux = parseFloat(precio);
-        if(aux < 99.99){
-            status = 'error';
-            message = 'El precio debe de ser mayor a $ 99.99.';
-            final = false;
-        }
-    }
-    
 
-    mostrarBarraVerif(status, message);
-
-
-    return (final);
+    return { final, status, message };
 }
 
-function verifUnidades(){
+function verifConfirmContr() {
     var final = true;
     let status = 'success';
-    let message = "Validación de unidades exitosa"
-    var unidades = document.getElementById('unidades').value;
-    var aux = parseInt(unidades);
-    
-    if(unidades.length == 0){
+    let message = "Validación de confirmación de contraseña exitosa";
+    var password = document.querySelector('input[placeholder="Contraseña"]').value;
+    var confirmPassword = document.querySelector('input[placeholder="Confirmar contraseña"]').value;
+
+    if (confirmPassword.length === 0) {
         status = 'error';
-        message = 'Las unidades son un requisito requerido.';
+        message = 'La confirmación de contraseña es obligatoria.';
+        final = false;
+    } else if (password !== confirmPassword) {
+        status = 'error';
+        message = 'Las contraseñas no coinciden.';
         final = false;
     }
-    else{
-        if(aux < 0){
-            status = 'error';
-            message = 'Las unidades deben ser mayor o igual a 0.';
-            final = false;
-        }
-    }
 
-
-    mostrarBarraVerif(status, message);
-
-    return (final);
+    return { final, status, message };
 }
 
-function verifModelo(){
+
+function verifNombre() {
     var final = true;
     let status = 'success';
-    let message = "Validación de modelo exitosa"
-    var modelo = document.getElementById('modelo').value;
-    
-    if(modelo.length == 0){
+    let message = "Validación de nombre exitosa";
+    var nombre = document.querySelector('input[placeholder="Nombre(s)"]').value;
+
+    if (nombre.length === 0) {
         status = 'error';
-        message = 'El modelo es un requisito requerido.';
+        message = 'El nombre es obligatorio.';
+        final = false;
+    } else if (nombre.length < 2) {
+        status = 'error';
+        message = 'El nombre debe tener al menos 2 caracteres.';
         final = false;
     }
-    else{
-        if(!/^[A-Za-z0-9 ]+$/.test(modelo)){
-            status = 'error';
-            message = 'El modelo debe de estar escrito en formato alfanumerico.';
-            final = false;
-        }
-        else{
-            if(modelo.length > 25){
-                status = 'error';
-                message = 'El modelo debe de tener menos de 25 caracteres.';
-                final = false;
-            }
-        }
-    }
 
-
-    mostrarBarraVerif(status, message);
-
-
-    return (final);
+    return { final, status, message };
 }
 
-function verifMarca(){
+function verifAped() {
     var final = true;
     let status = 'success';
-    let message = "Validación de marca exitosa"
-    var marca = document.getElementById('marca').value;
-    let marcas = ["HP", "Asus", "Acer", "Huawei"];
-    
-    if(marca.length == 0){
+    let message = "Validación de apellidos exitosa";
+    var apellidos = document.querySelector('input[placeholder="Apellidos"]').value;
+
+    if (apellidos.length === 0) {
         status = 'error';
-        message = 'La marca es un requisito requerido.';
+        message = 'Los apellidos son obligatorios.';
+        final = false;
+    } else if (apellidos.length < 2) {
+        status = 'error';
+        message = 'Los apellidos deben tener al menos 2 caracteres.';
         final = false;
     }
-    else{
-        if(!marcas.includes(marca)){
-            status = 'error';
-            message = 'Elije una de las marcas predefinidas.';
-            final = false;
-        }
-    }
 
-    mostrarBarraVerif(status, message);
-    
-
-    return (final);
+    return { final, status, message };
 }
 
-function verifDetalles(){
+function verifFecha() {
     var final = true;
     let status = 'success';
-    let message = "Validación de detalles exitosa"
-    var detalles = document.getElementById('detalles').value;
-    
-    if(detalles.length == 0){
-        document.getElementById('detalles').value = "S/D"
-    }
-    else{
-        if (detalles.length > 250){
-            status = 'error';
-            message = 'Los detalles deben de tener 250 caracteres o menos.';
-            final = false;
-        }
-    }
+    let message = "Validación de fecha de nacimiento exitosa";
+    var fecha = document.querySelector('input[placeholder="Fecha de Nacimiento"]').value;
+    const fechaRegex = /^\d{2}-\d{2}-\d{4}$/;
 
-    mostrarBarraVerif(status, message);
-
-    return (final);
-}
-
-function verifImagen(){
-    var final = true;
-    let status = 'success';
-    let message = "Validación de URL de imagen exitosa"
-    var imagen = document.getElementById('imagen').value;
-    
-    if(imagen.length == 0){
-        imagen = 'img/imagen.png';
+    if (fecha.length === 0) {
+        status = 'error';
+        message = 'La fecha de nacimiento es obligatoria.';
+        final = false;
+    } else if (!fechaRegex.test(fecha)) {
+        status = 'error';
+        message = 'El formato de fecha debe ser DD-MM-AAAA.';
+        final = false;
     }
 
-    mostrarBarraVerif(status, message);
-
-    return (final);
+    return { final, status, message };
 }
 
-function mostrarBarraVerif(status, message){
-    let template_bar = '';
-    template_bar += `
-        <li style="list-style: none;">status: ${status}</li>
-        <li style="list-style: none;">message: ${message}</li>
-    `;
-    // SE HACE VISIBLE LA BARRA DE ESTADO
-    document.getElementById("product-result").className = "card my-4 d-block";
-    // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
-    document.getElementById("container").innerHTML = template_bar;
-}
-
-
-function verifFinal(edit){
+function verifFinalLogin(){
     var final = true;
     let status = 'success';
     let message = "Validación de envio de formulario exitosa"
 
     for(var i=1; i<8; i++){
         switch(i){
-            case 1: final = verifNombre(edit);
+            case 1: final = verifUsuario();
                     if(final == false){
                         i = 8;
                     }
                     break;
-            case 2: final = verifPrecio();
-                    if(final == false){
-                        i = 8;
-                    }
-                    break;
-            case 3: final = verifUnidades();
-                    if(final == false){
-                        i = 8;
-                    }
-                    break;
-            case 4: final = verifModelo();
-                    if(final == false){
-                        i = 8;
-                    }
-                    break;
-            case 5: final = verifMarca();
-                    if(final == false){
-                        i = 8;
-                    }
-                    break; 
-            case 6: final = verifDetalles();
-                    if(final == false){
-                        i = 8;
-                    }
-                    break;
-            case 7: final = verifImagen();
+            case 2: final = verifContr();
                     if(final == false){
                         i = 8;
                     }
@@ -460,6 +816,90 @@ function verifFinal(edit){
         
     }
 
-    mostrarBarraVerif(status, message);
+    return(final);
+}
+
+function verifFinalsignup_tut(){
+    var final = true;
+    let status = 'success';
+    let message = "Validación de envio de formulario exitosa"
+
+    for(var i=1; i<8; i++){
+        switch(i){
+            case 1: final = verifUsuario();
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            case 2: final = verifContr();
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            case 3: final = verifConfirmContr();
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            case 4: final = verifNombre();
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            case 5: final = verifAped();
+                    if(final == false){
+                        i = 8;
+                    }
+                    break; 
+            case 6: final = verifFecha();
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            default: final=false;
+        }
+    }
+
+    if(final == false){
+        status = 'error';
+        message = "Validación de envio de formulario fallida"
+        
+    }
+
+    return(final);
+}
+
+function verifFinalsignup_alu(){
+    var final = true;
+    let status = 'success';
+    let message = "Validación de envio de formulario exitosa"
+
+    for(var i=1; i<8; i++){
+        switch(i){
+            case 1: final = verifNombre();
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            case 5: final = verifAped();
+                    if(final == false){
+                        i = 8;
+                    }
+                    break; 
+            case 6: final = verifFecha();
+                    if(final == false){
+                        i = 8;
+                    }
+                    break;
+            default: final=false;
+        }
+    }
+
+    if(final == false){
+        status = 'error';
+        message = "Validación de envio de formulario fallida"
+        
+    }
+
     return(final);
 }

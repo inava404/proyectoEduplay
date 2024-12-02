@@ -21,6 +21,7 @@ class Read extends DataBase {
                 }
                 $this->data['status'] = 'success';
                 $this->data['message'] = 'Usuario encontrado';
+                $this->data['id'] = $this->data[0]['ID'];
             } else {
                 // Si no se encuentra el usuario
                 $this->data['status'] = 'error';
@@ -31,6 +32,46 @@ class Read extends DataBase {
             die('Query Error: '.mysqli_error($this->conexion));
         }
         $this->conexion->close();
+        }
+
+        public function verifResp($jsonOBJ) {
+            // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
+            if ( $result = $this->conexion->query("SELECT actividad, respuesta FROM material WHERE materia = '{$jsonOBJ->materia}' AND tipo_material = '{$jsonOBJ->tipo_material}'") ) {
+                // Verificar si se encontró un usuario
+                if ($result->num_rows > 0) {
+                    // Si se encuentran resultados, almacenar los datos en el array $data
+                    $data = [];
+                    while ($row = $result->fetch_assoc()) {
+                        $this->data[$row['actividad']] = $row['respuesta'];  // Guardamos cada fila de la consulta en el arreglo de datos
+                    }
+    
+                    // Procesar las respuestas proporcionadas por el usuario
+                $respuestas_correctas_usuario = 0;
+                foreach ($jsonOBJ->respuestas as $pregunta => $respuesta_usuario){
+                    if (isset($data[$pregunta]) && trim(strtolower($respuesta_usuario)) == trim(strtolower($data[$pregunta]))) {
+                        $respuestas_correctas_usuario++;
+                    }                    
+                }
+    
+                // Construir el mensaje basado en el resultado
+                $this->data['status'] = 'success';
+                $this->data['message'] = "Respuestas correctas: $respuestas_correctas_usuario de " . count($data);
+    
+                } else {
+                    // Si no se encontraron respuestas correctas en la base de datos
+                    $this->data['status'] = 'error';
+                    $this->data['message'] = 'No se encontraron preguntas para esta materia y tipo de material.';
+                }
+    
+                $result->free();
+    
+            } else {
+                // Manejar errores en la consulta
+                $this->data['status'] = 'error';
+                $this->data['message'] = 'Error en la consulta: ' . $this->conexion->error;
+            }
+    
+            $this->conexion->close();
         }
 
     public function listAlumn($id) {
