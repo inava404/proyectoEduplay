@@ -319,7 +319,8 @@ header{
   margin: 0;
 }
 
-.sidebar ul li a {
+.sidebar ul li a,
+.sidebar ul li button {
   color: #252525;
   -webkit-text-stroke-width: 0.7px;
   -webkit-text-stroke-color: #252525;
