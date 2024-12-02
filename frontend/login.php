@@ -22,7 +22,7 @@
         </div>
       </form>
       <div class="section-inicio-btns">
-        <a href="#"><span>Iniciar Sesión</span></a>
+        <a id="login" href="#"><span>Iniciar Sesión</span></a>
       </div>
       <div class="member">
         ¿No tienes cuenta? <a href="signup.php">
@@ -36,6 +36,6 @@
       crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src=""></script>
+    <script src="../backend/app.js"></script>
   </body>
   </html>
