@@ -42,15 +42,15 @@ class Read extends DataBase {
                     // Si se encuentran resultados, almacenar los datos en el array $data
                     $data = [];
                     while ($row = $result->fetch_assoc()) {
-                        $this->data[$row['pregunta']] = $row['respuesta'];  // Guardamos cada fila de la consulta en el arreglo de datos
+                        $this->data[$row['actividad']] = $row['respuesta'];  // Guardamos cada fila de la consulta en el arreglo de datos
                     }
     
                     // Procesar las respuestas proporcionadas por el usuario
                 $respuestas_correctas_usuario = 0;
-                foreach ($jsonOBJ->respuestas as $pregunta => $respuesta_usuario) {
-                    if (isset($preguntas_correctas[$pregunta]) && $respuesta_usuario == $preguntas_correctas[$pregunta]) {
+                foreach ($jsonOBJ->respuestas as $pregunta => $respuesta_usuario){
+                    if (isset($data[$pregunta]) && trim(strtolower($respuesta_usuario)) == trim(strtolower($data[$pregunta]))) {
                         $respuestas_correctas_usuario++;
-                    }
+                    }                    
                 }
     
                 // Construir el mensaje basado en el resultado

@@ -133,8 +133,9 @@ $(document).ready(function() {
     });
     
     // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE VOCABULARIO ESPAÑOL
-    $('#form_vocabulario_esp').submit(function(e){
+    $('#form_vocabulario_es').submit(function(e){
         e.preventDefault();
+        console.log("Formulario de vocabulario español enviado.");
 
         // Obtener las respuestas seleccionadas para cada pregunta
         var respuestas = {
@@ -156,15 +157,16 @@ $(document).ready(function() {
 
         // Enviar las respuestas al servidor mediante AJAX
         $.ajax({
-            url: '../backend/eduplay-verifResp',
+            url: '../backend/eduplay-verifResp.php',
             type: 'POST',
             data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
             success: function(response) {
                 // Procesar la respuesta del servidor
                 if (response.status === 'correcto') {
-                    alert("¡Respuestas correctas!");
+                    alert("¡Todas tus respuestas son correctas!");
+                    window.location.href = '../frontend/principal.php';  // Redirigir a la página principal
                 } else {
-                    alert("Algunas respuestas son incorrectas.");
+                    alert("Algunas respuestas son incorrectas. Vuelve a intentarlo.");
                 }
             },
             error: function(xhr, status, error) {
@@ -175,7 +177,7 @@ $(document).ready(function() {
     });
 
     // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE VOCABULARIO ESPAÑOL
-    $('#form_animales_esp').submit(function(e){
+    $('#form_animales_es').submit(function(e){
         e.preventDefault();
 
         // Obtener las respuestas seleccionadas para cada pregunta
@@ -187,18 +189,18 @@ $(document).ready(function() {
             pregunta3: $('input[name="pregunta3"]:checked').val(),
             pregunta4: $('input[name="pregunta4"]:checked').val(),
         };
-
+    
         // Validar que se haya seleccionado una respuesta para cada pregunta
         for (var pregunta in respuestas) {
-            if (!respuestas[pregunta]) {
+            if (pregunta.startsWith("pregunta") && !respuestas[pregunta]) {
                 alert("Por favor, responde a la pregunta " + pregunta.substring(8));
                 return;  // Detener la ejecución si falta una respuesta
             }
-        }
+        }    
 
         // Enviar las respuestas al servidor mediante AJAX
         $.ajax({
-            url: '../backend/eduplay-verifResp',
+            url: '../backend/eduplay-verifResp.php',
             type: 'POST',
             data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
             success: function(response) {
@@ -218,7 +220,7 @@ $(document).ready(function() {
 
 
     // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE VOCABULARIO ESPAÑOL
-    $('#form_colores_esp').submit(function(e){
+    $('#form_colores_es').submit(function(e){
         e.preventDefault();
 
         // Obtener las respuestas seleccionadas para cada pregunta
@@ -241,7 +243,7 @@ $(document).ready(function() {
 
         // Enviar las respuestas al servidor mediante AJAX
         $.ajax({
-            url: '../backend/eduplay-verifResp',
+            url: '../backend/eduplay-verifResp.php',
             type: 'POST',
             data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
             success: function(response) {
@@ -250,6 +252,264 @@ $(document).ready(function() {
                     alert("¡Respuestas correctas!");
                 } else {
                     alert("Algunas respuestas son incorrectas.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", status, error);
+                alert("Hubo un error al enviar las respuestas.");
+            }
+        });
+    });
+
+    // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE VOCABULARIO MATEMATICAS
+    $('#form_vocabulario_mat').submit(function(e){
+        e.preventDefault();
+
+        // Obtener las respuestas seleccionadas para cada pregunta
+        var respuestas = {
+            materia: "matematicas",
+            tipo_material: "vocabulario",
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
+        };
+
+        // Validar que se haya seleccionado una respuesta para cada pregunta
+        for (var pregunta in respuestas) {
+            if (!respuestas[pregunta]) {
+                alert("Por favor, responde a la pregunta " + pregunta.substring(8));
+                return;  // Detener la ejecución si falta una respuesta
+            }
+        }
+
+        // Enviar las respuestas al servidor mediante AJAX
+        $.ajax({
+            url: '../backend/eduplay-verifResp.php',
+            type: 'POST',
+            data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
+            success: function(response) {
+                // Procesar la respuesta del servidor
+                if (response.status === 'correcto') {
+                    alert("¡Todas tus respuestas son correctas!");
+                    window.location.href = '../frontend/principal.php';  // Redirigir a la página principal
+                } else {
+                    alert("Algunas respuestas son incorrectas. Vuelve a intentarlo.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", status, error);
+                alert("Hubo un error al enviar las respuestas.");
+            }
+        });
+    });
+
+    // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE ANIMALES MATEMATICAS
+    $('#form_animales_mat').submit(function(e){
+        e.preventDefault();
+
+        // Obtener las respuestas seleccionadas para cada pregunta
+        var respuestas = {
+            materia: "matematicas",
+            tipo_material: "animales",
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
+        };
+
+        // Validar que se haya seleccionado una respuesta para cada pregunta
+        for (var pregunta in respuestas) {
+            if (!respuestas[pregunta]) {
+                alert("Por favor, responde a la pregunta " + pregunta.substring(8));
+                return;  // Detener la ejecución si falta una respuesta
+            }
+        }
+
+        // Enviar las respuestas al servidor mediante AJAX
+        $.ajax({
+            url: '../backend/eduplay-verifResp.php',
+            type: 'POST',
+            data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
+            success: function(response) {
+                // Procesar la respuesta del servidor
+                if (response.status === 'correcto') {
+                    alert("¡Todas tus respuestas son correctas!");
+                    window.location.href = '../frontend/principal.php';  // Redirigir a la página principal
+                } else {
+                    alert("Algunas respuestas son incorrectas. Vuelve a intentarlo.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", status, error);
+                alert("Hubo un error al enviar las respuestas.");
+            }
+        });
+    });
+
+    // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE COLORES MATEMATICAS
+    $('#form_colores_mat').submit(function(e){
+        e.preventDefault();
+
+        // Obtener las respuestas seleccionadas para cada pregunta
+        var respuestas = {
+            materia: "matematicas",
+            tipo_material: "colores",
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
+        };
+
+        // Validar que se haya seleccionado una respuesta para cada pregunta
+        for (var pregunta in respuestas) {
+            if (!respuestas[pregunta]) {
+                alert("Por favor, responde a la pregunta " + pregunta.substring(8));
+                return;  // Detener la ejecución si falta una respuesta
+            }
+        }
+
+        // Enviar las respuestas al servidor mediante AJAX
+        $.ajax({
+            url: '../backend/eduplay-verifResp.php',
+            type: 'POST',
+            data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
+            success: function(response) {
+                // Procesar la respuesta del servidor
+                if (response.status === 'correcto') {
+                    alert("¡Todas tus respuestas son correctas!");
+                    window.location.href = '../frontend/principal.php';  // Redirigir a la página principal
+                } else {
+                    alert("Algunas respuestas son incorrectas. Vuelve a intentarlo.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", status, error);
+                alert("Hubo un error al enviar las respuestas.");
+            }
+        });
+    });
+
+    // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE VOCABULARIO ING
+    $('#form_vocabulario_ing').submit(function(e){
+        e.preventDefault();
+
+        // Obtener las respuestas seleccionadas para cada pregunta
+        var respuestas = {
+            materia: "ingles",
+            tipo_material: "vocabulario",
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
+        };
+
+        // Validar que se haya seleccionado una respuesta para cada pregunta
+        for (var pregunta in respuestas) {
+            if (!respuestas[pregunta]) {
+                alert("Por favor, responde a la pregunta " + pregunta.substring(8));
+                return;  // Detener la ejecución si falta una respuesta
+            }
+        }
+
+        // Enviar las respuestas al servidor mediante AJAX
+        $.ajax({
+            url: '../backend/eduplay-verifResp.php',
+            type: 'POST',
+            data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
+            success: function(response) {
+                // Procesar la respuesta del servidor
+                if (response.status === 'correcto') {
+                    alert("¡Todas tus respuestas son correctas!");
+                    window.location.href = '../frontend/principal.php';  // Redirigir a la página principal
+                } else {
+                    alert("Algunas respuestas son incorrectas. Vuelve a intentarlo.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", status, error);
+                alert("Hubo un error al enviar las respuestas.");
+            }
+        });
+    });
+
+    // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE ANIMALES ING
+    $('#form_animales_ing').submit(function(e){
+        e.preventDefault();
+
+        // Obtener las respuestas seleccionadas para cada pregunta
+        var respuestas = {
+            materia: "ingles",
+            tipo_material: "animales",
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
+        };
+
+        // Validar que se haya seleccionado una respuesta para cada pregunta
+        for (var pregunta in respuestas) {
+            if (!respuestas[pregunta]) {
+                alert("Por favor, responde a la pregunta " + pregunta.substring(8));
+                return;  // Detener la ejecución si falta una respuesta
+            }
+        }
+
+        // Enviar las respuestas al servidor mediante AJAX
+        $.ajax({
+            url: '../backend/eduplay-verifResp.php',
+            type: 'POST',
+            data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
+            success: function(response) {
+                // Procesar la respuesta del servidor
+                if (response.status === 'correcto') {
+                    alert("¡Todas tus respuestas son correctas!");
+                    window.location.href = '../frontend/principal.php';  // Redirigir a la página principal
+                } else {
+                    alert("Algunas respuestas son incorrectas. Vuelve a intentarlo.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", status, error);
+                alert("Hubo un error al enviar las respuestas.");
+            }
+        });
+    });
+
+    // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE COLORES ING
+    $('#form_colores_ing').submit(function(e){
+        e.preventDefault();
+
+        // Obtener las respuestas seleccionadas para cada pregunta
+        var respuestas = {
+            materia: "ingles",
+            tipo_material: "colores",
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
+        };
+
+        // Validar que se haya seleccionado una respuesta para cada pregunta
+        for (var pregunta in respuestas) {
+            if (!respuestas[pregunta]) {
+                alert("Por favor, responde a la pregunta " + pregunta.substring(8));
+                return;  // Detener la ejecución si falta una respuesta
+            }
+        }
+
+        // Enviar las respuestas al servidor mediante AJAX
+        $.ajax({
+            url: '../backend/eduplay-verifResp.php',
+            type: 'POST',
+            data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
+            success: function(response) {
+                // Procesar la respuesta del servidor
+                if (response.status === 'correcto') {
+                    alert("¡Todas tus respuestas son correctas!");
+                    window.location.href = '../frontend/principal.php';  // Redirigir a la página principal
+                } else {
+                    alert("Algunas respuestas son incorrectas. Vuelve a intentarlo.");
                 }
             },
             error: function(xhr, status, error) {
