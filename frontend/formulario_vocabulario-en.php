@@ -23,64 +23,56 @@
             <li><a href="retos.php">Retos <img src="src/img/retos.png" alt="Logo retos" width="40px"></a></li>
             <li><a href="perfil.php">Perfil <img src="src/img/perfil.png" alt="Logo perfil" width="40px"></a></li>
             <li><a href="mas.php">Más <img src="src/img/Más.png" alt="Logo más" width="40px"></a></li>
+            <li><a href="inicio.php">Salir <img src="src/img/cerrar-sesion.png" alt="Logo salir" width="40px"></a></li>
         </ul>
     </aside>
 
 
     <div class="formulario-materias">
         <div class="materias-wrapper">
-            <form id="vocabulario-en">
+            <form id="form-vocabulario-en">
                 <div class="form-group">
-                    <label>¿Cómo se llama el lugar donde estudias?</label><br>
+                    <label>¿Cómo dices 'hola' en inglés?</label>
                     <div class="form-images">
-                        <img src="src/img/parque.png" alt="Parque">
-                        <img src="src/img/escuela.png" alt="Escuela">
-                        <img src="src/img/casa.png" alt="Casa">
-                        <img src="src/img/tienda.png" alt="Tienda">
+                        <img src="src/img/saludo.png" alt="Saludo">
                     </div>
-                    <input type="radio" name="pregunta1" value="A"> A) Parque<br>
-                    <input type="radio" name="pregunta1" value="B"> B) Escuela<br>
-                    <input type="radio" name="pregunta1" value="C"> C) Casa<br>
-                    <input type="radio" name="pregunta1" value="D"> D) Tienda
+                    <input type="radio" name="pregunta1" value="A"> A) Goodbye<br>
+                    <input type="radio" name="pregunta1" value="B"> B) Thank you<br>
+                    <input type="radio" name="pregunta1" value="C"> C) Hello<br>
+                    <input type="radio" name="pregunta1" value="D"> D) Please
                 </div>
 
                 <div class="form-group">
-                    <label>¿Qué palabra es el nombre de un juguete?</label>
+                    <label>¿Qué dices cuándo te despides?</label>
                     <div class="form-images">
-                        <img src="src/img/pelota.png" alt="Pelota">
+                        <img src="src/img/adios.png" alt="Despedida">
                     </div>
-                    <input type="radio" name="pregunta2" value="A"> A) Pelota<br>
-                    <input type="radio" name="pregunta2" value="B"> B) Escuela<br>
-                    <input type="radio" name="pregunta2" value="C"> C) Avión<br>
-                    <input type="radio" name="pregunta2" value="D"> D) Sol
+                    <input type="radio" name="pregunta2" value="A"> A) Goodbye<br>
+                    <input type="radio" name="pregunta2" value="B"> B) Nice to meet you<br>
+                    <input type="radio" name="pregunta2" value="C"> C) I’m sorry<br>
+                    <input type="radio" name="pregunta2" value="D"> D) Welcome
                 </div>
 
                 <div class="form-group">
-                    <label>¿Qué haces cuando tienes sueño?</label>
+                    <label>¿Cómo se dice "Gracias" en inglés?</label>
                     <div class="form-images">
-                        <img src="src/img/correr.png" alt="Correr">
-                        <img src="src/img/nadar.png" alt="Nadar">
-                        <img src="src/img/dormir.png" alt="Dormir">
-                        <img src="src/img/jugar.png" alt="Jugar">
+                        <img src="src/img/gracias.png" alt="Gracias">
                     </div>
-                    <input type="radio" name="pregunta3" value="A"> A) Correr<br>
-                    <input type="radio" name="pregunta3" value="B"> B) Nadar<br>
-                    <input type="radio" name="pregunta3" value="C"> C) Dormir<br>
-                    <input type="radio" name="pregunta3" value="D"> D) Jugar
+                    <input type="radio" name="pregunta3" value="A"> A) Hello<br>
+                    <input type="radio" name="pregunta3" value="B"> B) Goodbye<br>
+                    <input type="radio" name="pregunta3" value="C"> C) Thank you<br>
+                    <input type="radio" name="pregunta3" value="D"> D) Please
                 </div>
 
                 <div class="form-group">
-                    <label>¿Con que escribes?</label>
+                    <label>¿Qué dices cuando te disculpas con alguien?</label>
                     <div class="form-images">
-                        <img src="src/img/lapiz.png" alt="Lapiz">
-                        <img src="src/img/goma.png" alt="Goma">
-                        <img src="src/img/tijeras.png" alt="Tijeras">
-                        <img src="src/img/pegamento.png" alt="Pegamento">
+                        <img src="src/img/disculpa.png" alt="Disculpa">
                     </div>
-                    <input type="radio" name="pregunta4" value="A"> A) Lapiz<br>
-                    <input type="radio" name="pregunta4" value="B"> B) Goma<br>
-                    <input type="radio" name="pregunta4" value="C"> C) Pegamento<br>
-                    <input type="radio" name="pregunta4" value="D"> D) Tijeras
+                    <input type="radio" name="pregunta4" value="A"> A) Please<br>
+                    <input type="radio" name="pregunta4" value="B"> B) Thank you<br>
+                    <input type="radio" name="pregunta4" value="C"> C) I’m sorry<br>
+                    <input type="radio" name="pregunta4" value="D"> D) Nice to meet you
                 </div>
                 <div class="form-btns">
                     <button type="submit" id="form-vocabulario-en"><span>¡He terminado!</span></button>
