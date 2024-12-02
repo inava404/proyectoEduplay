@@ -86,7 +86,7 @@
                     <input type="radio" name="pregunta4" value="D"> D) Caballo
                 </div>
                 <div class="form-btns">
-                    <a href="#"><span>¡He terminado!</span></a>
+                    <button type="submit" id="form-animales-es"><span>¡He terminado!</span></button>
                 </div>
             </form>
         </div>
@@ -96,6 +96,6 @@
     crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src=""></script>
+    <script src="../backend/app.js"></script>
 </body>
 </html>
