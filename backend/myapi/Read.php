@@ -21,6 +21,7 @@ class Read extends DataBase {
                 }
                 $this->data['status'] = 'success';
                 $this->data['message'] = 'Usuario encontrado';
+                $this->data['id'] = $this->data[0]['ID'];
             } else {
                 // Si no se encuentra el usuario
                 $this->data['status'] = 'error';
