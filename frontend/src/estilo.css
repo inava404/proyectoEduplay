@@ -37,7 +37,7 @@
   }
   
 
- /*----------------------------------Botones animados------------------------------------------*/
+ /*----------------------------------Botones animados azules------------------------------------------*/
   .section-inicio-btns{
     display: flex;
     justify-content: center;
@@ -106,6 +106,79 @@
   }
   
   .section-inicio-btns ul li img{
+    width: 75px;
+    height: auto; /* Mantener proporción de la imagen */
+  }
+
+   /*----------------------------------Botones animados rojos------------------------------------------*/
+   .section-inicio-btns-red{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .section-inicio-btns-red a{
+    position: relative;
+    width: 300px;
+    height: 75px;
+    margin: 25px 0;
+    font-size: 24px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.5s;
+    color: #4c4c4c;
+    font-weight:bold;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #4c4c4c;
+  }
+
+  .section-inicio-btns-red a:hover{
+    color: #fff;
+    -webkit-text-stroke-color: #fff;
+  }
+
+  .section-inicio-btns-red a:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: url(img/btn-bg1.png);
+    background-size: cover; 
+    transform-origin: left;
+    transition: 0.5s;
+  }
+
+  .section-inicio-btns-red a:hover:before{
+    width: 100%;
+  }
+
+  .section-inicio-btns-red a span{
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-inicio-btns-red ul{
+    margin-top: 20px;
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .section-inicio-btns-red ul li{
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center; /* Alinea imagen y texto verticalmente */
+    gap: 10px; /* Espacio entre la imagen y el texto */
+    text-decoration: none; /* Opcional: quitar subrayado del enlace */
+    color: inherit; /* Opcional: mantener el color original del texto */
+  }
+  
+  .section-inicio-btns-red ul li img{
     width: 75px;
     height: auto; /* Mantener proporción de la imagen */
   }
@@ -654,4 +727,28 @@ flex-direction: column; /* Cambia según tus necesidades */
   width: 25px;
   height: 25px;
   margin-left: 15px;
+}
+
+/*-----------------------------------section datos tutor---------------------------------------*/
+
+.datos{
+  display: flex;
+}
+
+.datos span {
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  gap: 5px;
+  font-size: 25px;
+  color: #fff;
+  font-weight:bold;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #4c4c4c;
+}
+
+.datos p{
+  padding-top: 16px;
+  padding-left: 10px;
+  font-size: 25px;
 }

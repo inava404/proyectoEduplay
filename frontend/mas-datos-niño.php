@@ -26,18 +26,33 @@
 
 
     <div class="section-principal"> 
-    <h2 style="padding-top: 20px">¿En qué te podemos ayudar?</h2>
+    <section class="perfil">
+        <div class="section-progreso">
+            <div class="perfil-progreso">
+                <div class="progreso-cursos"> 
+                    <div class="datos">
+                        <span>Nombre(s):</span>
+                        <p>datos</p>
+                    </div>
+                    <div class="datos">
+                        <span>Apellidos:</span>
+                        <p>datos</p>
+                    </div>    
+                    <div class="datos">
+                        <span>Fecha de nacimiento:</span>
+                        <p>datos</p>
+                    </div>
+                    <div class="datos">
+                        <span>Grado:</span>
+                        <p>datos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="section-inicio-btns">
-            <ul>
-                <li><a href="mas-datos-tutor.php"><span>Datos del tutor</span></a><img src="src/img/tutor.png" alt="Turor logo"></li>
-                <li><a href="mas-datos-niño.php"><span>Datos del niño</span></a><img src="src/img/niño.png" alt="Niño logo"></li>
-            </ul>
-        </div>
-        <div class="section-inicio-btns-red">
-            <ul>
-                <li><a href="#"><span>Eliminar cuenta</span></a><img src="src/img/eliminar.png" alt="Eliminar logo"></li>
-            </ul>
-        </div>
+        <a href="#"><span>Editar</span></a>
+      </div>
+    </section>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
