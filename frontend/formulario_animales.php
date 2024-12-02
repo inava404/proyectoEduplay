@@ -29,7 +29,7 @@
 
     <div class="formulario-materias">
         <div class="materias-wrapper">
-            <form action="#">
+            <form id="animales">
                 <div class="form-group">
                     <label>¿Cuál de estos animales puede volar?</label>
                     <div class="form-images">
@@ -86,7 +86,7 @@
                     <input type="radio" name="pregunta4" value="D"> D) Caballo
                 </div>
                 <div class="form-btns">
-                    <a href="#"><span>¡He terminado!</span></a>
+                    <button type="submit" id="form-animales-es"><span>¡He terminado!</span></button>
                 </div>
             </form>
         </div>

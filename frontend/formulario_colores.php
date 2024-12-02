@@ -29,7 +29,7 @@
 
     <div class="formulario-materias">
         <div class="materias-wrapper">
-            <form>
+            <form id="colores">
                 <div class="form-group">
                     <label>¿De qué color es el cielo cuando no hay nubes?</label>
                     <div class="form-images">

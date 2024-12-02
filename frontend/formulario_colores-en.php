@@ -12,7 +12,7 @@
     <header>
         <div class="top-bar" style="height: 62px">
             <h1>Colores  <img src="src/img/colores.png" alt="Logo español" width= "33.6px" height= "33.6px;"></h1>
-            <a href="español.php"><img src="src/img/salir.png" alt="Salir" width= "33.6px" height= "33.6px;" class="salir-btn"></a>
+            <a href="ingles.php"><img src="src/img/salir.png" alt="Salir" width= "33.6px" height= "33.6px;" class="salir-btn"></a>
         </div>
     </header>
 
@@ -29,7 +29,7 @@
 
     <div class="formulario-materias">
         <div class="materias-wrapper">
-            <form>
+            <form id="colores-en">
                 <div class="form-group">
                     <label>¿De qué color es el cielo cuando no hay nubes?</label>
                     <div class="form-images">
@@ -83,7 +83,7 @@
                     <input type="radio" name="pregunta4" value="D"> D) Negro
                 </div>
                 <div class="form-btns">
-                    <a href="#"><span>¡He terminado!</span></a>
+                    <button type="submit" id="form-colores-en"><span>¡He terminado!</span></button>
                 </div>
             </form>
         </div>

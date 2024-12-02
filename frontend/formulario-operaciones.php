@@ -29,7 +29,7 @@
 
     <div class="formulario-materias">
         <div class="materias-wrapper">
-        <form id="math-addition-subtraction">
+        <form id="operaciones">
             <div class="form-group">
                 <label>¿Cuánto es 2 + 3?</label>
                 <div class="form-images">

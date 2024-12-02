@@ -29,7 +29,7 @@
 
     <div class="formulario-materias">
         <div class="materias-wrapper">
-        <form>
+        <form id="figuras">
             <div class="form-group">
                 <label>¿Qué figura es un círculo?</label>
                 <div class="form-images">
@@ -78,7 +78,7 @@
                 <input type="radio" name="pregunta4" value="C"> D) Circulo
             </div>
             <div class="form-btns">
-                <a href="#"><span>¡He terminado!</span></a>
+                <button type="submit" id="form-figuras"><span>¡He terminado!</span></button>
             </div>
         </form>
         </div>
