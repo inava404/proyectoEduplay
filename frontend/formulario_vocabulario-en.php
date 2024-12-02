@@ -83,7 +83,7 @@
                     <input type="radio" name="pregunta4" value="D"> D) Tijeras
                 </div>
                 <div class="form-btns">
-                    <button type="submit" id="form-vocabulario-es"><span>¡He terminado!</span></button>
+                    <button type="submit" id="form-vocabulario-en"><span>¡He terminado!</span></button>
                 </div>
             </form>
         </div>

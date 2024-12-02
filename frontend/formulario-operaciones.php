@@ -84,7 +84,7 @@
                 <input type="radio" name="pregunta4" value="D"> D) 4
             </div>
             <div class="form-btns">
-                <a href="#"><span>¡He terminado!</span></a>
+                <button type="submit" id="form-figuras"><span>¡He terminado!</span></button>
             </div>
         </form>
         </div>

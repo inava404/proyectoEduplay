@@ -28,9 +28,9 @@
         <h2 style="padding-top: 20px">Escoge el tema de hoy</h2>
         <div class="section-inicio-btns">
             <ul>
-                <li><a href="formulario_colores.php"><span>Colores</span></a><img src="src/img/colores.png" alt="Logo colores"></li>
-                <li><a href="formulario_animales.php"><span>Animales</span></a><img src="src/img/animales.png" alt="Logo animales"></li>
-                <li><a href="formulario_vocabulario.php"><span>Vocabulario</span></a><img src="src/img/vocabulario.png" alt="Logo vocabulario"></li>
+                <li><a href="formulario_colores-en.php"><span>Colores</span></a><img src="src/img/colores.png" alt="Logo colores"></li>
+                <li><a href="formulario_animales-en.php"><span>Animales</span></a><img src="src/img/animales.png" alt="Logo animales"></li>
+                <li><a href="formulario_vocabulario-en.php"><span>Vocabulario</span></a><img src="src/img/vocabulario.png" alt="Logo vocabulario"></li>
             </ul>
         </div>
     </div>

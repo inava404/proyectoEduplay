@@ -83,7 +83,7 @@
                     <input type="radio" name="pregunta4" value="D"> D) Negro
                 </div>
                 <div class="form-btns">
-                    <button type="submit" id="form-colores-es"><span>¡He terminado!</span></button>
+                    <a href="#"><span>¡He terminado!</span></a>
                 </div>
             </form>
         </div>
