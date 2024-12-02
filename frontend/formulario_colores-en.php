@@ -30,58 +30,49 @@
     <div class="formulario-materias">
         <div class="materias-wrapper">
             <form id="colores-en">
-                <div class="form-group">
-                    <label>¿De qué color es el cielo cuando no hay nubes?</label>
-                    <div class="form-images">
-                        <img src="src/img/hoja.png" alt="Hoja Verde">
-                        <img src="src/img/cielo.png" alt="Cielo">
-                        <img src="src/img/manzanaRoja.png" alt="Manzana">
-                        <img src="src/img/estrella.png" alt="Estrella">
-                    </div>
-                    <input type="radio" name="pregunta1" value="A"> A) Verde<br>
-                    <input type="radio" name="pregunta1" value="B"> B) Azul<br>
-                    <input type="radio" name="pregunta1" value="C"> C) Rojo<br>
-                    <input type="radio" name="pregunta1" value="D"> D) Amarillo
+            <div class="form-group">
+                <label>¿Cómo se dice "azul" en inglés?</label>
+                <div class="form-images">
+                    <img src="src/img/cielo.png" alt="Cielo">
                 </div>
+                <input type="radio" name="pregunta1" value="A"> A) Blue<br>
+                <input type="radio" name="pregunta1" value="B"> B) Green<br>
+                <input type="radio" name="pregunta1" value="C"> C) Red<br>
+                <input type="radio" name="pregunta1" value="D"> D) Yellow
+            </div>
 
-                <div class="form-group">
-                    <label>¿Cuál de estos objetos es de color amarillo?</label>
-                    <div class="form-images">
-                        <img src="src/img/manzanaVerde.png" alt="Manzana">
-                        <img src="src/img/platano.png" alt="Plátano">
-                        <img src="src/img/uva.png" alt="Uva">
-                        <img src="src/img/zanahoria.png" alt="Zanahoria">
+            <div class="form-group">
+                <label>Un plátano es amarillo, ¿Cómo se dice ese color en inglés?</label>
+                <div class="form-images">
+                        <img src="src/img/platano.png" alt="Platano">
                     </div>
-                    <input type="radio" name="pregunta2" value="A"> A) Manzana<br>
-                    <input type="radio" name="pregunta2" value="B"> B) Plátano<br>
-                    <input type="radio" name="pregunta2" value="C"> C) Uva<br>
-                    <input type="radio" name="pregunta2" value="D"> D) Zanahoria
-                </div>
+                <input type="radio" name="pregunta2" value="A"> A) Yellow<br>
+                <input type="radio" name="pregunta2" value="B"> B) Green<br>
+                <input type="radio" name="pregunta2" value="C"> C) Red<br>
+                <input type="radio" name="pregunta2" value="D"> D) Purple
+            </div>
 
-                <div class="form-group">
-                    <label>El color de una fresa es...</label>
-                    <div class="form-images">
-                        <img src="src/img/fresa.png" alt="Fresa">
-                        <img src="src/img/naranja.png" alt="Naranja">
-                        <img src="src/img/Coco.png" alt="Coco">
-                        <img src="src/img/baya.png" alt="Bayas">
-                    </div>
-                    <input type="radio" name="pregunta3" value="A"> A) Rojo<br>
-                    <input type="radio" name="pregunta3" value="B"> B) Naranja<br>
-                    <input type="radio" name="pregunta3" value="C"> C) Café<br>
-                    <input type="radio" name="pregunta3" value="D"> D) Morado
+            <div class="form-group">
+                <label>¿De qué color son las hojas del arbol</label>
+                <div class="form-images">
+                    <img src="src/img/arbol.png" alt="Arbol">
                 </div>
+                <input type="radio" name="pregunta3" value="A"> A) Black<br>
+                <input type="radio" name="pregunta3" value="B"> B) White<br>
+                <input type="radio" name="pregunta3" value="C"> C) Green<br>
+                <input type="radio" name="pregunta3" value="D"> D) Pink
+            </div>
 
-                <div class="form-group">
-                    <label>¿De qué color es el gato?</label>
-                    <div class="form-images">
-                        <img src="src/img/gatoNegro.png" alt="Gato Negro">
+            <div class="form-group">
+                <label>¿Qué color es la pelota?</label>
+                <div class="form-images">
+                        <img src="src/img/circulo.png" alt="Pelota">
                     </div>
-                    <input type="radio" name="pregunta4" value="A"> A) Naranja<br>
-                    <input type="radio" name="pregunta4" value="B"> B) Blanco<br>
-                    <input type="radio" name="pregunta4" value="C"> C) Rosa<br>
-                    <input type="radio" name="pregunta4" value="D"> D) Negro
-                </div>
+                <input type="radio" name="pregunta4" value="A"> A) Red<br>
+                <input type="radio" name="pregunta4" value="B"> B) Pink<br>
+                <input type="radio" name="pregunta4" value="C"> C) Blue<br>
+                <input type="radio" name="pregunta4" value="D"> D) Gray
+            </div>
                 <div class="form-btns">
                     <button type="submit" id="form-colores-en"><span>¡He terminado!</span></button>
                 </div>
