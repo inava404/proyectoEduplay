@@ -10,7 +10,7 @@
 <body style="background-image: none;">
     <header>
         <div class="top-bar">
-            <h1>Español  <img src="src/img/español.png" alt="Logo español" width= "33.6px" height= "33.6px;"></h1>
+            <h1>Inglés  <img src="src/img/ingles.png" alt="Logo español" width= "33.6px" height= "33.6px;"></h1>
         </div>
     </header>
 

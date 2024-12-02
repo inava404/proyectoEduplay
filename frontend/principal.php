@@ -30,8 +30,8 @@
         <div class="section-inicio-btns">
             <ul>
                 <li><a href="español.php"><span>Español</span></a><img src="src/img/español.png" alt="Logo español"></li>
-                <li><a href="#"><span>Matemáticas</span></a><img src="src/img/matematicas.png" alt="Logo matematicas"></li>
-                <li><a href="#"><span>Inglés</span></a><img src="src/img/ingles.png" alt="Logo ingles"></li>
+                <li><a href="matematicas.php"><span>Matemáticas</span></a><img src="src/img/matematicas.png" alt="Logo matematicas"></li>
+                <li><a href="ingles.php"><span>Inglés</span></a><img src="src/img/ingles.png" alt="Logo ingles"></li>
             </ul>
         </div>
     </div>

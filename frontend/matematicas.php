@@ -10,7 +10,7 @@
 <body style="background-image: none;">
     <header>
         <div class="top-bar">
-            <h1>Español  <img src="src/img/español.png" alt="Logo español" width= "33.6px" height= "33.6px;"></h1>
+            <h1>Matemáticas  <img src="src/img/matematicas.png" alt="Logo español" width= "33.6px" height= "33.6px;"></h1>
         </div>
     </header>
 
@@ -28,9 +28,9 @@
         <h2 style="padding-top: 20px">Escoge el tema de hoy</h2>
         <div class="section-inicio-btns">
             <ul>
-                <li><a href="formulario_colores.php"><span>Colores</span></a><img src="src/img/colores.png" alt="Logo colores"></li>
-                <li><a href="formulario_animales.php"><span>Animales</span></a><img src="src/img/animales.png" alt="Logo animales"></li>
-                <li><a href="formulario_vocabulario.php"><span>Vocabulario</span></a><img src="src/img/vocabulario.png" alt="Logo vocabulario"></li>
+                <li><a href="formulario-numeros.php"><span>Números</span></a><img src="src/img/numeros.png" alt="Logo números"></li>
+                <li><a href="formulario-figuras.php"><span>Figuras</span></a><img src="src/img/figuras.png" alt="Logo figuras"></li>
+                <li><a href="formulario-operaciones.php"><span>Sumas y Restas</span></a><img src="src/img/operaciones.png" alt="Logo operaciones"></li>
             </ul>
         </div>
     </div>
