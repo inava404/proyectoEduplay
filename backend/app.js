@@ -5,9 +5,9 @@ $(document).ready(function() {
     $('#login').click(function(e){
         e.preventDefault();
         
-        if(!verifFinal(edit)){
-            return;
-        }
+        //if(!verifFinal(edit)){
+            //return;
+        //}
 
         //SE OBTIENEN LOS VALORES DE LOS INPUTS
         let email = $('#email').val();
@@ -60,7 +60,7 @@ $(document).ready(function() {
 
         // Crear el objeto JSON con los datos del formulario
         let tutorData = {
-            'email': email,
+            'usuario': email,
             'nombre': nombre,
             'apellidos': apellidos,
             'fecha_nac': fecha_nac,
@@ -70,29 +70,16 @@ $(document).ready(function() {
 
         localStorage.setItem('tutorData', JSON.stringify(tutorData));
 
-        // Hacer la petición AJAX para registrar el tutor
-        $.ajax({
-            url: '../backend/eduplay-add.php',  // URL del script PHP que procesará la solicitud
-            type: 'POST',
-            data: JSON.stringify({tutor: tutorData}),  // Enviar el objeto JSON convertido a string
-            contentType: 'application/json; charset=utf-8',  // Enviar como JSON
-            success: function (response) {
-                console.log(response);  // Mostrar la respuesta del servidor
-
-                const result = JSON.parse(response);
-                
-                window.location.href = '../frontend/signup-niño.php';  // Redirigir al formulario del niño
-            }
-        });
+        window.location.href = '../frontend/signup-niño.php';
     });
 
-    $('#signup_nino').on('click', function(e){
+    $('#signup-nino').on('click', function(e){
         e.preventDefault();
         
         // Obtener los valores de los inputs del formulario del niño
         let grado = $('select[name="Grado"]').val();
-        let nombre_nino = $('input[placeholder="Nombre del Niño"]').val();
-        let apellidos_nino = $('input[placeholder="Apellidos del Niño"]').val();
+        let nombre_nino = $('input[placeholder="Nombre(s)"]').val();
+        let apellidos_nino = $('input[placeholder="Apellidos"]').val();
         let fecha_nac_nino = $('input[placeholder="Fecha de Nacimiento"]').val();
         
         // Recuperar los datos del tutor almacenados en localStorage
@@ -124,7 +111,7 @@ $(document).ready(function() {
                 const result = JSON.parse(response);
                 if (result.status === 'success') {
                     alert('Registro exitoso.');
-                    window.location.href = '..frontend/login.php';  // Redirigir al login o a otra página
+                    window.location.href = '../frontend/login.php';  // Redirigir al login o a otra página
                 } else {
                     alert('Error en el registro: ' + result.message);
                 }

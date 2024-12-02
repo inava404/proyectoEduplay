@@ -15,7 +15,7 @@
     <div class="wrapper"> 
       <h1>Registrarse</h1>
       <form action="#">
-        <input type="text" placeholder="Email">
+        <input type="email" placeholder="Email">
         <input type="text" placeholder="Nombre(s)">
         <input type="text" placeholder="Apellidos">
         <input type="text" placeholder="Fecha de Nacimiento">
