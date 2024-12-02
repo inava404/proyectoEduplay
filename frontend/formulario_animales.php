@@ -12,6 +12,7 @@
     <header>
         <div class="top-bar" style="height: 62px">
             <h1>Animales  <img src="src/img/animales.png" alt="Logo español" width= "33.6px" height= "33.6px;"></h1>
+            <a href="español.php"><img src="src/img/salir.png" alt="Salir" width= "33.6px" height= "33.6px;" class="salir-btn"></a>
         </div>
     </header>
 

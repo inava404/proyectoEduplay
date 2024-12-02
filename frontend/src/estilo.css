@@ -255,18 +255,44 @@
  }
 
  /*----------------------------------top-bar------------------------------------------*/
+header{
+  position: fixed; /* Make the header fixed to the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
 .top-bar {
+  display:flex;
+  justify-content: center; 
+  align-items: center; 
   background-color: #cbcbcb;  /* Color azul */
   color: white;
-  padding: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   text-align: center;
   height: 56px;
 }
 
 .top-bar h1 {
-  margin: 0;
+  margin: 0 0 0 45vh;
   font-size: 24px;
+  text-align: center;
+  color: #F4F4F4;
+  font-weight:bold;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #F4F4F4;
 }
+
+.salir-btn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  margin-right: 20px;
+}
+
 /*----------------------------------sidebar------------------------------------------*/
 .sidebar {
   flex: 0 0 auto; /* Para que el aside no cambie de tamaño */
@@ -316,20 +342,6 @@
   -webkit-text-stroke-color: #fff;
 }
 
-/*----------------------------------------top-bar--------------------------------------------*/
-.top-bar{
-  text-align: center;
-  padding-left: 50vh;
-}
-
-.top-bar h1{
-  text-align: center;
-  color: #F4F4F4;
-  font-weight:bold;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #F4F4F4;
-}
-
 /*-----------------------------------section-principal---------------------------------------*/
 .section-principal{
   background-image: url(img/FondoNubes.png);
@@ -338,7 +350,7 @@
   background-position: center 65px; /* Centra la imagen en la pantalla y mueve la imagen hacia abajo 50px */
   text-align: center;
   padding-top: 25px;
-  height: 91.5vh;
+  height: 100vh;
   margin-left: 290px; /* Comienza justo al lado del aside */
   width: calc(100% - 290px); /* Ocupa el resto del espacio */
   display: flex;
@@ -351,6 +363,7 @@
   font-weight:bold;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: #4c4c4c;
+  margin-top: 10vh;
 }
 
 
@@ -359,6 +372,7 @@
   width: 90%;
   max-width: 800px;
   margin: 20px auto;
+  margin-top: 7vh;
   background-color: #85b4f0; /* Fondo del contenedor */
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -634,6 +648,7 @@ flex-direction: column; /* Cambia según tus necesidades */
   width: 90%;
   max-width: 800px;
   margin: 20px auto;
+  margin-top: 10vh;
   background-color: #85b4f0;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

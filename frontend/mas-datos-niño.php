@@ -11,6 +11,7 @@
     <header>
         <div class="top-bar">
             <h1>Más  <img src="src/img/Más.png" alt="Logo mas" width= "33.6px" height= "33.6px;"></h1>
+            <a href="mas.php"><img src="src/img/salir.png" alt="Salir" width= "33.6px" height= "33.6px;" class="salir-btn"></a>
         </div>
     </header>
 

@@ -10,8 +10,7 @@
 <body style="background-image: none;">
     <header>
         <div class="top-bar">
-            <h1>Datos del tutor  <img src="src/img/tutor.png" alt="Logo mas" width= "35.6px" height= "35.6px;"></h1>
-            <a href="mas.php"><img src="src/img/salir.png" alt="Salir" width= "33.6px" height= "33.6px;" class="salir-btn"></a>
+            <h1>Español  <img src="src/img/español.png" alt="Logo español" width= "33.6px" height= "33.6px;"></h1>
         </div>
     </header>
 
@@ -25,39 +24,15 @@
         </ul>
     </aside>
 
-
     <div class="section-principal"> 
-    <section class="perfil">
-        <div class="section-progreso">
-            <div class="perfil-progreso">
-                <div class="progreso-cursos"> 
-                    <div class="datos">
-                        <span>Nombre(s):</span>
-                        <p>datos</p>
-                    </div>
-                    <div class="datos">
-                        <span>Apellidos:</span>
-                        <p>datos</p>
-                    </div>    
-                    <div class="datos">
-                        <span>Email:</span>
-                        <p>datos</p>
-                    </div>
-                    <div class="datos">
-                        <span>Fecha de Nacimiento:</span>
-                        <p>datos</p>
-                    </div>
-                    <div class="datos">
-                        <span>Contraseña:</span>
-                        <p>datos</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <h2 style="padding-top: 20px">Escoge el tema de hoy</h2>
         <div class="section-inicio-btns">
-        <a href="#"><span>Editar</span></a>
-      </div>
-    </section>
+            <ul>
+                <li><a href="formulario_colores.php"><span>Colores</span></a><img src="src/img/colores.png" alt="Logo colores"></li>
+                <li><a href="formulario_animales.php"><span>Animales</span></a><img src="src/img/animales.png" alt="Logo animales"></li>
+                <li><a href="formulario_vocabulario.php"><span>Vocabulario</span></a><img src="src/img/vocabulario.png" alt="Logo vocabulario"></li>
+            </ul>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
