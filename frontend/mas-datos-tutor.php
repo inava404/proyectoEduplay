@@ -10,7 +10,8 @@
 <body style="background-image: none;">
     <header>
         <div class="top-bar">
-            <h1>Cursos  <img src="src/img/cursos.png" alt="Cursos" width= "34px" height= "34px;"></h1>
+            <h1>Datos del tutor  <img src="src/img/tutor.png" alt="Logo mas" width= "35.6px" height= "35.6px;"></h1>
+            <a href="mas.php"><img src="src/img/salir.png" alt="Salir" width= "33.6px" height= "33.6px;" class="salir-btn"></a>
         </div>
     </header>
 
@@ -26,14 +27,37 @@
 
 
     <div class="section-principal"> 
-        <h2>¿Que vamos a aprender el dia de hoy?</h2>
-        <div class="section-inicio-btns">
-            <ul>
-                <li><a href="español.php"><span>Español</span></a><img src="src/img/español.png" alt="Logo español"></li>
-                <li><a href="#"><span>Matemáticas</span></a><img src="src/img/matematicas.png" alt="Logo matematicas"></li>
-                <li><a href="#"><span>Inglés</span></a><img src="src/img/ingles.png" alt="Logo ingles"></li>
-            </ul>
+    <section class="perfil">
+        <div class="section-progreso">
+            <div class="perfil-progreso">
+                <div class="progreso-cursos"> 
+                    <div class="datos">
+                        <span>Nombre(s):</span>
+                        <p>datos</p>
+                    </div>
+                    <div class="datos">
+                        <span>Apellidos:</span>
+                        <p>datos</p>
+                    </div>    
+                    <div class="datos">
+                        <span>Email:</span>
+                        <p>datos</p>
+                    </div>
+                    <div class="datos">
+                        <span>Fecha de Nacimiento:</span>
+                        <p>datos</p>
+                    </div>
+                    <div class="datos">
+                        <span>Contraseña:</span>
+                        <p>datos</p>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="section-inicio-btns">
+        <a href="#"><span>Editar</span></a>
+      </div>
+    </section>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"

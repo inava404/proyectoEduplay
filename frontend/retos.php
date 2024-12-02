@@ -10,7 +10,7 @@
 <body style="background-image: none;">
     <header>
         <div class="top-bar">
-            <h1>Cursos  <img src="src/img/cursos.png" alt="Cursos" width= "34px" height= "34px;"></h1>
+            <h1>Retos  <img src="src/img/retos.png" alt="Logo español" width= "33.6px" height= "33.6px;"></h1>
         </div>
     </header>
 
@@ -26,14 +26,34 @@
 
 
     <div class="section-principal"> 
-        <h2>¿Que vamos a aprender el dia de hoy?</h2>
-        <div class="section-inicio-btns">
-            <ul>
-                <li><a href="español.php"><span>Español</span></a><img src="src/img/español.png" alt="Logo español"></li>
-                <li><a href="#"><span>Matemáticas</span></a><img src="src/img/matematicas.png" alt="Logo matematicas"></li>
-                <li><a href="#"><span>Inglés</span></a><img src="src/img/ingles.png" alt="Logo ingles"></li>
-            </ul>
-        </div>
+        <section class="retos">
+            <div class="section-retos">
+                <h3>Progreso de retos</h3>
+                <div class="retos-progreso">
+                    <div class="progreso-retos">
+                        <span>Retos diarios</span>
+                        <div class="retos-check">
+                            <ul>
+                                <li>Completa una lección de inglés<img src="src/img/hecho.png" alt="Palomita" class="check"></li> 
+                                <li>Completa una lección de matemáticas</li>
+                            </ul>
+                        </div>
+                        <span>Reto semanal</span>
+                        <div class="retos-check">
+                            <ul>
+                                <li>Completa 3 lecciones<img src="src/img/hecho.png" alt="Palomita" class="check"></li>
+                            </ul>
+                        </div>
+                        <span>Reto mensual</span>
+                        <div class="retos-check">
+                            <ul>
+                                <li>Completa un tema</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </section>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"

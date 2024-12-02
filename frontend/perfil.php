@@ -10,17 +10,17 @@
 <body style="background-image: none;">
     <header>
         <div class="top-bar">
-            <h1>Perfil</h1>
+            <h1>Perfil  <img src="src/img/perfil.png" alt="Perfil" width= "34px" height= "34px;"></h1>
         </div>
     </header>
 
     <aside class="sidebar">
-        <img src="src/img/EduplayLogo.png" alt="Eduplay Logo" width="270px">
+        <a href="principal.php"><img src="src/img/EduplayLogo.png" alt="Eduplay Logo" width="270px"></a>
         <ul>
-            <li><a href="#">Cursos <img src="src/img/cursos.png" alt="Logo cursos" width="40px"></a></li>
-            <li><a href="#">Retos <img src="src/img/retos.png" alt="Logo retos" width="40px"></a></li>
-            <li><a href="#">Perfil <img src="src/img/perfil.png" alt="Logo perfil" width="40px"></a></li>
-            <li><a href="#">Más <img src="src/img/Más.png" alt="Logo más" width="40px"></a></li>
+            <li><a href="principal.php">Cursos <img src="src/img/cursos.png" alt="Logo cursos" width="40px"></a></li>
+            <li><a href="retos.php">Retos <img src="src/img/retos.png" alt="Logo retos" width="40px"></a></li>
+            <li><a href="perfil.php">Perfil <img src="src/img/perfil.png" alt="Logo perfil" width="40px"></a></li>
+            <li><a href="mas.php">Más <img src="src/img/Más.png" alt="Logo más" width="40px"></a></li>
         </ul>
     </aside>
 
@@ -28,35 +28,14 @@
     <div class="section-principal"> 
         <section class="perfil">
             <div class="perfil-container">
-                <div class="perfil-info">
-                <img src="img/avatar.png" alt="Avatar" class="perfil-avatar">
+                <div class="perfil-avatar">
+                    <img src="src/img/perfil.png" alt="Avatar" class="perfil-avatar-icon">
+                </div>
                 <div class="perfil-detalles">
-                    <p><strong>Kevin Ethan Levin</strong></p>
-                    <p>Apodo: Kevin Levin</p>
-                    <p>Grado: 2do Preescolar</p>
-                    <p>Edad: 4 años</p>
-                </div>
-                </div>
-                <div class="perfil-progreso">
-                <h3>Progreso en cursos</h3>
-                <div class="curso">
-                    <span>Español <img src="img/libro.png" alt="Español"></span>
-                    <div class="barra-progreso">
-                    <div class="progreso" style="width: 78%;"></div>
-                    </div>
-                </div>
-                <div class="curso">
-                    <span>Matemáticas <img src="img/cubo.png" alt="Matemáticas"></span>
-                    <div class="barra-progreso">
-                    <div class="progreso" style="width: 42%;"></div>
-                    </div>
-                </div>
-                <div class="curso">
-                    <span>Inglés <img src="img/bandera.png" alt="Inglés"></span>
-                    <div class="barra-progreso">
-                    <div class="progreso" style="width: 58%;"></div>
-                    </div>
-                </div>
+                    <h3>Kevin Ethan Levin</h3>
+                    <h3>Apodo: Kevin Levin</h3>
+                    <h3>Grado: Segundo</h3>
+                    <h3>Edad: 4 años</h3>
                 </div>
             </div>
             <div class="section-progreso">
@@ -64,19 +43,19 @@
                 <div class="perfil-progreso">
                     <div class="progreso-cursos">
                         <div class="curso">
-                            <span>Español <img src="img/libro.png" alt="Español"></span>
+                            <span>Español<img src="src/img/español.png" alt="Español" class="curso-img"></span>
                             <div class="barra-progreso">
                             <div class="progreso" style="width: 78%;"></div>
                             </div>
                         </div>
                         <div class="curso">
-                            <span>Matemáticas <img src="img/cubo.png" alt="Matemáticas"></span>
+                            <span>Matemáticas <img src="src/img/matematicas.png" alt="Matemáticas" class="curso-img"></span>
                             <div class="barra-progreso">
                             <div class="progreso" style="width: 42%;"></div>
                             </div>
                         </div>
                         <div class="curso">
-                            <span>Inglés <img src="img/bandera.png" alt="Inglés"></span>
+                            <span>Inglés <img src="src/img/ingles.png" alt="Inglés" class="curso-img"></span>
                             <div class="barra-progreso">
                             <div class="progreso" style="width: 58%;"></div>
                             </div>

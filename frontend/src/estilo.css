@@ -37,7 +37,7 @@
   }
   
 
- /*----------------------------------Botones animados------------------------------------------*/
+ /*----------------------------------Botones animados azules------------------------------------------*/
   .section-inicio-btns{
     display: flex;
     justify-content: center;
@@ -106,6 +106,79 @@
   }
   
   .section-inicio-btns ul li img{
+    width: 75px;
+    height: auto; /* Mantener proporción de la imagen */
+  }
+
+   /*----------------------------------Botones animados rojos------------------------------------------*/
+   .section-inicio-btns-red{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .section-inicio-btns-red a{
+    position: relative;
+    width: 300px;
+    height: 75px;
+    margin: 25px 0;
+    font-size: 24px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.5s;
+    color: #4c4c4c;
+    font-weight:bold;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #4c4c4c;
+  }
+
+  .section-inicio-btns-red a:hover{
+    color: #fff;
+    -webkit-text-stroke-color: #fff;
+  }
+
+  .section-inicio-btns-red a:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: url(img/btn-bg1.png);
+    background-size: cover; 
+    transform-origin: left;
+    transition: 0.5s;
+  }
+
+  .section-inicio-btns-red a:hover:before{
+    width: 100%;
+  }
+
+  .section-inicio-btns-red a span{
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-inicio-btns-red ul{
+    margin-top: 20px;
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .section-inicio-btns-red ul li{
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center; /* Alinea imagen y texto verticalmente */
+    gap: 10px; /* Espacio entre la imagen y el texto */
+    text-decoration: none; /* Opcional: quitar subrayado del enlace */
+    color: inherit; /* Opcional: mantener el color original del texto */
+  }
+  
+  .section-inicio-btns-red ul li img{
     width: 75px;
     height: auto; /* Mantener proporción de la imagen */
   }
@@ -182,17 +255,42 @@
  }
 
  /*----------------------------------top-bar------------------------------------------*/
+header{
+  position: fixed; /* Make the header fixed to the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
 .top-bar {
+  display:flex;
+  justify-content: center; 
+  align-items: center; 
   background-color: #cbcbcb;  /* Color azul */
   color: white;
-  padding: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   text-align: center;
   height: 56px;
 }
 
 .top-bar h1 {
-  margin: 0;
+  margin: 0 0 0 45vh;
   font-size: 24px;
+  text-align: center;
+  color: #F4F4F4;
+  font-weight:bold;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #F4F4F4;
+}
+
+.salir-btn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  margin-right: 20px;
 }
 
 /*----------------------------------sidebar------------------------------------------*/
@@ -244,20 +342,6 @@
   -webkit-text-stroke-color: #fff;
 }
 
-/*----------------------------------------top-bar--------------------------------------------*/
-.top-bar{
-  text-align: center;
-  padding-left: 50vh;
-}
-
-.top-bar h1{
-  text-align: center;
-  color: #F4F4F4;
-  font-weight:bold;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #F4F4F4;
-}
-
 /*-----------------------------------section-principal---------------------------------------*/
 .section-principal{
   background-image: url(img/FondoNubes.png);
@@ -266,7 +350,7 @@
   background-position: center 65px; /* Centra la imagen en la pantalla y mueve la imagen hacia abajo 50px */
   text-align: center;
   padding-top: 25px;
-  height: 91.5vh;
+  height: 100vh;
   margin-left: 290px; /* Comienza justo al lado del aside */
   width: calc(100% - 290px); /* Ocupa el resto del espacio */
   display: flex;
@@ -279,6 +363,7 @@
   font-weight:bold;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: #4c4c4c;
+  margin-top: 10vh;
 }
 
 
@@ -287,6 +372,7 @@
   width: 90%;
   max-width: 800px;
   margin: 20px auto;
+  margin-top: 7vh;
   background-color: #85b4f0; /* Fondo del contenedor */
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -306,10 +392,28 @@
   gap: 20px;
 }
 
-.perfil-info {
-  flex: 1 1 250px; /* Asegura que el avatar y la info ocupen espacio proporcional */
-  display: flex;
+.perfil-avatar {
+  width: 57vh;
+  height: 32vh;
+  border-radius: 25px;
+  margin-right: 15px;
+  padding-top: 10px;
   align-items: center;
+  background-color: #ebeef9;
+  border-color: #6d93c2;
+  border-style: solid;
+  border-width: 7px;
+}
+
+.perfil-avatar-icon{
+  width: 210px;
+  height: 100%;
+  align-items: center;
+}
+
+.perfil-detalles {
+  flex: 1 1 180px; /* Asegura que el avatar y la info ocupen espacio proporcional */
+  text-align: center;
   background-color: #ebeef9;
   border-color: #6d93c2;
   border-style: solid;
@@ -318,24 +422,25 @@
   padding: 15px;
 }
 
-.perfil-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin-right: 15px;
+.perfil-detalles h3 {
+  margin: 10px 0;
+  font-size: 20px;
+  color: #4c4c4c;
+  font-weight:bold;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #4c4c4c;
 }
 
-.perfil-detalles p {
-  margin: 5px 0;
-  font-size: 14px;
-  color: #333;
-}
+/*-----------------------------------section-perfil-progreso---------------------------------------*/
 
 .perfil-progreso {
   flex: 2 1 400px; /* Mayor prioridad en el ancho para progreso */
   background-color: #6d93c2;
-  border-radius: 10px;
-  padding: 15px;
+  border-radius: 25px;
+  padding: 7px;
+  margin-top: -20px;
+  position: relative; /* Asegura que esté en el flujo del diseño */
+  z-index: 2; /* Nivel más alto para superponerse */
 }
 
 .perfil-progreso h3 {
@@ -347,6 +452,42 @@
   -webkit-text-stroke-color: #4c4c4c;
 }
 
+.section-progreso{
+  margin-top: 15px;
+}
+
+.section-progreso h3{
+  width: 57vh;
+  text-align: left;
+  font-weight:bold;
+  color: #fff;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #4c4c4c;
+  padding-left: 20px;
+  padding-top: 5px;
+  align-items: center;
+  background-color: #6d93c2;
+  border-color: #6d93c2;
+  border-style: solid;
+  border-width: 7px;
+  border-radius: 15px;
+  margin-bottom: -32px;
+  padding-bottom: 30px;
+  position: relative; /* Asegúrate de que el elemento esté posicionado */
+  z-index: 1; /* Este será el nivel más bajo */
+}
+
+.progreso-cursos{
+  flex: 1 1 250px; /* Asegura que el avatar y la info ocupen espacio proporcional */
+  align-items: center;
+  background-color: #ebeef9;
+  border-color: #6d93c2;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 25px;
+  padding: 15px;
+}
+
 .curso {
   margin-bottom: 15px;
 }
@@ -354,9 +495,20 @@
 .curso span {
   display: flex;
   align-items: center;
+  padding-left: 5px;
   gap: 5px;
-  font-size: 14px;
-  color: #333;
+  font-size: 25px;
+  color: #fff;
+  font-weight:bold;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #4c4c4c;
+}
+
+.curso-img{
+  width: 32px;
+  height: 32px;
+  margin-left: 5px;
+  margin-top: 2px;
 }
 
 .barra-progreso {
@@ -373,41 +525,6 @@
   border-radius: 5px;
 }
 
-.progreso:nth-child(2) {
-  background-color: #f44336;
-}
-
-.progreso:nth-child(3) {
-  background-color: #2196f3;
-}
-
-.section-progreso{
-  margin-top: 15px;
-}
-
-.section-progreso h3{
-  width: 57vh;
-  text-align: left;
-  padding-left: 20px;
-  margin: 0;
-  align-items: center;
-  background-color: #6d93c2;
-  border-color: #6d93c2;
-  border-style: solid;
-  border-width: 7px;
-  border-radius: 15px;
-}
-
-.progreso-cursos{
-  flex: 1 1 250px; /* Asegura que el avatar y la info ocupen espacio proporcional */
-  align-items: center;
-  background-color: #ebeef9;
-  border-color: #6d93c2;
-  border-style: solid;
-  border-width: 7px;
-  border-radius: 25px;
-  padding: 15px;
-}
 
 /*-----------------------------------forms---------------------------------------*/
 .formulario-materias{
@@ -417,9 +534,236 @@ background-repeat: no-repeat; /* Evita que la imagen se repita (Mosaico) */
 background-position: center 65px; /* Centra la imagen en la pantalla y mueve la imagen hacia abajo 50px */
 text-align: center;
 padding-top: 25px;
-height: 91.5vh;
+height: 100vh;
 margin-left: 290px; /* Comienza justo al lado del aside */
 width: calc(100% - 290px); /* Ocupa el resto del espacio */
 display: flex;
 flex-direction: column; /* Cambia según tus necesidades */
+}
+
+.materias-wrapper{ /* Diseño del formulario */
+  width: 430px;
+  padding: 2rem 1rem;
+  margin: 5px auto;
+  background-color: fff;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  color: #c9c9c9;
+  font-weight:bold;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #4c4c4c;
+}
+
+.form-group{
+  margin-bottom: 5px;
+}
+
+.form-images{
+  margin-bottom: 5px;
+}
+
+.form-images img{
+  width: 40px;
+  height: 40px;
+}
+
+ /*----------------------------------Botones-forms------------------------------------------*/
+ .form-btns{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-btns a{
+  position: relative;
+  width: 300px;
+  height: 75px;
+  margin: 0;
+  font-size: 24px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: 0.5s;
+  color: #4c4c4c;
+  font-weight:bold;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #4c4c4c;
+}
+
+.form-btns a:hover{
+  color: #fff;
+  -webkit-text-stroke-color: #fff;
+}
+
+.form-btns a:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: url(img/btn-img-2.png);
+  background-size: cover; 
+  transform-origin: left;
+  transition: 0.5s;
+}
+
+.form-btns a:hover:before{
+  width: 100%;
+}
+
+.form-btns a span{
+  position: relative;
+  z-index: 1;
+}
+
+.form-btns ul{
+  margin-top: 10px;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.form-btns ul li{
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center; /* Alinea imagen y texto verticalmente */
+  gap: 10px; /* Espacio entre la imagen y el texto */
+  text-decoration: none; /* Opcional: quitar subrayado del enlace */
+  color: inherit; /* Opcional: mantener el color original del texto */
+}
+
+.form-btns ul li img{
+  width: 75px;
+  height: auto; /* Mantener proporción de la imagen */
+}
+
+
+/*-----------------------------------section-retos---------------------------------------*/
+.retos{
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  margin-top: 10vh;
+  background-color: #85b4f0;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.retos h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.section-retos h3{
+  width: 62vh;
+  text-align: left;
+  font-size: 30px;
+  font-weight:bold;
+  color: #fff;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #4c4c4c;
+  padding-left: 20px;
+  padding-top: 5px;
+  align-items: center;
+  background-color: #6d93c2;
+  border-color: #6d93c2;
+  border-style: solid;
+  border-width: 7px;
+  border-radius: 15px;
+  margin-bottom: -32px;
+  padding-bottom: 30px;
+  position: relative; /* Asegúrate de que el elemento esté posicionado */
+  z-index: 1; /* Este será el nivel más bajo */
+}
+
+.retos-progreso {
+  flex: 2 1 400px; /* Mayor prioridad en el ancho para progreso */
+  background-color: #6d93c2;
+  border-radius: 25px;
+  padding: 7px;
+  margin-top: -20px;
+  position: relative; /* Asegura que esté en el flujo del diseño */
+  z-index: 2; /* Nivel más alto para superponerse */
+}
+
+.progreso-retos{
+  flex: 1 1 250px; /* Asegura que el avatar y la info ocupen espacio proporcional */
+  align-items: center;
+  background-color: #ebeef9;
+  border-color: #6d93c2;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 25px;
+  padding: 15px;
+}
+
+.progreso-retos span{
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  gap: 5px;
+  font-size: 28px;
+  color: #fff;
+  font-weight:bold;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #4c4c4c;
+}
+
+.retos-check{
+  margin-bottom: 10px;
+}
+
+.retos-check ul{
+  margin-top: 10px;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.retos-check ul li{
+  font-size: 22px;
+  color: #4c4c4c;
+  margin-bottom: 10px;
+  font-weight:bold;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #4c4c4c;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.check{ /* Tamaño de imagen para check (La palomita pues) */
+  width: 25px;
+  height: 25px;
+  margin-left: 15px;
+}
+
+/*-----------------------------------section datos tutor---------------------------------------*/
+
+.datos{
+  display: flex;
+}
+
+.datos span {
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  gap: 5px;
+  font-size: 25px;
+  color: #fff;
+  font-weight:bold;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #4c4c4c;
+}
+
+.datos p{
+  padding-top: 16px;
+  padding-left: 10px;
+  font-size: 25px;
 }

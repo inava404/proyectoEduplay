@@ -10,7 +10,7 @@
 <body style="background-image: none;">
     <header>
         <div class="top-bar">
-            <h1>Cursos  <img src="src/img/cursos.png" alt="Cursos" width= "34px" height= "34px;"></h1>
+            <h1>Más  <img src="src/img/Más.png" alt="Logo mas" width= "33.6px" height= "33.6px;"></h1>
         </div>
     </header>
 
@@ -26,12 +26,16 @@
 
 
     <div class="section-principal"> 
-        <h2>¿Que vamos a aprender el dia de hoy?</h2>
+    <h2 style="padding-top: 20px">¿En qué te podemos ayudar?</h2>
         <div class="section-inicio-btns">
             <ul>
-                <li><a href="español.php"><span>Español</span></a><img src="src/img/español.png" alt="Logo español"></li>
-                <li><a href="#"><span>Matemáticas</span></a><img src="src/img/matematicas.png" alt="Logo matematicas"></li>
-                <li><a href="#"><span>Inglés</span></a><img src="src/img/ingles.png" alt="Logo ingles"></li>
+                <li><a href="mas-datos-tutor.php"><span>Datos del tutor</span></a><img src="src/img/tutor.png" alt="Turor logo"></li>
+                <li><a href="mas-datos-niño.php"><span>Datos del niño</span></a><img src="src/img/niño.png" alt="Niño logo"></li>
+            </ul>
+        </div>
+        <div class="section-inicio-btns-red">
+            <ul>
+                <li><a href="#"><span>Eliminar cuenta</span></a><img src="src/img/eliminar.png" alt="Eliminar logo"></li>
             </ul>
         </div>
     </div>
