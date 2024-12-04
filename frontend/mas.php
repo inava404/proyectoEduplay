@@ -36,7 +36,7 @@
         </div>
         <div class="section-inicio-btns-red">
             <ul>
-                <li><a href="#"><span>Eliminar cuenta</span></a><img src="src/img/eliminar.png" alt="Eliminar logo"></li>
+                <li><button><span>Eliminar cuenta</span></button><img src="src/img/eliminar.png" alt="Eliminar logo"></li>
             </ul>
         </div>
     </div>
