@@ -31,52 +31,52 @@
     <div class="formulario-materias">
         <div class="materias-wrapper">
             <form id="animales-en">
-                <div class="form-group">
-                    <label>¿Cómo se le dice a este animal en inglés?</label>
-                    <div class="form-images">
-                        <img src="src/img/perro1.png" alt="Dog">
-                    </div>
-                    <input type="radio" name="pregunta1" value="A"> A) Cat<br>
-                    <input type="radio" name="pregunta1" value="B"> B) Dog<br>
-                    <input type="radio" name="pregunta1" value="C"> C) Bird<br>
-                    <input type="radio" name="pregunta1" value="D"> D) Fish
+            <div class="form-group">
+                <label>¿Cómo se le dice a este animal en inglés?</label>
+                <div class="form-images">
+                    <img src="src/img/perro1.png" alt="Dog">
                 </div>
+                <input id="1A" type="radio" name="pregunta1" value="A"> A) Cat<br>
+                <input id="1B" type="radio" name="pregunta1" value="B"> B) Dog<br>
+                <input id="1C" type="radio" name="pregunta1" value="C"> C) Bird<br>
+                <input id="1D" type="radio" name="pregunta1" value="D"> D) Fish
+            </div>
 
-                <div class="form-group">
-                    <label>¿Cómo se le dice a un gato en inglés?</label>
-                    <div class="form-images">
-                        <img src="src/img/gato.png" alt="Gato">
-                    </div>
-                    <input type="radio" name="pregunta2" value="A"> A) Dog<br>
-                    <input type="radio" name="pregunta2" value="B"> B) Cat<br>
-                    <input type="radio" name="pregunta2" value="C"> C) Cow<br>
-                    <input type="radio" name="pregunta2" value="D"> D) Duck
+            <div class="form-group">
+                <label>¿Cómo se le dice a un gato en inglés?</label>
+                <div class="form-images">
+                    <img src="src/img/gato.png" alt="Gato">
                 </div>
+                <input id="2A" type="radio" name="pregunta2" value="A"> A) Dog<br>
+                <input id="2B" type="radio" name="pregunta2" value="B"> B) Cat<br>
+                <input id="2C" type="radio" name="pregunta2" value="C"> C) Cow<br>
+                <input id="2D" type="radio" name="pregunta2" value="D"> D) Duck
+            </div>
 
-                <div class="form-group">
-                    <label>De los 4 animales abajo, ¿Cuál puede volar?</label>
-                    <div class="form-images">
-                        <img src="src/img/pescado.png" alt="Pescado">
-                        <img src="src/img/pajaro.png" alt="Pajaro">
-                        <img src="src/img/perro.png" alt="Perro">
-                        <img src="src/img/gato.png" alt="Gato">
-                    </div>
-                    <input type="radio" name="pregunta3" value="A"> A) Fish<br>
-                    <input type="radio" name="pregunta3" value="B"> B) Bird<br>
-                    <input type="radio" name="pregunta3" value="C"> C) Dog<br>
-                    <input type="radio" name="pregunta3" value="D"> D) Cat
+            <div class="form-group">
+                <label>De los 4 animales abajo, ¿Cuál puede volar?</label>
+                <div class="form-images">
+                    <img src="src/img/pescado.png" alt="Pescado">
+                    <img src="src/img/pajaro.png" alt="Pajaro">
+                    <img src="src/img/perro.png" alt="Perro">
+                    <img src="src/img/gato.png" alt="Gato">
                 </div>
+                <input id="3A" type="radio" name="pregunta3" value="A"> A) Fish<br>
+                <input id="3B" type="radio" name="pregunta3" value="B"> B) Bird<br>
+                <input id="3C" type="radio" name="pregunta3" value="C"> C) Dog<br>
+                <input id="3D" type="radio" name="pregunta3" value="D"> D) Cat
+            </div>
 
-                <div class="form-group">
-                    <label>¿Cómo se le dice a una vaca en inglés?</label>
-                    <div class="form-images">
-                        <img src="src/img/vaca.png" alt="Cow">
-                    </div>
-                    <input type="radio" name="pregunta4" value="A"> A) Cow<br>
-                    <input type="radio" name="pregunta4" value="B"> B) Dog<br>
-                    <input type="radio" name="pregunta4" value="C"> C) Cat<br>
-                    <input type="radio" name="pregunta4" value="D"> D) Bird
+            <div class="form-group">
+                <label>¿Cómo se le dice a una vaca en inglés?</label>
+                <div class="form-images">
+                    <img src="src/img/vaca.png" alt="Cow">
                 </div>
+                <input id="4A" type="radio" name="pregunta4" value="A"> A) Cow<br>
+                <input id="4B" type="radio" name="pregunta4" value="B"> B) Dog<br>
+                <input id="4C" type="radio" name="pregunta4" value="C"> C) Cat<br>
+                <input id="4D" type="radio" name="pregunta4" value="D"> D) Bird
+            </div>
                 <div class="form-btns">
                     <button type="submit" id="form-animales-en"><span>¡He terminado!</span></button>
                 </div>
