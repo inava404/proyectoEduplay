@@ -1,138 +1,56 @@
-  body {
-    background-image: url(img/FondoNubes.png);
-    background-size: contain; /* Asegura que la imagen cubra toda la pantalla */
-    background-repeat: no-repeat; /* Evita que la imagen se repita (Mosaico) */
-    background-position: center 65px; /* Centra la imagen en la pantalla y mueve la imagen hacia abajo 50px */
-    margin: 0; /* Elimina los márgenes predeterminados */
-    padding: 0;
-    height: 85vh; 
-    background-color: #ffffff00;
-    justify-content: center;
-    display: flexbox;
-    font-family: cursive;
-  }
-  
-  .navbar {
-    background-color: #86bbff;
-    justify-content: center;
-    display: flex;
-    padding: 0%;
-  }
-  
-  .section-inicio{
-    text-align: center;
-    justify-content: center;
-    display: flexbox;
-    padding: 0%;
-    margin-top: 15vh;
-    height: 23vh;
-  }
+    body {
+      background-image: url(img/FondoNubes.png);
+      background-size: contain; /* Asegura que la imagen cubra toda la pantalla */
+      background-repeat: no-repeat; /* Evita que la imagen se repita (Mosaico) */
+      background-position: center 65px; /* Centra la imagen en la pantalla y mueve la imagen hacia abajo 50px */
+      margin: 0; /* Elimina los márgenes predeterminados */
+      padding: 0;
+      height: 85vh; 
+      background-color: #ffffff00;
+      justify-content: center;
+      display: flexbox;
+      font-family: cursive;
+    }
+    
+    .navbar {
+      background-color: #86bbff;
+      justify-content: center;
+      display: flex;
+      padding: 0%;
+    }
+    
+    .section-inicio{
+      text-align: center;
+      justify-content: center;
+      display: flexbox;
+      padding: 0%;
+      margin-top: 15vh;
+      height: 23vh;
+    }
 
-  .section-inicio h1{
-    color: #c9c9c9;
-    font-size: 70px;
-    font-weight:bold;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: #4c4c4c;
-  }
-  
+    .section-inicio h1{
+      color: #c9c9c9;
+      font-size: 70px;
+      font-weight:bold;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: #4c4c4c;
+    }
+    
 
- /*----------------------------------Botones animados azules------------------------------------------*/
- .section-inicio-btns {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.section-inicio-btns a, 
-.section-inicio-btns button {
-  position: relative;
-  width: 300px;
-  height: 75px;
-  margin: 0;
-  font-size: 24px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  transition: 0.5s;
-  color: #4c4c4c;
-  font-weight: bold;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #4c4c4c;
-  border: none; /* Quitar borde del botón */
-  background: none; /* Quitar fondo del botón */
-  cursor: pointer; /* Cambiar el cursor al estilo de enlace */
-  margin: 10px;
-}
-
-.section-inicio-btns a:hover, 
-.section-inicio-btns button:hover {
-  color: #fff;
-  -webkit-text-stroke-color: #fff;
-}
-
-.section-inicio-btns a:before, 
-.section-inicio-btns button:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: url(img/btn-img-2.png);
-  background-size: cover;
-  transform-origin: left;
-  transition: 0.5s;
-}
-
-.section-inicio-btns a:hover:before, 
-.section-inicio-btns button:hover:before {
-  width: 100%;
-}
-
-.section-inicio-btns a span, 
-.section-inicio-btns button span {
-  position: relative;
-  z-index: 1;
-}
-
-.section-inicio-btns ul {
-  margin-top: 10px;
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.section-inicio-btns ul li {
-  padding: 10px;
-  text-align: center;
-  display: flex;
-  align-items: center; /* Alinea imagen y texto verticalmente */
-  gap: 10px; /* Espacio entre la imagen y el texto */
-  text-decoration: none; /* Opcional: quitar subrayado del enlace */
-  color: inherit; /* Opcional: mantener el color original del texto */
-}
-
-.section-inicio-btns ul li img {
-  width: 75px;
-  height: auto; /* Mantener proporción de la imagen */
-}
-
-   /*----------------------------------Botones animados rojos------------------------------------------*/
-   .section-inicio-btns-red{
+  /*----------------------------------Botones animados azules------------------------------------------*/
+  .section-inicio-btns {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
   }
 
-  .section-inicio-btns-red a,
-  .section-inicio-btns-red button{  
+  .section-inicio-btns a, 
+  .section-inicio-btns button {
     position: relative;
     width: 300px;
     height: 75px;
-    margin: 25px 0;
+    margin: 0;
     font-size: 24px;
     display: inline-flex;
     justify-content: center;
@@ -140,51 +58,53 @@
     text-decoration: none;
     transition: 0.5s;
     color: #4c4c4c;
-    font-weight:bold;
+    font-weight: bold;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #4c4c4c;
-    border-color: #0000;
-    background-color: #0000;
+    border: none; /* Quitar borde del botón */
+    background: none; /* Quitar fondo del botón */
+    cursor: pointer; /* Cambiar el cursor al estilo de enlace */
+    margin: 10px;
   }
 
-  .section-inicio-btns-red a:hover,
-  .section-inicio-btns-red button:hover{
+  .section-inicio-btns a:hover, 
+  .section-inicio-btns button:hover {
     color: #fff;
     -webkit-text-stroke-color: #fff;
   }
 
-  .section-inicio-btns-red a:before,
-  .section-inicio-btns-red button:before{
+  .section-inicio-btns a:before, 
+  .section-inicio-btns button:before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 0;
     height: 100%;
-    background: url(img/btn-bg1.png);
-    background-size: cover; 
+    background: url(img/btn-img-2.png);
+    background-size: cover;
     transform-origin: left;
     transition: 0.5s;
   }
 
-  .section-inicio-btns-red a:hover:before,
-  .section-inicio-btns-red button:hover:before{
+  .section-inicio-btns a:hover:before, 
+  .section-inicio-btns button:hover:before {
     width: 100%;
   }
 
-  .section-inicio-btns-red a span,
-  .section-inicio-btns-red button span{
+  .section-inicio-btns a span, 
+  .section-inicio-btns button span {
     position: relative;
     z-index: 1;
   }
 
-  .section-inicio-btns-red ul{
-    margin-top: 20px;
+  .section-inicio-btns ul {
+    margin-top: 10px;
     list-style-type: none;
     padding-left: 0;
   }
 
-  .section-inicio-btns-red ul li{
+  .section-inicio-btns ul li {
     padding: 10px;
     text-align: center;
     display: flex;
@@ -193,176 +113,440 @@
     text-decoration: none; /* Opcional: quitar subrayado del enlace */
     color: inherit; /* Opcional: mantener el color original del texto */
   }
-  
-  .section-inicio-btns-red ul li img{
+
+  .section-inicio-btns ul li img {
     width: 75px;
     height: auto; /* Mantener proporción de la imagen */
   }
 
- /*----------------------------------Login------------------------------------------*/
-.wrapper{
-  width: 330px;
-  padding: 2rem 1rem;
-  margin: 30px auto;
-  background-color: fff;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
-}
+    /*----------------------------------Botones animados rojos------------------------------------------*/
+    .section-inicio-btns-red{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
 
- .wrapper h1{
-  font-size: 2rem;
-  color: #c9c9c9;
-  font-weight:bold;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #4c4c4c;
-  margin-bottom: 15px;
- }
+    .section-inicio-btns-red a,
+    .section-inicio-btns-red button{  
+      position: relative;
+      width: 300px;
+      height: 75px;
+      margin: 25px 0;
+      font-size: 24px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      transition: 0.5s;
+      color: #4c4c4c;
+      font-weight:bold;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: #4c4c4c;
+      border-color: #0000;
+      background-color: #0000;
+    }
 
- .wrapper form input{
-  width: 92%;
-  outline: none;
-  border: 1px solid #fff;
-  padding: 12px 20px;
-  margin-bottom: 10px;
-  border-radius: 20px;
-  background-color: #e4e4e4;
- }
+    .section-inicio-btns-red a:hover,
+    .section-inicio-btns-red button:hover{
+      color: #fff;
+      -webkit-text-stroke-color: #fff;
+    }
 
- .wrapper input:focus{
-  border: 1px solid rgb(192, 192, 192);
- }
+    .section-inicio-btns-red a:before,
+    .section-inicio-btns-red button:before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: url(img/btn-bg1.png);
+      background-size: cover; 
+      transform-origin: left;
+      transition: 0.5s;
+    }
 
- .member{
-  font-size: 0.8rem;
-  color: #c9c9c9;
-  -webkit-text-stroke-width: 0.7px;
-  -webkit-text-stroke-color: #4c4c4c;
- }
+    .section-inicio-btns-red a:hover:before,
+    .section-inicio-btns-red button:hover:before{
+      width: 100%;
+    }
 
- .member a{
-  color: #325b9d ;
-  -webkit-text-stroke-width: 0.7px;
-  -webkit-text-stroke-color: #325b9d;
- }
+    .section-inicio-btns-red a span,
+    .section-inicio-btns-red button span{
+      position: relative;
+      z-index: 1;
+    }
 
- .recover{
-  text-align: right;
-  font-size: 0.7rem;
-  margin: 0.3rem 1.4rem 0 0;
- }
+    .section-inicio-btns-red ul{
+      margin-top: 20px;
+      list-style-type: none;
+      padding-left: 0;
+    }
 
- .recover a{
-  color: #4c4c4c ;
-  -webkit-text-stroke-width: 0.7px;
-  -webkit-text-stroke-color: #4c4c4c;
- }
+    .section-inicio-btns-red ul li{
+      padding: 10px;
+      text-align: center;
+      display: flex;
+      align-items: center; /* Alinea imagen y texto verticalmente */
+      gap: 10px; /* Espacio entre la imagen y el texto */
+      text-decoration: none; /* Opcional: quitar subrayado del enlace */
+      color: inherit; /* Opcional: mantener el color original del texto */
+    }
+    
+    .section-inicio-btns-red ul li img{
+      width: 75px;
+      height: auto; /* Mantener proporción de la imagen */
+    }
 
- .select-form{
-  width: 92%;
-  outline: none;
-  border: 1px solid #fff;
-  padding: 12px 20px;
-  margin-bottom: 10px;
-  border-radius: 20px;
-  background-color: #e4e4e4;
-  color: #626262;
-  font-size: 0.9em;
- }
+  /*----------------------------------Login------------------------------------------*/
+  .wrapper{
+    width: 330px;
+    padding: 2rem 1rem;
+    margin: 30px auto;
+    background-color: fff;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
 
- /*----------------------------------top-bar------------------------------------------*/
-header{
-  position: fixed; /* Make the header fixed to the top */
+  .wrapper h1{
+    font-size: 2rem;
+    color: #c9c9c9;
+    font-weight:bold;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #4c4c4c;
+    margin-bottom: 15px;
+  }
+
+  .wrapper form input{
+    width: 92%;
+    outline: none;
+    border: 1px solid #fff;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background-color: #e4e4e4;
+  }
+
+  .wrapper input:focus{
+    border: 1px solid rgb(192, 192, 192);
+  }
+
+  .member{
+    font-size: 0.8rem;
+    color: #c9c9c9;
+    -webkit-text-stroke-width: 0.7px;
+    -webkit-text-stroke-color: #4c4c4c;
+  }
+
+  .member a{
+    color: #325b9d ;
+    -webkit-text-stroke-width: 0.7px;
+    -webkit-text-stroke-color: #325b9d;
+  }
+
+  .recover{
+    text-align: right;
+    font-size: 0.7rem;
+    margin: 0.3rem 1.4rem 0 0;
+  }
+
+  .recover a{
+    color: #4c4c4c ;
+    -webkit-text-stroke-width: 0.7px;
+    -webkit-text-stroke-color: #4c4c4c;
+  }
+
+  .select-form{
+    width: 92%;
+    outline: none;
+    border: 1px solid #fff;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background-color: #e4e4e4;
+    color: #626262;
+    font-size: 0.9em;
+  }
+
+  /*----------------------------------top-bar------------------------------------------*/
+  header{
+    position: fixed; /* Make the header fixed to the top */
+      top: 0;
+      left: 0;
+      width: 100%;
+  }
+
+  .top-bar {
+    display:flex;
+    justify-content: center; 
+    align-items: center; 
+    background-color: #cbcbcb;  /* Color azul */
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    height: 56px;
+  }
+
+  .top-bar h1 {
+    margin: 0 0 0 45vh;
+    font-size: 24px;
+    text-align: center;
+    color: #F4F4F4;
+    font-weight:bold;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #F4F4F4;
+  }
+
+  .salir-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    margin-right: 20px;
+  }
+
+  /*----------------------------------sidebar------------------------------------------*/
+  .sidebar {
+    flex: 0 0 auto; /* Para que el aside no cambie de tamaño */
+    width: 290px;
+    background-color: #86bbff;  /* Otro tono de azul */
+    color: white;
+    height: 100vh;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-}
+    padding-top: 20px;
+    display: grid;
+    justify-content: top center;
+  }
 
-.top-bar {
-  display:flex;
-  justify-content: center; 
-  align-items: center; 
-  background-color: #cbcbcb;  /* Color azul */
-  color: white;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  text-align: center;
-  height: 56px;
-}
+  .sidebar ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
 
-.top-bar h1 {
-  margin: 0 0 0 45vh;
-  font-size: 24px;
-  text-align: center;
-  color: #F4F4F4;
-  font-weight:bold;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #F4F4F4;
-}
+  .sidebar ul li {
+    padding: 10px;
+    text-align: center;
+    margin: 0;
+  }
 
-.salir-btn{
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  margin-right: 20px;
-}
+  .sidebar ul li a,
+  .sidebar ul li button {
+    color: #252525;
+    -webkit-text-stroke-width: 0.7px;
+    -webkit-text-stroke-color: #252525;
+    font-weight:bold;
+    background-color: #5186cd;
+    text-decoration: none;
+    display: inline-block;
+    margin: 20px 0 20px 0;
+    padding-top: 2.5px;
+    width: 220px;
+    height: 47px;
+    font-size: 25px;
+    border-radius: 4px;
+    align-items: center center;
+    text-align: center center;
+    border-color: #0000;
+  }
 
-/*----------------------------------sidebar------------------------------------------*/
-.sidebar {
-  flex: 0 0 auto; /* Para que el aside no cambie de tamaño */
-  width: 290px;
-  background-color: #86bbff;  /* Otro tono de azul */
-  color: white;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding-top: 20px;
-  display: grid;
-  justify-content: top center;
-}
+  .sidebar ul li a:hover {
+    background-color: #2d5588;
+    color: #fff;
+    -webkit-text-stroke-color: #fff;
+  }
 
-.sidebar ul {
-  list-style-type: none;
-  padding-left: 0;
-}
+  /*-----------------------------------section-principal---------------------------------------*/
+  .section-principal{
+    background-image: url(img/FondoNubes.png);
+    background-size: contain; /* Asegura que la imagen cubra toda la pantalla */
+    background-repeat: no-repeat; /* Evita que la imagen se repita (Mosaico) */
+    background-position: center 65px; /* Centra la imagen en la pantalla y mueve la imagen hacia abajo 50px */
+    text-align: center;
+    padding-top: 25px;
+    height: 100vh;
+    margin-left: 290px; /* Comienza justo al lado del aside */
+    width: calc(100% - 290px); /* Ocupa el resto del espacio */
+    display: flex;
+    flex-direction: column; /* Cambia según tus necesidades */
+  }
 
-.sidebar ul li {
-  padding: 10px;
-  text-align: center;
-  margin: 0;
-}
+  .section-principal h2{
+    color: #c9c9c9;
+    font-size: 50px;
+    font-weight:bold;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #4c4c4c;
+    margin-top: 10vh;
+  }
 
-.sidebar ul li a,
-.sidebar ul li button {
-  color: #252525;
-  -webkit-text-stroke-width: 0.7px;
-  -webkit-text-stroke-color: #252525;
-  font-weight:bold;
-  background-color: #5186cd;
-  text-decoration: none;
-  display: inline-block;
-  margin: 20px 0 20px 0;
-  padding-top: 2.5px;
-  width: 220px;
-  height: 47px;
-  font-size: 25px;
-  border-radius: 4px;
-  align-items: center center;
-  text-align: center center;
-  border-color: #0000;
-}
 
-.sidebar ul li a:hover {
-  background-color: #2d5588;
-  color: #fff;
-  -webkit-text-stroke-color: #fff;
-}
+  /*-----------------------------------section-perfil---------------------------------------*/
+  .perfil {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    margin-top: 7vh;
+    background-color: #85b4f0; /* Fondo del contenedor */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
 
-/*-----------------------------------section-principal---------------------------------------*/
-.section-principal{
+  .perfil h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+
+  .perfil-container {
+    display: flex;
+    flex-wrap: wrap; /* Adaptable en pantallas pequeñas */
+    gap: 20px;
+  }
+
+  .perfil-avatar {
+    width: 57vh;
+    height: 32vh;
+    border-radius: 25px;
+    margin-right: 15px;
+    padding-top: 10px;
+    align-items: center;
+    background-color: #ebeef9;
+    border-color: #6d93c2;
+    border-style: solid;
+    border-width: 7px;
+  }
+
+  .perfil-avatar-icon{
+    width: 210px;
+    height: 100%;
+    align-items: center;
+  }
+
+  .perfil-detalles {
+    flex: 1 1 180px; /* Asegura que el avatar y la info ocupen espacio proporcional */
+    text-align: center;
+    background-color: #ebeef9;
+    border-color: #6d93c2;
+    border-style: solid;
+    border-width: 7px;
+    border-radius: 25px;
+    padding: 15px;
+  }
+
+  .perfil-detalles h3 {
+    margin: 10px 0;
+    font-size: 20px;
+    color: #4c4c4c;
+    font-weight:bold;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #4c4c4c;
+  }
+
+  /*-----------------------------------section-perfil-progreso---------------------------------------*/
+
+  .perfil-progreso {
+    flex: 2 1 400px; /* Mayor prioridad en el ancho para progreso */
+    background-color: #6d93c2;
+    border-radius: 25px;
+    padding: 7px;
+    margin-top: -20px;
+    position: relative; /* Asegura que esté en el flujo del diseño */
+    z-index: 2; /* Nivel más alto para superponerse */
+  }
+
+  .perfil-progreso h3 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 10px;
+    font-weight:bold;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #4c4c4c;
+  }
+
+  .section-progreso{
+    margin-top: 15px;
+  }
+
+  .section-progreso h3{
+    width: 57vh;
+    text-align: left;
+    font-weight:bold;
+    color: #fff;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #4c4c4c;
+    padding-left: 20px;
+    padding-top: 5px;
+    align-items: center;
+    background-color: #6d93c2;
+    border-color: #6d93c2;
+    border-style: solid;
+    border-width: 7px;
+    border-radius: 15px;
+    margin-bottom: -32px;
+    padding-bottom: 30px;
+    position: relative; /* Asegúrate de que el elemento esté posicionado */
+    z-index: 1; /* Este será el nivel más bajo */
+  }
+
+  .progreso-cursos{
+    flex: 1 1 250px; /* Asegura que el avatar y la info ocupen espacio proporcional */
+    align-items: center;
+    background-color: #ebeef9;
+    border-color: #6d93c2;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 25px;
+    padding: 15px;
+  }
+
+  .curso {
+    margin-bottom: 15px;
+  }
+
+  .curso span {
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    gap: 5px;
+    font-size: 25px;
+    color: #fff;
+    font-weight:bold;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #4c4c4c;
+  }
+
+  .curso-img{
+    width: 32px;
+    height: 32px;
+    margin-left: 5px;
+    margin-top: 2px;
+  }
+
+  .barra-progreso {
+    background-color: #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 15px;
+    margin-top: 5px;
+  }
+
+  .progreso {
+    height: 100%;
+    background-color: #4caf50;
+    border-radius: 5px;
+  }
+
+
+  /*-----------------------------------forms---------------------------------------*/
+  .formulario-materias{
   background-image: url(img/FondoNubes.png);
   background-size: contain; /* Asegura que la imagen cubra toda la pantalla */
   background-repeat: no-repeat; /* Evita que la imagen se repita (Mosaico) */
@@ -374,423 +558,239 @@ header{
   width: calc(100% - 290px); /* Ocupa el resto del espacio */
   display: flex;
   flex-direction: column; /* Cambia según tus necesidades */
-}
+  }
 
-.section-principal h2{
-  color: #c9c9c9;
-  font-size: 50px;
-  font-weight:bold;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #4c4c4c;
-  margin-top: 10vh;
-}
+  .materias-wrapper{ /* Diseño del formulario */
+    width: 430px;
+    padding: 2rem 1rem;
+    margin: 5px auto;
+    background-color: fff;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    color: #c9c9c9;
+    font-weight:bold;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #4c4c4c;
+  }
 
+  .form-group{
+    margin-bottom: 5px;
+  }
 
-/*-----------------------------------section-perfil---------------------------------------*/
-.perfil {
-  width: 90%;
-  max-width: 800px;
-  margin: 20px auto;
-  margin-top: 7vh;
-  background-color: #85b4f0; /* Fondo del contenedor */
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-}
+  .form-images{
+    margin-bottom: 5px;
+  }
 
-.perfil h2 {
-  text-align: center;
-  font-size: 24px;
-  color: #555;
-  margin-bottom: 20px;
-}
+  .form-images img{
+    width: 40px;
+    height: 40px;
+  }
 
-.perfil-container {
-  display: flex;
-  flex-wrap: wrap; /* Adaptable en pantallas pequeñas */
-  gap: 20px;
-}
+  /*----------------------------------Botones-forms------------------------------------------*/
+  .form-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 
-.perfil-avatar {
-  width: 57vh;
-  height: 32vh;
-  border-radius: 25px;
-  margin-right: 15px;
-  padding-top: 10px;
-  align-items: center;
-  background-color: #ebeef9;
-  border-color: #6d93c2;
-  border-style: solid;
-  border-width: 7px;
-}
+  .form-btns a, 
+  .form-btns button {
+    position: relative;
+    width: 300px;
+    height: 75px;
+    margin: 0;
+    font-size: 24px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.5s;
+    color: #4c4c4c;
+    font-weight: bold;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #4c4c4c;
+    border: none; /* Quitar borde del botón */
+    background: none; /* Quitar fondo del botón */
+    cursor: pointer; /* Cambiar el cursor al estilo de enlace */
+  }
 
-.perfil-avatar-icon{
-  width: 210px;
-  height: 100%;
-  align-items: center;
-}
+  .form-btns a:hover, 
+  .form-btns button:hover {
+    color: #fff;
+    -webkit-text-stroke-color: #fff;
+  }
 
-.perfil-detalles {
-  flex: 1 1 180px; /* Asegura que el avatar y la info ocupen espacio proporcional */
-  text-align: center;
-  background-color: #ebeef9;
-  border-color: #6d93c2;
-  border-style: solid;
-  border-width: 7px;
-  border-radius: 25px;
-  padding: 15px;
-}
+  .form-btns a:before, 
+  .form-btns button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: url(img/btn-img-2.png);
+    background-size: cover;
+    transform-origin: left;
+    transition: 0.5s;
+  }
 
-.perfil-detalles h3 {
-  margin: 10px 0;
-  font-size: 20px;
-  color: #4c4c4c;
-  font-weight:bold;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #4c4c4c;
-}
+  .form-btns a:hover:before, 
+  .form-btns button:hover:before {
+    width: 100%;
+  }
 
-/*-----------------------------------section-perfil-progreso---------------------------------------*/
+  .form-btns a span, 
+  .form-btns button span {
+    position: relative;
+    z-index: 1;
+  }
 
-.perfil-progreso {
-  flex: 2 1 400px; /* Mayor prioridad en el ancho para progreso */
-  background-color: #6d93c2;
-  border-radius: 25px;
-  padding: 7px;
-  margin-top: -20px;
-  position: relative; /* Asegura que esté en el flujo del diseño */
-  z-index: 2; /* Nivel más alto para superponerse */
-}
+  .form-btns ul {
+    margin-top: 10px;
+    list-style-type: none;
+    padding-left: 0;
+  }
 
-.perfil-progreso h3 {
-  font-size: 24px;
-  color: #fff;
-  margin-bottom: 10px;
-  font-weight:bold;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #4c4c4c;
-}
+  .form-btns ul li {
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center; /* Alinea imagen y texto verticalmente */
+    gap: 10px; /* Espacio entre la imagen y el texto */
+    text-decoration: none; /* Opcional: quitar subrayado del enlace */
+    color: inherit; /* Opcional: mantener el color original del texto */
+  }
 
-.section-progreso{
-  margin-top: 15px;
-}
-
-.section-progreso h3{
-  width: 57vh;
-  text-align: left;
-  font-weight:bold;
-  color: #fff;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #4c4c4c;
-  padding-left: 20px;
-  padding-top: 5px;
-  align-items: center;
-  background-color: #6d93c2;
-  border-color: #6d93c2;
-  border-style: solid;
-  border-width: 7px;
-  border-radius: 15px;
-  margin-bottom: -32px;
-  padding-bottom: 30px;
-  position: relative; /* Asegúrate de que el elemento esté posicionado */
-  z-index: 1; /* Este será el nivel más bajo */
-}
-
-.progreso-cursos{
-  flex: 1 1 250px; /* Asegura que el avatar y la info ocupen espacio proporcional */
-  align-items: center;
-  background-color: #ebeef9;
-  border-color: #6d93c2;
-  border-style: solid;
-  border-width: 2px;
-  border-radius: 25px;
-  padding: 15px;
-}
-
-.curso {
-  margin-bottom: 15px;
-}
-
-.curso span {
-  display: flex;
-  align-items: center;
-  padding-left: 5px;
-  gap: 5px;
-  font-size: 25px;
-  color: #fff;
-  font-weight:bold;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #4c4c4c;
-}
-
-.curso-img{
-  width: 32px;
-  height: 32px;
-  margin-left: 5px;
-  margin-top: 2px;
-}
-
-.barra-progreso {
-  background-color: #ccc;
-  border-radius: 5px;
-  overflow: hidden;
-  height: 15px;
-  margin-top: 5px;
-}
-
-.progreso {
-  height: 100%;
-  background-color: #4caf50;
-  border-radius: 5px;
-}
+  .form-btns ul li img {
+    width: 75px;
+    height: auto; /* Mantener proporción de la imagen */
+  }
 
 
-/*-----------------------------------forms---------------------------------------*/
-.formulario-materias{
-background-image: url(img/FondoNubes.png);
-background-size: contain; /* Asegura que la imagen cubra toda la pantalla */
-background-repeat: no-repeat; /* Evita que la imagen se repita (Mosaico) */
-background-position: center 65px; /* Centra la imagen en la pantalla y mueve la imagen hacia abajo 50px */
-text-align: center;
-padding-top: 25px;
-height: 100vh;
-margin-left: 290px; /* Comienza justo al lado del aside */
-width: calc(100% - 290px); /* Ocupa el resto del espacio */
-display: flex;
-flex-direction: column; /* Cambia según tus necesidades */
-}
+  /*-----------------------------------section-retos---------------------------------------*/
+  .retos{
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    margin-top: 10vh;
+    background-color: #85b4f0;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
 
-.materias-wrapper{ /* Diseño del formulario */
-  width: 430px;
-  padding: 2rem 1rem;
-  margin: 5px auto;
-  background-color: fff;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
-  font-size: 18px;
-  color: #c9c9c9;
-  font-weight:bold;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #4c4c4c;
-}
+  .retos h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #555;
+    margin-bottom: 20px;
+  }
 
-.form-group{
-  margin-bottom: 5px;
-}
+  .section-retos h3{
+    width: 62vh;
+    text-align: left;
+    font-size: 30px;
+    font-weight:bold;
+    color: #fff;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #4c4c4c;
+    padding-left: 20px;
+    padding-top: 5px;
+    align-items: center;
+    background-color: #6d93c2;
+    border-color: #6d93c2;
+    border-style: solid;
+    border-width: 7px;
+    border-radius: 15px;
+    margin-bottom: -32px;
+    padding-bottom: 30px;
+    position: relative; /* Asegúrate de que el elemento esté posicionado */
+    z-index: 1; /* Este será el nivel más bajo */
+  }
 
-.form-images{
-  margin-bottom: 5px;
-}
+  .retos-progreso {
+    flex: 2 1 400px; /* Mayor prioridad en el ancho para progreso */
+    background-color: #6d93c2;
+    border-radius: 25px;
+    padding: 7px;
+    margin-top: -20px;
+    position: relative; /* Asegura que esté en el flujo del diseño */
+    z-index: 2; /* Nivel más alto para superponerse */
+  }
 
-.form-images img{
-  width: 40px;
-  height: 40px;
-}
+  .progreso-retos{
+    flex: 1 1 250px; /* Asegura que el avatar y la info ocupen espacio proporcional */
+    align-items: center;
+    background-color: #ebeef9;
+    border-color: #6d93c2;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 25px;
+    padding: 15px;
+  }
 
- /*----------------------------------Botones-forms------------------------------------------*/
-.form-btns {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
+  .progreso-retos span{
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    gap: 5px;
+    font-size: 28px;
+    color: #fff;
+    font-weight:bold;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #4c4c4c;
+  }
 
-.form-btns a, 
-.form-btns button {
-  position: relative;
-  width: 300px;
-  height: 75px;
-  margin: 0;
-  font-size: 24px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  transition: 0.5s;
-  color: #4c4c4c;
-  font-weight: bold;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #4c4c4c;
-  border: none; /* Quitar borde del botón */
-  background: none; /* Quitar fondo del botón */
-  cursor: pointer; /* Cambiar el cursor al estilo de enlace */
-}
+  .retos-check{
+    margin-bottom: 10px;
+  }
 
-.form-btns a:hover, 
-.form-btns button:hover {
-  color: #fff;
-  -webkit-text-stroke-color: #fff;
-}
+  .retos-check ul{
+    margin-top: 10px;
+    list-style-type: none;
+    padding-left: 0;
+  }
 
-.form-btns a:before, 
-.form-btns button:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: url(img/btn-img-2.png);
-  background-size: cover;
-  transform-origin: left;
-  transition: 0.5s;
-}
+  .retos-check ul li{
+    font-size: 22px;
+    color: #4c4c4c;
+    margin-bottom: 10px;
+    font-weight:bold;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #4c4c4c;
+    text-align: left;
+    padding-left: 20px;
+  }
 
-.form-btns a:hover:before, 
-.form-btns button:hover:before {
-  width: 100%;
-}
+  .check{ /* Tamaño de imagen para check (La palomita pues) */
+    width: 25px;
+    height: 25px;
+    margin-left: 15px;
+  }
 
-.form-btns a span, 
-.form-btns button span {
-  position: relative;
-  z-index: 1;
-}
+  /*-----------------------------------section datos tutor---------------------------------------*/
 
-.form-btns ul {
-  margin-top: 10px;
-  list-style-type: none;
-  padding-left: 0;
-}
+  .datos{
+    display: flex;
+  }
 
-.form-btns ul li {
-  padding: 10px;
-  text-align: center;
-  display: flex;
-  align-items: center; /* Alinea imagen y texto verticalmente */
-  gap: 10px; /* Espacio entre la imagen y el texto */
-  text-decoration: none; /* Opcional: quitar subrayado del enlace */
-  color: inherit; /* Opcional: mantener el color original del texto */
-}
+  .datos span {
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    gap: 5px;
+    font-size: 25px;
+    color: #fff;
+    font-weight:bold;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #4c4c4c;
+  }
 
-.form-btns ul li img {
-  width: 75px;
-  height: auto; /* Mantener proporción de la imagen */
-}
-
-
-/*-----------------------------------section-retos---------------------------------------*/
-.retos{
-  width: 90%;
-  max-width: 800px;
-  margin: 20px auto;
-  margin-top: 10vh;
-  background-color: #85b4f0;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-}
-
-.retos h2 {
-  text-align: center;
-  font-size: 24px;
-  color: #555;
-  margin-bottom: 20px;
-}
-
-.section-retos h3{
-  width: 62vh;
-  text-align: left;
-  font-size: 30px;
-  font-weight:bold;
-  color: #fff;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #4c4c4c;
-  padding-left: 20px;
-  padding-top: 5px;
-  align-items: center;
-  background-color: #6d93c2;
-  border-color: #6d93c2;
-  border-style: solid;
-  border-width: 7px;
-  border-radius: 15px;
-  margin-bottom: -32px;
-  padding-bottom: 30px;
-  position: relative; /* Asegúrate de que el elemento esté posicionado */
-  z-index: 1; /* Este será el nivel más bajo */
-}
-
-.retos-progreso {
-  flex: 2 1 400px; /* Mayor prioridad en el ancho para progreso */
-  background-color: #6d93c2;
-  border-radius: 25px;
-  padding: 7px;
-  margin-top: -20px;
-  position: relative; /* Asegura que esté en el flujo del diseño */
-  z-index: 2; /* Nivel más alto para superponerse */
-}
-
-.progreso-retos{
-  flex: 1 1 250px; /* Asegura que el avatar y la info ocupen espacio proporcional */
-  align-items: center;
-  background-color: #ebeef9;
-  border-color: #6d93c2;
-  border-style: solid;
-  border-width: 2px;
-  border-radius: 25px;
-  padding: 15px;
-}
-
-.progreso-retos span{
-  display: flex;
-  align-items: center;
-  padding-left: 5px;
-  gap: 5px;
-  font-size: 28px;
-  color: #fff;
-  font-weight:bold;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #4c4c4c;
-}
-
-.retos-check{
-  margin-bottom: 10px;
-}
-
-.retos-check ul{
-  margin-top: 10px;
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.retos-check ul li{
-  font-size: 22px;
-  color: #4c4c4c;
-  margin-bottom: 10px;
-  font-weight:bold;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #4c4c4c;
-  text-align: left;
-  padding-left: 20px;
-}
-
-.check{ /* Tamaño de imagen para check (La palomita pues) */
-  width: 25px;
-  height: 25px;
-  margin-left: 15px;
-}
-
-/*-----------------------------------section datos tutor---------------------------------------*/
-
-.datos{
-  display: flex;
-}
-
-.datos span {
-  display: flex;
-  align-items: center;
-  padding-left: 5px;
-  gap: 5px;
-  font-size: 25px;
-  color: #fff;
-  font-weight:bold;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #4c4c4c;
-}
-
-.datos p{
-  padding-top: 16px;
-  padding-left: 10px;
-  font-size: 25px;
-}
+  .datos p{
+    padding-top: 16px;
+    padding-left: 10px;
+    font-size: 25px;
+  }
