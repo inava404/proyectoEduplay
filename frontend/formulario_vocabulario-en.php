@@ -31,49 +31,49 @@
     <div class="formulario-materias">
         <div class="materias-wrapper">
             <form id="form-vocabulario-en">
-                <div class="form-group">
-                    <label>¿Cómo dices 'hola' en inglés?</label>
-                    <div class="form-images">
-                        <img src="src/img/saludo.png" alt="Saludo">
-                    </div>
-                    <input type="radio" name="pregunta1" value="A"> A) Goodbye<br>
-                    <input type="radio" name="pregunta1" value="B"> B) Thank you<br>
-                    <input type="radio" name="pregunta1" value="C"> C) Hello<br>
-                    <input type="radio" name="pregunta1" value="D"> D) Please
+            <div class="form-group">
+                <label>¿Cómo dices 'hola' en inglés?</label>
+                <div class="form-images">
+                    <img src="src/img/saludo.png" alt="Saludo">
                 </div>
+                <input id="1A" type="radio" name="pregunta1" value="A"> A) Goodbye<br>
+                <input id="1B" type="radio" name="pregunta1" value="B"> B) Thank you<br>
+                <input id="1C" type="radio" name="pregunta1" value="C"> C) Hello<br>
+                <input id="1D" type="radio" name="pregunta1" value="D"> D) Please
+            </div>
 
-                <div class="form-group">
-                    <label>¿Qué dices cuándo te despides?</label>
-                    <div class="form-images">
-                        <img src="src/img/adios.png" alt="Despedida">
-                    </div>
-                    <input type="radio" name="pregunta2" value="A"> A) Goodbye<br>
-                    <input type="radio" name="pregunta2" value="B"> B) Nice to meet you<br>
-                    <input type="radio" name="pregunta2" value="C"> C) I’m sorry<br>
-                    <input type="radio" name="pregunta2" value="D"> D) Welcome
+            <div class="form-group">
+                <label>¿Qué dices cuándo te despides?</label>
+                <div class="form-images">
+                    <img src="src/img/adios.png" alt="Despedida">
                 </div>
+                <input id="2A" type="radio" name="pregunta2" value="A"> A) Goodbye<br>
+                <input id="2B" type="radio" name="pregunta2" value="B"> B) Nice to meet you<br>
+                <input id="2C" type="radio" name="pregunta2" value="C"> C) I’m sorry<br>
+                <input id="2D" type="radio" name="pregunta2" value="D"> D) Welcome
+            </div>
 
-                <div class="form-group">
-                    <label>¿Cómo se dice "Gracias" en inglés?</label>
-                    <div class="form-images">
-                        <img src="src/img/gracias.png" alt="Gracias">
-                    </div>
-                    <input type="radio" name="pregunta3" value="A"> A) Hello<br>
-                    <input type="radio" name="pregunta3" value="B"> B) Goodbye<br>
-                    <input type="radio" name="pregunta3" value="C"> C) Thank you<br>
-                    <input type="radio" name="pregunta3" value="D"> D) Please
+            <div class="form-group">
+                <label>¿Cómo se dice "Gracias" en inglés?</label>
+                <div class="form-images">
+                    <img src="src/img/gracias.png" alt="Gracias">
                 </div>
+                <input id="3A" type="radio" name="pregunta3" value="A"> A) Hello<br>
+                <input id="3B" type="radio" name="pregunta3" value="B"> B) Goodbye<br>
+                <input id="3C" type="radio" name="pregunta3" value="C"> C) Thank you<br>
+                <input id="3D" type="radio" name="pregunta3" value="D"> D) Please
+            </div>
 
-                <div class="form-group">
-                    <label>¿Qué dices cuando te disculpas con alguien?</label>
-                    <div class="form-images">
-                        <img src="src/img/disculpa.png" alt="Disculpa">
-                    </div>
-                    <input type="radio" name="pregunta4" value="A"> A) Please<br>
-                    <input type="radio" name="pregunta4" value="B"> B) Thank you<br>
-                    <input type="radio" name="pregunta4" value="C"> C) I’m sorry<br>
-                    <input type="radio" name="pregunta4" value="D"> D) Nice to meet you
+            <div class="form-group">
+                <label>¿Qué dices cuando te disculpas con alguien?</label>
+                <div class="form-images">
+                    <img src="src/img/disculpa.png" alt="Disculpa">
                 </div>
+                <input id="4A" type="radio" name="pregunta4" value="A"> A) Please<br>
+                <input id="4B" type="radio" name="pregunta4" value="B"> B) Thank you<br>
+                <input id="4C" type="radio" name="pregunta4" value="C"> C) I’m sorry<br>
+                <input id="4D" type="radio" name="pregunta4" value="D"> D) Nice to meet you
+            </div>
                 <div class="form-btns">
                     <button type="submit" id="form-vocabulario-en"><span>¡He terminado!</span></button>
                 </div>

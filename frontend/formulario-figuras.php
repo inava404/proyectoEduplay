@@ -31,53 +31,54 @@
     <div class="formulario-materias">
         <div class="materias-wrapper">
         <form id="figuras">
-            <div class="form-group">
-                <label>¿Qué figura es un círculo?</label>
-                <div class="form-images">
-                    <img src="src/img/cuadrado-azul.png" alt="Cuadrado">
-                    <img src="src/img/circulo.png" alt="Círculo">
-                    <img src="src/img/triangulo-verde.png" alt="Triángulo">
-                    <img src="src/img/rectangulo.png" alt="Rectángulo">
-                </div>
-                <input type="radio" name="pregunta1" value="A"> A) Cuadrado<br>
-                <input type="radio" name="pregunta1" value="B"> B) Círculo<br>
-                <input type="radio" name="pregunta1" value="C"> C) Triángulo<br>
-                <input type="radio" name="pregunta1" value="D"> D) Rectángulo
+        <div class="form-group">
+            <label>¿Qué figura es un círculo?</label>
+            <div class="form-images">
+                <img src="src/img/cuadrado-azul.png" alt="Cuadrado">
+                <img src="src/img/circulo.png" alt="Círculo">
+                <img src="src/img/triangulo-verde.png" alt="Triángulo">
+                <img src="src/img/rectangulo.png" alt="Rectángulo">
             </div>
+            <input id="1A" type="radio" name="pregunta1" value="A"> A) Cuadrado<br>
+            <input id="1B" type="radio" name="pregunta1" value="B"> B) Círculo<br>
+            <input id="1C" type="radio" name="pregunta1" value="C"> C) Triángulo<br>
+            <input id="1D" type="radio" name="pregunta1" value="D"> D) Rectángulo
+        </div>
 
-            <div class="form-group">
-                <label>¿Qué figura tiene tres lados?</label>
-                <div class="form-images">
-                    <img src="src/img/cuadrado.png" alt="Cuadrado">
-                    <img src="src/img/circulo-azul.png" alt="Círculo">
-                    <img src="src/img/triangulo.png" alt="Triángulo">
-                    <img src="src/img/rectangulo-rosa.png" alt="Rectángulo">
-                </div>
-                <input type="radio" name="pregunta2" value="A"> A) Cuadrado<br>
-                <input type="radio" name="pregunta2" value="B"> B) Círculo<br>
-                <input type="radio" name="pregunta2" value="C"> C) Triángulo<br>
-                <input type="radio" name="pregunta2" value="D"> D) Rectángulo
+        <div class="form-group">
+            <label>¿Qué figura tiene tres lados?</label>
+            <div class="form-images">
+                <img src="src/img/cuadrado.png" alt="Cuadrado">
+                <img src="src/img/circulo-azul.png" alt="Círculo">
+                <img src="src/img/triangulo.png" alt="Triángulo">
+                <img src="src/img/rectangulo-rosa.png" alt="Rectángulo">
             </div>
+            <input id="2A" type="radio" name="pregunta2" value="A"> A) Cuadrado<br>
+            <input id="2B" type="radio" name="pregunta2" value="B"> B) Círculo<br>
+            <input id="2C" type="radio" name="pregunta2" value="C"> C) Triángulo<br>
+            <input id="2D" type="radio" name="pregunta2" value="D"> D) Rectángulo
+        </div>
 
-            <div class="form-group">
-                <label>¿Cuál de estas figuras es más grande?</label>
-                <div class="form-images">
-                    <img src="src/img/triangulo-rojo.png" alt="Triangulo Grande">
-                    <img src="src/img/cuadrado-azul.png" alt="Cuadrado Pequeño" style="width: 30px; height: 30px;">
-                </div>
-                <input type="radio" name="pregunta3" value="A"> A) Cuadrado<br>
-                <input type="radio" name="pregunta3" value="B"> B) Triangulo
+        <div class="form-group">
+            <label>¿Cuál de estas figuras es más grande?</label>
+            <div class="form-images">
+                <img src="src/img/triangulo-rojo.png" alt="Triángulo Grande">
+                <img src="src/img/cuadrado-azul.png" alt="Cuadrado Pequeño" style="width: 30px; height: 30px;">
             </div>
+            <input id="3A" type="radio" name="pregunta3" value="A"> A) Cuadrado<br>
+            <input id="3B" type="radio" name="pregunta3" value="B"> B) Triángulo
+        </div>
 
-            <div class="form-group">
-                <label>¿La figura de color rojo es un...</label>
-                <div class="form-images">
-                    <img src="src/img/circulo.png" alt="Circulo">
-                </div>
-                <input type="radio" name="pregunta4" value="A"> A) Triangulo<br>
-                <input type="radio" name="pregunta4" value="B"> B) Cuadrado<br>
-                <input type="radio" name="pregunta4" value="C"> D) Circulo
+        <div class="form-group">
+            <label>¿La figura de color rojo es un...</label>
+            <div class="form-images">
+                <img src="src/img/circulo.png" alt="Círculo">
             </div>
+            <input id="4A" type="radio" name="pregunta4" value="A"> A) Triángulo<br>
+            <input id="4B" type="radio" name="pregunta4" value="B"> B) Cuadrado<br>
+            <input id="4C" type="radio" name="pregunta4" value="C"> C) Círculo
+        </div>
+
             <div class="form-btns">
                 <button type="submit" id="form-figuras"><span>¡He terminado!</span></button>
             </div>

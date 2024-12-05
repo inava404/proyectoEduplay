@@ -38,10 +38,10 @@
                     <img src="src/img/manzanaRoja.png" alt="Manzana">
                     <img src="src/img/manzanaRoja.png" alt="Manzana">
                 </div>
-                <input type="radio" name="pregunta1" value="A"> A) 2<br>
-                <input type="radio" name="pregunta1" value="B"> B) 3<br>
-                <input type="radio" name="pregunta1" value="C"> C) 4<br>
-                <input type="radio" name="pregunta1" value="D"> D) 5
+                <input id="1A" type="radio" name="pregunta1" value="A"> A) 2<br>
+                <input id="1B" type="radio" name="pregunta1" value="B"> B) 3<br>
+                <input id="1C" type="radio" name="pregunta1" value="C"> C) 4<br>
+                <input id="1D" type="radio" name="pregunta1" value="D"> D) 5
             </div>
 
             <div class="form-group">
@@ -53,10 +53,10 @@
                     <img src="src/img/4.png" alt="Numero 4">
                     <img src="src/img/5.png" alt="Numero 5">
                 </div>
-                <input type="radio" name="pregunta2" value="A"> A) 2<br>
-                <input type="radio" name="pregunta2" value="B"> B) 3<br>
-                <input type="radio" name="pregunta2" value="C"> C) 6<br>
-                <input type="radio" name="pregunta2" value="D"> D) 5
+                <input id="2A" type="radio" name="pregunta2" value="A"> A) 2<br>
+                <input id="2B" type="radio" name="pregunta2" value="B"> B) 3<br>
+                <input id="2C" type="radio" name="pregunta2" value="C"> C) 6<br>
+                <input id="2D" type="radio" name="pregunta2" value="D"> D) 5
             </div>
 
             <div class="form-group">
@@ -64,10 +64,10 @@
                 <div class="form-images">
                     <img src="src/img/mano.png" alt="Mano">
                 </div>
-                <input type="radio" name="pregunta3" value="A"> A) 4<br>
-                <input type="radio" name="pregunta3" value="B"> B) 5<br>
-                <input type="radio" name="pregunta3" value="C"> C) 6<br>
-                <input type="radio" name="pregunta3" value="D"> D) 1
+                <input id="3A" type="radio" name="pregunta3" value="A"> A) 4<br>
+                <input id="3B" type="radio" name="pregunta3" value="B"> B) 5<br>
+                <input id="3C" type="radio" name="pregunta3" value="C"> C) 6<br>
+                <input id="3D" type="radio" name="pregunta3" value="D"> D) 1
             </div>
 
             <div class="form-group">
@@ -81,10 +81,10 @@
                     <img src="src/img/pato.png" alt="Pato">
                     <img src="src/img/pato.png" alt="Pato">
                 </div>
-                <input type="radio" name="pregunta4" value="A"> A) 7<br>
-                <input type="radio" name="pregunta4" value="B"> B) 4<br>
-                <input type="radio" name="pregunta4" value="C"> C) 6<br>
-                <input type="radio" name="pregunta4" value="D"> D) 8
+                <input id="4A" type="radio" name="pregunta4" value="A"> A) 7<br>
+                <input id="4B" type="radio" name="pregunta4" value="B"> B) 4<br>
+                <input id="4C" type="radio" name="pregunta4" value="C"> C) 6<br>
+                <input id="4D" type="radio" name="pregunta4" value="D"> D) 8
             </div>
             <div class="form-btns">
                 <button type="submit" id="form-figuras"><span>¡He terminado!</span></button>
