@@ -18,48 +18,38 @@ class Create extends DataBase {
         );
         if(isset($jsonOBJ->usuario)) {
             // SE ASUME QUE LOS DATOS YA FUERON VALIDADOS ANTES DE ENVIARSE
-            if($result = $this->conexion->prepare("SELECT * FROM sesiones WHERE usuario = ? AND eliminado = 0")){
-                $result->bind_param('s', $jsonOBJ->usuario);
-                $result->execute();
-                $result->store_result();
+            $sql = "SELECT * FROM sesiones WHERE usuario = '{$jsonOBJ->usuario}' AND eliminado = 0";
+            $result = $this->conexion->query($sql);
+            
+            if ($result->num_rows == 0) {
+                $this->conexion->set_charset("utf8");
                 
-                if ($result->num_rows == 0) {
-                    $this->conexion->set_charset("utf8");
-                    
-                    $sqlEstadis = $this->conexion->prepare("INSERT INTO estadisticas VALUES (null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)");
-                    $sqlEstadis->bind_param('iiiiiiiiiiiiii', ...array_fill(0, 14, 0));
-                    if($sqlEstadis->execute()){
+                $sqlEstadis = "INSERT INTO estadisticas VALUES (null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)";
+                $sqlTutor = "INSERT INTO tutores VALUES (null, '{$jsonOBJ->nombre}', '{$jsonOBJ->apellidos}', '{$jsonOBJ->fecha_nac}',0)";
+                if($this->conexion->query($sqlTutor)){
+                    $tut = $this->conexion->insert_id;
+                    if($this->conexion->query($sqlEstadis)){
                         $est = $this->conexion->insert_id;
-
-                        $sqlTutor = $this->conexion->prepare("INSERT INTO tutores VALUES (null, ?, ?, ?,0)");
-                        $sqlTutor->bind_param('sssi', $jsonOBJ->nombre, $jsonOBJ->apellidos, $jsonOBJ->fecha_nac, 0);
-                        if($sqlTutor->execute()){
-                            $tut = $this->conexion->insert_id;
-                            
-                            $sqlAlumno = $this->conexion->prepare("INSERT INTO alumnos VALUES (null, ?, ?,?, ?, ?,? ,0)");
-                            $sqlAlumno->bind_param('ssssii', $jsonOBJ2->nombre, $jsonOBJ2->apellidos, 'User', $jsonOBJ2->fecha_nac, $jsonOBJ2->grado_curso, $est);
-                            if($sqlAlumno->execute()){
-                                $alum = $this->conexion->insert_id;
-                                
-                                $passwordHashed = password_hash($jsonOBJ->contrasena, PASSWORD_DEFAULT);
-                                $sqlUser = $this->conexion->prepare("INSERT INTO sesiones VALUES (null, ?, ?, ?, ?, 12345, 0)");
-                                $sqlUser->bind_param('ssii', $jsonOBJ->usuario, $passwordHashed, $alum, $tut);
-                                if($this->conexion->query($sqlUser)){
-                                    $this->data['status'] =  "success";
-                                    $this->data['message'] =  "Usuario agregado";
-                                }
+                        $sqlAlumno = "INSERT INTO alumnos VALUES (null, '{$jsonOBJ2->nombre}', '{$jsonOBJ2->apellidos}','User', '{$jsonOBJ2->fecha_nac}', '{$jsonOBJ2->grado_curso}',$est ,0)";
+                        if($this->conexion->query($sqlAlumno)){
+                            $alum = $this->conexion->insert_id;
+                            $sqlUser = "INSERT INTO sesiones VALUES (null, '{$jsonOBJ->usuario}', '{$jsonOBJ->contrasena}', $alum, '$tut', 12345, 0)";
+                            if($this->conexion->query($sqlUser)){
+                                $this->data['status'] =  "success";
+                                $this->data['message'] =  "Usuario agregado";
                             }
                         }
-                    } else {
-                        $this->data['message'] = "ERROR: No se pudo preparar la consulta " . mysqli_error($this->conexion);
                     }
+                } else {
+                    $this->data['message'] = "ERROR: No se ejecuto $sql. " . mysqli_error($this->conexion);
                 }
             }
-            $result->close();
+
+            $result->free();
             // Cierra la conexion
             $this->conexion->close();
         }
     }
-    
-}
+}     
+
 ?>
