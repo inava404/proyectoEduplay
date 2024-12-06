@@ -729,9 +729,10 @@ $(document).ready(function() {
                 alert('Sesión cerrada correctamente.');
                 // Eliminar el id de sesión en el localStorage
                 localStorage.removeItem('id_sesion');
-    
+
                 // Redirigir a la página de inicio de sesión
                 window.location.href = '../backend/incio.php';   
+
             },
             error: function() {
                 alert("Hubo un error al intentar cerrar sesión.");
