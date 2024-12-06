@@ -35,20 +35,24 @@ $(document).ready(function() {
                 data: JSON.stringify(finalJSON),  // Convertir el objeto JSON a string
                 contentType: 'application/json; charset=utf-8',  // Enviar como JSON
                 success: function(response) {
-                    console.log(response);  // Mostrar la respuesta del servidor
-                    let result = JSON.parse(response);  // Parsear la respuesta JSON
-                    if (result.status === 'success') {
-                        localStorage.setItem('id_sesion', result.id_sesion);  // Almacenar el ID de sesión
-                        console.log(result.id_sesion);
-                        alert('Login exitoso.');
-                        window.location.href = '../frontend/principal.php';  // Redirigir a la página principal
-                    } else {
-                        alert('Error en el login: ' + result.message);  // Mostrar el mensaje de error
+                    try {
+                        let result = JSON.parse(response); // Parsear la respuesta como JSON
+                        if (result.status === 'success') {
+                            localStorage.setItem('id_sesion', result.id); // Usa el ID correcto
+                            console.log(result.id); // Muestra el ID del usuario
+                            alert('Login exitoso.');
+                            window.location.href = '../frontend/principal.php';
+                        } else {
+                            alert('Error en el login: ' + result.message);
+                        }
+                    } catch (error) {
+                        console.error('Error al procesar la respuesta del servidor:', error);
+                        alert('Respuesta no válida del servidor.');
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    console.error('Error en la solicitud:', textStatus, errorThrown);  // Manejo de errores
-                    alert("Hubo un error al procesar el login.");
+                    console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
+                    alert('Error al procesar la solicitud.');
                 }
             });
     });
@@ -585,10 +589,74 @@ $(document).ready(function() {
             }
         });
     });
+    
+        // Al cargar la página perfil.php
+        if (window.location.pathname.includes('perfil.php')) {
+            // Obtener el id_sesion del localStorage (asegúrate de que lo has guardado correctamente)
+            let id_sesion = localStorage.getItem('id_sesion');
+    
+            if (!id_sesion) {
+                alert("No se encontró una sesión activa.");
+                window.location.href = 'login.php'; // Redirigir al login si no hay sesión
+                return;
+            }
+    
+            console.log('ID de sesión:', id_sesion);
+    
+            // Hacer la solicitud AJAX al backend para obtener el perfil del usuario
+            $.ajax({
+                url: '../backend/eduplay-listAlumn.php',
+                type: 'POST',
+                data: JSON.stringify({ id_sesion: id_sesion }),
+                contentType: 'application/json; charset=utf-8',
+                success: function(response) {
+                    console.log('Respuesta del servidor:', response); // Ahora la respuesta es un objeto JavaScript automáticamente
+                    let result = JSON.parse(response);
+                    console.log('Resultado:', result);    
+                    const perfil = result.perfil;
+                    const progreso = result.progreso;
+            
+                        // Actualizar los datos del perfil en el DOM
+                        $('.perfil-detalles').html(`
+                            <h3>${perfil.nombre_com}</h3>
+                            <h3>Apodo: ${perfil.apodo}</h3>
+                            <h3>Grado: ${perfil.grado === 1 ? 'Primer Grado' : perfil.grado === 2 ? 'Segundo Grado' : 'Tercer Grado'}</h3>
+                            <h3>Edad: ${calcularEdad(perfil.fecha_nacimiento)} años</h3>
+                        `);
+            
+                        // Actualizar las barras de progreso de los cursos
+                        $('.curso .progreso').eq(0).css('width', progreso.Espanol + '%');
+                        $('.curso .progreso').eq(1).css('width', progreso.Matematicas + '%');
+                        $('.curso .progreso').eq(2).css('width', progreso.Ingles + '%');
+                    
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error('Error en la solicitud:', textStatus, errorThrown);
+                    console.log('Estado HTTP:', jqXHR.status); // Aquí verificamos el código de estado HTTP
+                    console.log('Respuesta del servidor:', jqXHR.responseText); // Para ver qué devolvió el servidor
+                    alert("Hubo un error al cargar el perfil.");
+                }
+            });
+        }
+                        
+    
+    // Función para calcular la edad a partir de la fecha de nacimiento
+    function calcularEdad(fechaNacimiento) {
+        let nacimiento = new Date(fechaNacimiento);
+        let hoy = new Date();
+        let edad = hoy.getFullYear() - nacimiento.getFullYear();
+        let m = hoy.getMonth() - nacimiento.getMonth();
+        if (m < 0 || (m === 0 && hoy.getDate() < nacimiento.getDate())) {
+            edad--;
+        }
+        return edad;
+    }
+    
 
-    // Al cargar la página, obtener el perfil del usuario
-    if (window.location.pathname.includes('../frontend/perfil.php')) {
-        id_sesion = localStorage.getItem('id_sesion');
+        // Al cargar la página mas-datos-tutor.php
+    if (window.location.pathname.includes('mas-datos-tutor.php')) {
+        // Obtener el id_sesion del localStorage
+        let id_sesion = localStorage.getItem('id_sesion');
 
         if (!id_sesion) {
             alert("No se encontró una sesión activa.");
@@ -596,91 +664,74 @@ $(document).ready(function() {
             return;
         }
 
-        // Solicitar datos del perfil
+        console.log('ID de sesión:', id_sesion);
+
+        // Hacer la solicitud AJAX al backend para obtener los datos del tutor
+        $.ajax({
+            url: '../backend/eduplay-listTutor.php', // Ruta del backend para obtener los datos del tutor
+            type: 'POST',
+            data: JSON.stringify({ id_sesion: id_sesion }), // Enviamos el ID de sesión como JSON
+            contentType: 'application/json; charset=utf-8',
+            success: function(response) {
+                console.log('Respuesta del servidor:', response); // Ver respuesta del servidor
+                let result = JSON.parse(response); // Parsear la respuesta JSON
+                const tutor = result.perfil;
+
+                    // Actualizar los campos del tutor en el DOM
+                    $('.datos').eq(0).find('p').text(tutor.nombres || 'N/A');
+                    $('.datos').eq(1).find('p').text(tutor.apellidos || 'N/A');
+                    $('.datos').eq(2).find('p').text(tutor.email || 'N/A');
+                    $('.datos').eq(3).find('p').text(tutor.fecha_nacimiento || 'N/A');
+                    $('.datos').eq(4).find('p').text('********'); // Ocultamos la contraseña
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
+                alert("Hubo un error al obtener los datos del tutor.");
+            }
+        });
+    }
+
+    // Al cargar la página mas-datos-nino
+    if (window.location.pathname.includes('mas-datos-niño.php')) {
+        // Obtener el id_sesion del localStorage (asegúrate de que lo has guardado correctamente)
+        let id_sesion = localStorage.getItem('id_sesion');
+
+        if (!id_sesion) {
+            alert("No se encontró una sesión activa.");
+            window.location.href = 'login.php'; // Redirigir al login si no hay sesión
+            return;
+        }
+
+        console.log('ID de sesión:', id_sesion);
+
+        // Hacer la solicitud AJAX al backend para obtener el perfil del usuario
         $.ajax({
             url: '../backend/eduplay-listAlumn.php',
             type: 'POST',
             data: JSON.stringify({ id_sesion: id_sesion }),
             contentType: 'application/json; charset=utf-8',
             success: function(response) {
+                console.log('Respuesta del servidor:', response); // Ahora la respuesta es un objeto JavaScript automáticamente
                 let result = JSON.parse(response);
-                if (result.status === 'success') {
-                    const perfil = result.perfil;
-                    const progreso = result.progreso;
-                    const grados = {
-                        1: 'Primer Grado',
-                        2: 'Segundo Grado',
-                        3: 'Tercer Grado'
-                    }
-                    let grado = grados[perfil.grado] || "Grado no disponible";
-
-                    // Actualizar datos del perfil en el DOM
-                    $('.perfil-detalles').html(`
-                        <h3>${perfil.nombre}</h3>
-                        <h3>Apodo: ${perfil.apodo}</h3>
-                        <h3>Grado: ${grado}</h3>
-                        <h3>Edad: ${calcularEdad(perfil.fecha_nacimiento)} años</h3>
-                    `);
-
-                    // Asumiendo orden en el DOM: Español, Matemáticas, Inglés
-                    $('.curso .progreso').eq(0).css('width', progreso.Español + '%');
-                    $('.curso .progreso').eq(1).css('width', progreso.Matemáticas + '%');
-                    $('.curso .progreso').eq(2).css('width', progreso.Inglés + '%');
-                } else {
-                    alert(result.message || 'Error al cargar el perfil.');
-                }
+                console.log('Resultado:', result);    
+                const perfil = result.perfil;
+        
+                    // Actualizar los datos del perfil en el DOM
+                    $('.datos').eq(0).find('p').text(perfil.nombre || 'N/A');
+                    $('.datos').eq(1).find('p').text(perfil.apellidos || 'N/A');
+                    $('.datos').eq(2).find('p').text(perfil.fecha_nacimiento || 'N/A');
+                    $('.datos').eq(3).find('p').text(perfil.grado === 1 ? 'Primer Grado' : perfil.grado === 2 ? 'Segundo Grado' : 'Tercer Grado');
+                
             },
-                error: function(jqXHR, textStatus, errorThrown) {
+            error: function(jqXHR, textStatus, errorThrown) {
                 console.error('Error en la solicitud:', textStatus, errorThrown);
+                console.log('Estado HTTP:', jqXHR.status); // Aquí verificamos el código de estado HTTP
+                console.log('Respuesta del servidor:', jqXHR.responseText); // Para ver qué devolvió el servidor
                 alert("Hubo un error al cargar el perfil.");
-                }
+            }
         });
     }
 
-        // Verifica si la página actual es la correcta
-        if (window.location.pathname.includes('mas-datos-tutor.php')) {
-            let id_sesion = localStorage.getItem('id_sesion');
-    
-            // Verifica si hay una sesión activa
-            if (!id_sesion) {
-                alert("No se encontró una sesión activa.");
-                window.location.href = '../frontend/login.php'; // Redirige al login si no hay sesión
-                return;
-            }
-    
-            // Solicita los datos del tutor al backend
-            $.ajax({
-                url: '../backend/eduplay-datosTutor.php', // Ruta del backend para obtener los datos del tutor
-                type: 'POST',
-                data: JSON.stringify({ id_sesion: id_sesion }),
-                contentType: 'application/json; charset=utf-8',
-                success: function(response) {
-                    try {
-                        let result = JSON.parse(response);
-    
-                        if (result.status === 'success') {
-                            const tutor = result.datos;
-    
-                            // Actualiza los campos en el DOM con los datos del tutor
-                            $('.datos').eq(0).find('p').text(tutor.nombres || 'N/A');
-                            $('.datos').eq(1).find('p').text(tutor.apellidos || 'N/A');
-                            $('.datos').eq(2).find('p').text(tutor.email || 'N/A');
-                            $('.datos').eq(3).find('p').text(tutor.fecha_nacimiento || 'N/A');
-                            $('.datos').eq(4).find('p').text('********'); // Ocultamos la contraseña
-                        } else {
-                            alert(result.message || 'Error al cargar los datos del tutor.');
-                        }
-                    } catch (e) {
-                        console.error('Error procesando la respuesta del servidor:', response);
-                        alert("Hubo un problema al procesar los datos.");
-                    }
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
-                    alert("Hubo un error al obtener los datos del tutor.");
-                }
-            });
-        }
 
     $('#eliminar-cuenta').click(function(e) {
         e.preventDefault();  // Evita que el enlace realice su acción por defecto
@@ -760,26 +811,22 @@ $(document).ready(function() {
         }
 
         // Mostrar prompt para pedir la clave
-        const userInput = prompt("Por favor, introduce la clave:");
+        const clave = prompt("Por favor, introduce la clave:");
 
         
+        console.log(clave);
 
-        // Crear el objeto JSON con los datos de la validació
-        let val = {
-            'id': id_sesion,
-            'clave': userInput  
-        };
-        console.log(val);
-
-        if (userInput) {
+        if (clave) {
             // Realizar la petición AJAX
             $.ajax({
                 url: '../backend/eduplay-validarClave.php', // Archivo PHP para validar la clave
                 type: 'POST',
-                data: JSON.stringify({ validar: val}),  // Enviar ambos objetos JSON
+                data: JSON.stringify({ id: id_sesion, clave: clave}),  // Enviar ambos objetos JSON
                 contentType: 'application/json; charset=utf-8',// Enviar la clave como POST
                 success: function (response) {
-                    if (response.status === 'success') {
+                    let result = JSON.parse(response);
+                    console.log(result);
+                    if (result.status === 'success') {
                         alert('Clave válida, puedes continuar.');
                         window.location.href = 'mas.php'; // Redirigir al enlace
                     } else {

@@ -7,4 +7,5 @@
     $edu = new Read('eduplay');
     $edu->encontrarUsuario( $data);
     echo $edu->getData();
+
 ?>
