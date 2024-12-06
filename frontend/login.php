@@ -14,15 +14,16 @@
 
     <div class="wrapper"> 
       <h1>Iniciar Sesión</h1>
-      <form action="#" id="form-login">
-        <input type="email" placeholder="Email" id="email">
-        <input type="password" placeholder="Contraseña" id="password">
+
+      <form action="login.php" method="POST">
+        <input type="email" name="email" id="email" placeholder="Email" required>
+        <input type="password" name="password" id="password" placeholder="Contraseña" required>
         <div class="recover">
           <a href="#">¿Olvidaste tu contraseña?</a>
         </div>
       </form>
       <div class="section-inicio-btns">
-        <a id="login" href="#" role="button"><span>Iniciar Sesión</span></a>
+        <button type="submit" id="login"><span>Iniciar Sesión</span></button>
       </div>
       <div class="member">
         ¿No tienes cuenta? <a href="signup.php">

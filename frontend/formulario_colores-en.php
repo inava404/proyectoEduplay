@@ -23,7 +23,7 @@
             <li><a href="retos.php">Retos <img src="src/img/retos.png" alt="Logo retos" width="40px"></a></li>
             <li><a href="perfil.php">Perfil <img src="src/img/perfil.png" alt="Logo perfil" width="40px"></a></li>
             <li><a href="mas.php">Más <img src="src/img/Más.png" alt="Logo más" width="40px"></a></li>
-            <li><a href="inicio.php">Salir <img src="src/img/cerrar-sesion.png" alt="Logo salir" width="40px"></a></li>
+            <li><button type="submit" id="logout">Salir <img src="src/img/cerrar-sesion.png" alt="Logo salir" width="40px"></button></li>
         </ul>
     </aside>
 
@@ -36,47 +36,47 @@
                 <div class="form-images">
                     <img src="src/img/cielo.png" alt="Cielo">
                 </div>
-                <input type="radio" name="pregunta1" value="A"> A) Blue<br>
-                <input type="radio" name="pregunta1" value="B"> B) Green<br>
-                <input type="radio" name="pregunta1" value="C"> C) Red<br>
-                <input type="radio" name="pregunta1" value="D"> D) Yellow
+                <input id="1A" type="radio" name="pregunta1" value="A"> A) Blue<br>
+                <input id="1B" type="radio" name="pregunta1" value="B"> B) Green<br>
+                <input id="1C" type="radio" name="pregunta1" value="C"> C) Red<br>
+                <input id="1D" type="radio" name="pregunta1" value="D"> D) Yellow
             </div>
 
             <div class="form-group">
                 <label>Un plátano es amarillo, ¿Cómo se dice ese color en inglés?</label>
                 <div class="form-images">
-                        <img src="src/img/platano.png" alt="Platano">
-                    </div>
-                <input type="radio" name="pregunta2" value="A"> A) Yellow<br>
-                <input type="radio" name="pregunta2" value="B"> B) Green<br>
-                <input type="radio" name="pregunta2" value="C"> C) Red<br>
-                <input type="radio" name="pregunta2" value="D"> D) Purple
+                    <img src="src/img/platano.png" alt="Platano">
+                </div>
+                <input id="2A" type="radio" name="pregunta2" value="A"> A) Yellow<br>
+                <input id="2B" type="radio" name="pregunta2" value="B"> B) Green<br>
+                <input id="2C" type="radio" name="pregunta2" value="C"> C) Red<br>
+                <input id="2D" type="radio" name="pregunta2" value="D"> D) Purple
             </div>
 
             <div class="form-group">
-                <label>¿De qué color son las hojas del arbol</label>
+                <label>¿De qué color son las hojas del árbol?</label>
                 <div class="form-images">
                     <img src="src/img/arbol.png" alt="Arbol">
                 </div>
-                <input type="radio" name="pregunta3" value="A"> A) Black<br>
-                <input type="radio" name="pregunta3" value="B"> B) White<br>
-                <input type="radio" name="pregunta3" value="C"> C) Green<br>
-                <input type="radio" name="pregunta3" value="D"> D) Pink
+                <input id="3A" type="radio" name="pregunta3" value="A"> A) Black<br>
+                <input id="3B" type="radio" name="pregunta3" value="B"> B) White<br>
+                <input id="3C" type="radio" name="pregunta3" value="C"> C) Green<br>
+                <input id="3D" type="radio" name="pregunta3" value="D"> D) Pink
             </div>
 
             <div class="form-group">
                 <label>¿Qué color es la pelota?</label>
                 <div class="form-images">
-                        <img src="src/img/circulo.png" alt="Pelota">
-                    </div>
-                <input type="radio" name="pregunta4" value="A"> A) Red<br>
-                <input type="radio" name="pregunta4" value="B"> B) Pink<br>
-                <input type="radio" name="pregunta4" value="C"> C) Blue<br>
-                <input type="radio" name="pregunta4" value="D"> D) Gray
-            </div>
-                <div class="form-btns">
-                    <button type="submit" id="form-colores-en"><span>¡He terminado!</span></button>
+                    <img src="src/img/circulo.png" alt="Pelota">
                 </div>
+                <input id="4A" type="radio" name="pregunta4" value="A"> A) Red<br>
+                <input id="4B" type="radio" name="pregunta4" value="B"> B) Pink<br>
+                <input id="4C" type="radio" name="pregunta4" value="C"> C) Blue<br>
+                <input id="4D" type="radio" name="pregunta4" value="D"> D) Gray
+            </div>
+            <div class="form-btns">
+                <button type="submit" id="form-colores-en"><span>¡He terminado!</span></button>
+            </div>
             </form>
         </div>
     </div>

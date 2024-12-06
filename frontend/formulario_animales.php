@@ -23,7 +23,7 @@
             <li><a href="retos.php">Retos <img src="src/img/retos.png" alt="Logo retos" width="40px"></a></li>
             <li><a href="perfil.php">Perfil <img src="src/img/perfil.png" alt="Logo perfil" width="40px"></a></li>
             <li><a href="mas.php">Más <img src="src/img/Más.png" alt="Logo más" width="40px"></a></li>
-            <li><a href="inicio.php">Salir <img src="src/img/cerrar-sesion.png" alt="Logo salir" width="40px"></a></li>
+            <li><button type="submit" id="logout">Salir <img src="src/img/cerrar-sesion.png" alt="Logo salir" width="40px"></button></li>
         </ul>
     </aside>
 
@@ -31,61 +31,61 @@
     <div class="formulario-materias">
         <div class="materias-wrapper">
             <form id="form_animales_es" action="#">
-                <div class="form-group">
-                    <label>¿Cuál de estos animales puede volar?</label>
-                    <div class="form-images">
-                        <img src="src/img/leon.png" alt="Leon">
-                        <img src="src/img/perro.png" alt="Perro">
-                        <img src="src/img/aguila.png" alt="Águila">
-                        <img src="src/img/delfin.png" alt="Delfín">
-                    </div>
-                    <input type="radio" name="pregunta1" value="A"> A) León<br>
-                    <input type="radio" name="pregunta1" value="B"> B) Perro<br>
-                    <input type="radio" name="pregunta1" value="C"> C) Águila<br>
-                    <input type="radio" name="pregunta1" value="D"> D) Delfín
+            <div class="form-group">
+                <label>¿Cuál de estos animales puede volar?</label>
+                <div class="form-images">
+                    <img src="src/img/leon.png" alt="Leon">
+                    <img src="src/img/perro.png" alt="Perro">
+                    <img src="src/img/aguila.png" alt="Águila">
+                    <img src="src/img/delfin.png" alt="Delfín">
                 </div>
+                <input id="1A" type="radio" name="pregunta1" value="A"> A) León<br>
+                <input id="1B" type="radio" name="pregunta1" value="B"> B) Perro<br>
+                <input id="1C" type="radio" name="pregunta1" value="C"> C) Águila<br>
+                <input id="1D" type="radio" name="pregunta1" value="D"> D) Delfín
+            </div>
 
-                <div class="form-group">
-                    <label>¿Qué animal hace el sonido "miau"?</label>
-                    <div class="form-images">
-                        <img src="src/img/perro.png" alt="Perro">
-                        <img src="src/img/gato.png" alt="Gato">
-                        <img src="src/img/vaca.png" alt="Vaca">
-                        <img src="src/img/caballo.png" alt="Caballo">
-                    </div>
-                    <input type="radio" name="pregunta2" value="A"> A) Perro<br>
-                    <input type="radio" name="pregunta2" value="B"> B) Gato<br>
-                    <input type="radio" name="pregunta2" value="C"> C) Vaca<br>
-                    <input type="radio" name="pregunta2" value="D"> D) Caballo
+            <div class="form-group">
+                <label>¿Qué animal hace el sonido "miau"?</label>
+                <div class="form-images">
+                    <img src="src/img/perro.png" alt="Perro">
+                    <img src="src/img/gato.png" alt="Gato">
+                    <img src="src/img/vaca.png" alt="Vaca">
+                    <img src="src/img/caballo.png" alt="Caballo">
                 </div>
+                <input id="2A" type="radio" name="pregunta2" value="A"> A) Perro<br>
+                <input id="2B" type="radio" name="pregunta2" value="B"> B) Gato<br>
+                <input id="2C" type="radio" name="pregunta2" value="C"> C) Vaca<br>
+                <input id="2D" type="radio" name="pregunta2" value="D"> D) Caballo
+            </div>
 
-                <div class="form-group">
-                    <label>¿Cuál de estos animales vive en el agua?</label>
-                    <div class="form-images">
-                        <img src="src/img/elefante.png" alt="Elefante">
-                        <img src="src/img/tiburon.png" alt="Tiburón">
-                        <img src="src/img/tigre.png" alt="Tigre">
-                        <img src="src/img/loro.png" alt="Loro">
-                    </div>
-                    <input type="radio" name="pregunta3" value="A"> A) Elefante<br>
-                    <input type="radio" name="pregunta3" value="B"> B) Tiburón<br>
-                    <input type="radio" name="pregunta3" value="C"> C) Tigre<br>
-                    <input type="radio" name="pregunta3" value="D"> D) Loro
+            <div class="form-group">
+                <label>¿Cuál de estos animales vive en el agua?</label>
+                <div class="form-images">
+                    <img src="src/img/elefante.png" alt="Elefante">
+                    <img src="src/img/tiburon.png" alt="Tiburón">
+                    <img src="src/img/tigre.png" alt="Tigre">
+                    <img src="src/img/loro.png" alt="Loro">
                 </div>
+                <input id="3A" type="radio" name="pregunta3" value="A"> A) Elefante<br>
+                <input id="3B" type="radio" name="pregunta3" value="B"> B) Tiburón<br>
+                <input id="3C" type="radio" name="pregunta3" value="C"> C) Tigre<br>
+                <input id="3D" type="radio" name="pregunta3" value="D"> D) Loro
+            </div>
 
-                <div class="form-group">
-                    <label>¿Qué animal pone huevos?</label>
-                    <div class="form-images">
-                        <img src="src/img/gato.png" alt="Gato">
-                        <img src="src/img/gallina.png" alt="Gallina">
-                        <img src="src/img/perro.png" alt="Perro">
-                        <img src="src/img/caballo.png" alt="Caballo">
-                    </div>
-                    <input type="radio" name="pregunta4" value="A"> A) Gato<br>
-                    <input type="radio" name="pregunta4" value="B"> B) Gallina<br>
-                    <input type="radio" name="pregunta4" value="C"> C) Perro<br>
-                    <input type="radio" name="pregunta4" value="D"> D) Caballo
+            <div class="form-group">
+                <label>¿Qué animal pone huevos?</label>
+                <div class="form-images">
+                    <img src="src/img/gato.png" alt="Gato">
+                    <img src="src/img/gallina.png" alt="Gallina">
+                    <img src="src/img/perro.png" alt="Perro">
+                    <img src="src/img/caballo.png" alt="Caballo">
                 </div>
+                <input id="4A" type="radio" name="pregunta4" value="A"> A) Gato<br>
+                <input id="4B" type="radio" name="pregunta4" value="B"> B) Gallina<br>
+                <input id="4C" type="radio" name="pregunta4" value="C"> C) Perro<br>
+                <input id="4D" type="radio" name="pregunta4" value="D"> D) Caballo
+            </div>
                 <div class="form-btns">
                     <button type="submit" id="form-animales-es"><span>¡He terminado!</span></button>
                 </div>

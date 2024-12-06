@@ -21,7 +21,7 @@
             <li><a href="retos.php">Retos <img src="src/img/retos.png" alt="Logo retos" width="40px"></a></li>
             <li><a href="perfil.php">Perfil <img src="src/img/perfil.png" alt="Logo perfil" width="40px"></a></li>
             <li><a href="mas.php">Más <img src="src/img/Más.png" alt="Logo más" width="40px"></a></li>
-            <li><a href="inicio.php">Salir <img src="src/img/cerrar-sesion.png" alt="Logo salir" width="40px"></a></li>
+            <li><button type="submit" id="logout">Salir <img src="src/img/cerrar-sesion.png" alt="Logo salir" width="40px"></button></li>
         </ul>
     </aside>
 
@@ -36,7 +36,7 @@
         </div>
         <div class="section-inicio-btns-red">
             <ul>
-                <li><a href="#"><span>Eliminar cuenta</span></a><img src="src/img/eliminar.png" alt="Eliminar logo"></li>
+                <li><button><span>Eliminar cuenta</span></button><img src="src/img/eliminar.png" alt="Eliminar logo"></li>
             </ul>
         </div>
     </div>
