@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-12-2024 a las 03:15:17
+-- Tiempo de generación: 06-12-2024 a las 06:50:17
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -32,8 +32,8 @@ CREATE TABLE `alumnos` (
   `nombres` varchar(50) NOT NULL,
   `apellidos` varchar(50) NOT NULL,
   `apodo` varchar(30) NOT NULL,
-  `fecha_nacimiento` varchar(10) NOT NULL,
-  `grado_curso` varchar(20) NOT NULL,
+  `fecha_nacimiento` date NOT NULL,
+  `grado_curso` int(11) NOT NULL,
   `ID_Estadisticas` int(11) NOT NULL,
   `Eliminado` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -43,7 +43,8 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`ID`, `nombres`, `apellidos`, `apodo`, `fecha_nacimiento`, `grado_curso`, `ID_Estadisticas`, `Eliminado`) VALUES
-(1, 'Sherlyn', 'Viveros Reyes', 'User', '17-08-2018', '1', 1, 0);
+(1, 'Sherlyn', 'Viveros Reyes', 'User', '2018-07-17', 1, 1, 0),
+(2, 'Julieta', 'Martinez', 'User', '2020-04-29', 1, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -73,7 +74,8 @@ CREATE TABLE `estadisticas` (
 --
 
 INSERT INTO `estadisticas` (`ID`, `porcen_español`, `porcen_matematicas`, `porcen_ingles`, `ID_reto_diario1`, `check_rd1`, `ID_reto_diario2`, `check_rd2`, `ID_reto_diario3`, `check_rd3`, `reto_sem`, `check_rs`, `reto_mens`, `check_rm`) VALUES
-(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -95,10 +97,10 @@ CREATE TABLE `material` (
 --
 
 INSERT INTO `material` (`ID`, `grado`, `materia`, `tipo_material`, `actividad`, `respuesta`) VALUES
-(1, 1, 'Español', 'Vocabulario', '¿Cómo se llama el lugar donde estudias?', 'Escuela'),
-(2, 1, 'Español', 'Vocabulario', '¿Qué palabra es el nombre de un juguete?', 'Pelota'),
-(3, 1, 'Español', 'Vocabulario', '¿Qué haces cuando tienes sueño?', 'Dormir'),
-(4, 1, 'Español', 'Vocabulario', '¿De qué color es el pasto?', 'Verde'),
+(1, 1, 'Español', 'Vocabulario', 'Pregunta1', 'B'),
+(2, 1, 'Español', 'Vocabulario', 'Pregunta2', 'A'),
+(3, 1, 'Español', 'Vocabulario', 'Pregunta3', 'C'),
+(4, 1, 'Español', 'Vocabulario', 'Pregunta4', 'A'),
 (5, 1, 'Español', 'Colores', '¿De qué color es el cielo cuando no hay nubes?', 'Azul'),
 (6, 1, 'Español', 'Colores', '¿Cuál de estos objetos es de color amarillo?', 'Plátano'),
 (7, 1, 'Español', 'Colores', 'El color de una fresa es:', 'Rojo'),
@@ -125,11 +127,11 @@ CREATE TABLE `retos` (
 
 CREATE TABLE `sesiones` (
   `ID` int(11) NOT NULL,
-  `usuario` varchar(30) NOT NULL,
-  `contrasena` varchar(20) NOT NULL,
-  `ID_Alumno` int(11) NOT NULL,
+  `usuario` varchar(255) NOT NULL,
+  `contrasena` varchar(255) NOT NULL,
   `ID_Tutor` int(11) NOT NULL,
-  `clave` int(11) DEFAULT NULL,
+  `ID_Alumno` int(11) NOT NULL,
+  `clave` int(11) NOT NULL,
   `eliminado` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -137,8 +139,9 @@ CREATE TABLE `sesiones` (
 -- Volcado de datos para la tabla `sesiones`
 --
 
-INSERT INTO `sesiones` (`ID`, `usuario`, `contrasena`, `ID_Alumno`, `ID_Tutor`, `clave`, `eliminado`) VALUES
-(1, 'haciel@gmail.com', 'Holamundo', 1, 1, 12345, 0);
+INSERT INTO `sesiones` (`ID`, `usuario`, `contrasena`, `ID_Tutor`, `ID_Alumno`, `clave`, `eliminado`) VALUES
+(1, 'haciel@gmail.com', '$2y$10$2bl/X5ntIGo9vBcVz1dM6.GVNaKYo.B6vSRqh4YvyPUWz5omBWmBe', 1, 1, 12345, 0),
+(2, 'mario@gmail.com', '$2y$10$FfrPtgC9zN5v3c.C74uvw.JYDJQGZRzFu..pCoJcfQOUMZPbREBA2', 2, 2, 12345, 0);
 
 -- --------------------------------------------------------
 
@@ -150,7 +153,7 @@ CREATE TABLE `tutores` (
   `ID` int(11) NOT NULL,
   `nombres` varchar(50) NOT NULL,
   `apellidos` varchar(50) NOT NULL,
-  `fecha_nacimiento` varchar(10) NOT NULL,
+  `fecha_nacimiento` date NOT NULL,
   `eliminado` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -159,7 +162,8 @@ CREATE TABLE `tutores` (
 --
 
 INSERT INTO `tutores` (`ID`, `nombres`, `apellidos`, `fecha_nacimiento`, `eliminado`) VALUES
-(1, 'Haciel', 'Viveros Reyes', '29-04-2004', 0);
+(1, 'Haciel Antonio', 'Viveros Reyes', '2004-04-29', 0),
+(2, 'Mario', 'Martinez', '2001-04-21', 0);
 
 --
 -- Índices para tablas volcadas
@@ -189,8 +193,9 @@ ALTER TABLE `material`
 --
 ALTER TABLE `sesiones`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `FK_ID_Alumnos` (`ID_Alumno`),
-  ADD KEY `FK_ID_Tutores` (`ID_Tutor`);
+  ADD UNIQUE KEY `usuario` (`usuario`),
+  ADD KEY `FK_ID_Tutores` (`ID_Tutor`),
+  ADD KEY `FK_ID_Alumnos` (`ID_Alumno`);
 
 --
 -- Indices de la tabla `tutores`
@@ -206,13 +211,13 @@ ALTER TABLE `tutores`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `estadisticas`
 --
 ALTER TABLE `estadisticas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `material`
@@ -224,13 +229,13 @@ ALTER TABLE `material`
 -- AUTO_INCREMENT de la tabla `sesiones`
 --
 ALTER TABLE `sesiones`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tutores`
 --
 ALTER TABLE `tutores`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas

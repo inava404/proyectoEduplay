@@ -10,46 +10,41 @@ class Read extends DataBase {
     }
 
 
-        public function encontrarUsuario($jsonOBJ) {
-            // Preparar la consulta para evitar inyección SQL
-            $stmt = $this->conexion->prepare("SELECT * FROM sesiones WHERE usuario = ?");
+    public function encontrarUsuario($jsonOBJ) {
+        // Realiza la consulta para obtener los resultados
+    if ($result = $this->conexion->query("SELECT * FROM sesiones WHERE usuario = '{$jsonOBJ->email}'")) {
+        // Verificar si se encontró algún usuario
+        if ($result->num_rows > 0) {
+            // Obtener la primera fila del resultado
+            $row = $result->fetch_assoc();  // Guardamos la primera fila de la consulta en $row
             
-            if ($stmt) {
-                // Asociar los parámetros a la consulta
-                $stmt->bind_param("s", $jsonOBJ->email);
-                
-                // Ejecutar la consulta
-                $stmt->execute();
-                
-                // Obtener el resultado
-                $result = $stmt->get_result();
-                
-                if ($result->num_rows > 0) {
-                    if(password_verify($jsonOBJ->password, $result->fetch_assoc()['contrasena'])) {
-                        $this->data['status'] = 'success';
-                        $this->data['message'] = 'Usuario encontrado';
-                        $this->data['id'] = $jsonOBJ->ID;
-                    } else {
-                        $this->data['status'] = 'error';
-                        $this->data['message'] = 'Usuario o contraseña incorrectos.';
-                    }
-                } else {
-                    // Si no se encuentra el usuario
-                    $this->data['status'] = 'error';
-                    $this->data['message'] = 'Usuario o contraseña incorrectos.';
-                }
-                
-                // Liberar el resultado y cerrar el statement
-                $result->free();
-                $stmt->close();
+            // Verificar si la contraseña proporcionada coincide con la almacenada en la base de datos
+            if (password_verify($jsonOBJ->password, $row['contrasena'])) {
+                // Si la contraseña es correcta, devuelve la información del usuario
+                $this->data['status'] = 'success';
+                $this->data['message'] = 'Usuario encontrado';
+                $this->data['id'] = $row['ID'];  // Aquí deberías asignar el ID del usuario correctamente
             } else {
+                // Si la contraseña no es válida
                 $this->data['status'] = 'error';
-                $this->data['message'] = 'Error al preparar la consulta: ' . $this->conexion->error;
+                $this->data['message'] = 'Usuario o contraseña incorrectos.';
             }
-        
-        // Cerrar la conexión
-        $this->conexion->close();
+        } else {
+            // Si no se encuentra el usuario
+            $this->data['status'] = 'error';
+            $this->data['message'] = 'Usuario o contraseña incorrectos.';
         }
+
+        // Liberar el resultado
+        $result->free();
+    } else {
+        // Si ocurre un error al ejecutar la consulta
+        die('Query Error: ' . mysqli_error($this->conexion));
+    }
+
+    // Cerrar la conexión
+    $this->conexion->close();
+}
 
         public function verifResp($jsonOBJ) {
             // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
