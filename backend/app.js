@@ -1,34 +1,4 @@
-$(document).ready(function() {
-    let validacion, validacionTutor, validacionNino;
-    
-    if ($('#form-login').length) {
-        validacion = new JustValidate('#form-login');
-
-        validacion
-        .addField('#email', [
-            {
-                rule: 'required',
-                errorMessage: 'El email es obligatorio',  // Agrega mensaje de error
-            },
-            {
-                rule: 'email',
-                errorMessage: 'Introduce un email válido.',  // Agrega mensaje de error
-            },
-        ])
-        .addField('#password', [
-            {
-                rule: 'required',
-                errorMessage: 'La contraseña es obligatoria.',
-            },
-            {
-                rule: 'minLength',
-                value: 8,
-                errorMessage: 'La contraseña debe tener al menos 8 caracteres.',
-            },
-        ]);
-    }
-
-    
+$(document).ready(function() {    
     // SE ASIGNA EL EVENTO CLICK AL BOTÓN DE INICIAR SESIÓN
     $('#login').on('click', function(e) {
         e.preventDefault();  // Evita que el formulario se envíe
@@ -47,9 +17,6 @@ $(document).ready(function() {
             alert("El campo de contraseña no puede estar vacío.");
             return;
         }
-
-        validacion.validate().then(function(isValid) {
-            if(isValid) {
     
         // Si ambas validaciones pasan
         alert("Validaciones correctas, puedes proceder.");
@@ -86,108 +53,7 @@ $(document).ready(function() {
                     alert("Hubo un error al procesar el login.");
                 }
             });
-        }
     });
-    });
-
-    if ($('#form-tutor').length) {
-        validacionTutor = new JustValidate("#form-tutor");
-            validacionTutor
-            .addField('#nombre', [
-                {
-                    rule: 'required',
-                    errorMessage: 'El nombre es obligatorio.',
-                },
-                {
-                    rule: 'minLength',
-                    value: 2,
-                    errorMessage: 'El nombre debe tener al menos 2 caracteres.',
-                },
-                {
-                    rule: 'maxLength',
-                    value: 50,
-                    errorMessage: 'El nombre no puede tener más de 50 caracteres.',
-                },
-            ])
-            .addField('#apellido', [
-                {
-                    rule: 'required',
-                    errorMessage: 'Los apellidos son obligatorios.',
-                },
-                {
-                    rule: 'minLength',
-                    value: 2,
-                    errorMessage: 'Los apellidos deben tener al menos 2 caracteres.',
-                },
-                {
-                    rule: 'maxLength',
-                    value: 50,
-                    errorMessage: 'Los apellidos no pueden tener más de 50 caracteres.',
-                },
-            ])
-            .addField('#fecha_nac', [
-                {
-                    rule: 'required',
-                    errorMessage: 'La fecha de nacimiento es obligatoria.',
-                },
-                {
-                    rule: 'customRegexp',
-                    value: /^(0[1-9]|1[0-9]|2[0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/,  // Expresión regular para formato dd/mm/yyyy
-                    errorMessage: 'Introduce una fecha válida (dd/mm/yyyy).',
-                },
-            ])
-            .addField('#email', [
-                {
-                    rule: 'required',
-                    errorMessage: 'El email es obligatorio.',
-                },
-                {
-                    rule: 'email',
-                    errorMessage: 'Introduce un email válido.',
-                },
-            ])
-            .addField('#password', [
-                {
-                    rule: 'required',
-                    errorMessage: 'La contraseña es obligatoria.',
-                },
-                {
-                    rule: 'minLength',
-                    value: 8,
-                    errorMessage: 'La contraseña debe tener al menos 8 caracteres.',
-                },
-                {
-                    rule: 'maxLength',
-                    value: 50,
-                    errorMessage: 'La contraseña no puede tener más de 50 caracteres.',
-                },
-            ])
-            .addField('#password_conf', [
-                {
-                    rule: 'required',
-                    errorMessage: 'La confirmación de la contraseña es obligatoria.',
-                },
-                {
-                    rule: 'minLength',
-                    value: 8,
-                    errorMessage: 'La contraseña debe tener al menos 8 caracteres.',
-                },
-                {
-                    rule: 'maxLength',
-                    value: 50,
-                    errorMessage: 'La contraseña no puede tener más de 50 caracteres.',
-                },
-                {
-                    rule: 'custom',
-                    errorMessage: 'Las contraseñas no coinciden.',
-                    validator: function() {
-                        const password = document.querySelector('#password').value;
-                        const confirmPassword = document.querySelector('#password_conf').value;
-                        return password === confirmPassword;
-                    },
-                },
-            ]);
-    }
 
     // SE ASIGNA EL EVENTO CLICK AL BOTON DE REGISTRAR TUTOR
     $('#signup-tutor').on('click', function(e){
@@ -238,9 +104,6 @@ $(document).ready(function() {
             }
         }
 
-        //Ejecuta las validaciones de JustValidate
-        validacionTutor.validate().then(function(isValid) {
-            if (isValid) {
                 // Obtener los valores de los inputs
                 let email = $('input[placeholder="Email"]').val();
                 let nombre = $('input[placeholder="Nombre(s)"]').val();
@@ -261,54 +124,8 @@ $(document).ready(function() {
             localStorage.setItem('tutorData', JSON.stringify(tutorData));
 
             window.location.href = '../frontend/signup-niño.php';
-            };
-        });
     });
-
-    if ($('#form-nino').length) {
-        validacionNino = new JustValidate("#form-nino");
-        validacionNino
-            .addField('#nombre', {
-                rules: {
-                    required: true,
-                    minLength: 2,
-                    maxLength: 50
-                }
-            })
-            .addField('#apellido', {
-                rules: {
-                    required: true,
-                    minLength: 2,
-                    maxLength: 50
-                }
-            })
-            .addField('#password', [
-                {
-                    rule: 'required',
-                    errorMessage: 'La contraseña es obligatoria.',
-                },
-                {
-                    rule: 'minLength',
-                    value: 8,
-                    errorMessage: 'La contraseña debe tener al menos 8 caracteres.',
-                },
-                {
-                    rule: 'maxLength',
-                    value: 50,
-                    errorMessage: 'La contraseña no puede tener más de 50 caracteres.',
-                },
-                {
-                    rule: 'custom',
-                    errorMessage: 'Las contraseñas no coinciden.',
-                    validator: function() {
-                        const password = document.querySelector('#password').value;
-                        const confirmPassword = document.querySelector('#password_conf').value;
-                        return password === confirmPassword;
-                    },
-                },
-            ]);
-    }
-    
+        
 
     // SE ASIGNA EL EVENTO CLICK AL BOTON DE REGISTRAR NIÑO
     $('#signup-nino').on('click', function(e){
@@ -332,9 +149,6 @@ $(document).ready(function() {
             alert("Por favor introduce una fecha de nacimiento válida.");
             return;
         }
-        
-        validacionNino.validate().then(function(isValid) {
-            if (isValid) {
                 // Obtener los valores de los inputs del formulario del niño
                 let grado = $('#grado').val();
                 let nombre_nino = $('#nombre').val();
@@ -380,8 +194,7 @@ $(document).ready(function() {
                         alert("Hubo un error al procesar el registro.");
                     }
                 });
-            }
-        });
+            
     });
     
     // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE VOCABULARIO ESPAÑOL
@@ -393,10 +206,10 @@ $(document).ready(function() {
         var respuestas = {
             materia: "español",
             tipo_material: "vocabulario",
-            pregunta1: $('#pregunta1:checked').val(),
-            pregunta2: $('#pregunta2:checked').val(),
-            pregunta3: $('#pregunta3:checked').val(),
-            pregunta4: $('#pregunta4:checked').val(),
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val()
         };
 
         // Validar que se haya seleccionado una respuesta para cada pregunta
@@ -432,14 +245,16 @@ $(document).ready(function() {
     $('#form_animales_es').submit(function(e){
         e.preventDefault();
 
+        console.log('input[name="pregunta1"]:checked');
+
         // Obtener las respuestas seleccionadas para cada pregunta
         var respuestas = {
             materia: "español",
             tipo_material: "animales",
-            pregunta1: $('#pregunta1:checked').val(),
-            pregunta2: $('#pregunta2:checked').val(),
-            pregunta3: $('#pregunta3:checked').val(),
-            pregunta4: $('#pregunta4:checked').val(),
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
         };
     
         // Validar que se haya seleccionado una respuesta para cada pregunta
@@ -480,10 +295,10 @@ $(document).ready(function() {
         var respuestas = {
             materia: "español",
             tipo_material: "colores",
-            pregunta1: $('#pregunta1:checked').val(),
-            pregunta2: $('#pregunta2:checked').val(),
-            pregunta3: $('#pregunta3:checked').val(),
-            pregunta4: $('#pregunta4:checked').val(),
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
         };
 
         // Validar que se haya seleccionado una respuesta para cada pregunta
@@ -523,10 +338,10 @@ $(document).ready(function() {
         var respuestas = {
             materia: "matematicas",
             tipo_material: "numeros",
-            pregunta1: $('#pregunta1:checked').val(),
-            pregunta2: $('#pregunta2:checked').val(),
-            pregunta3: $('#pregunta3:checked').val(),
-            pregunta4: $('#pregunta4:checked').val(),
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
         };
 
         // Validar que se haya seleccionado una respuesta para cada pregunta
@@ -566,10 +381,10 @@ $(document).ready(function() {
         var respuestas = {
             materia: "matematicas",
             tipo_material: "figuras",
-            pregunta1: $('#pregunta1:checked').val(),
-            pregunta2: $('#pregunta2:checked').val(),
-            pregunta3: $('#pregunta3:checked').val(),
-            pregunta4: $('#pregunta4:checked').val(),
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
         };
 
         // Validar que se haya seleccionado una respuesta para cada pregunta
@@ -609,10 +424,10 @@ $(document).ready(function() {
         var respuestas = {
             materia: "matematicas",
             tipo_material: "operaciones",
-            pregunta1: $('#pregunta1:checked').val(),
-            pregunta2: $('#pregunta2:checked').val(),
-            pregunta3: $('#pregunta3:checked').val(),
-            pregunta4: $('#pregunta4:checked').val(),
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
         };
 
         // Validar que se haya seleccionado una respuesta para cada pregunta
@@ -652,10 +467,10 @@ $(document).ready(function() {
         var respuestas = {
             materia: "ingles",
             tipo_material: "vocabulario",
-            pregunta1: $('#pregunta1:checked').val(),
-            pregunta2: $('#pregunta2:checked').val(),
-            pregunta3: $('#pregunta3:checked').val(),
-            pregunta4: $('#pregunta4:checked').val(),
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
         };
 
         // Validar que se haya seleccionado una respuesta para cada pregunta
@@ -695,10 +510,10 @@ $(document).ready(function() {
         var respuestas = {
             materia: "ingles",
             tipo_material: "animales",
-            pregunta1: $('#pregunta1:checked').val(),
-            pregunta2: $('#pregunta2:checked').val(),
-            pregunta3: $('#pregunta3:checked').val(),
-            pregunta4: $('#pregunta4:checked').val(),
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
         };
 
         // Validar que se haya seleccionado una respuesta para cada pregunta
@@ -738,10 +553,10 @@ $(document).ready(function() {
         var respuestas = {
             materia: "ingles",
             tipo_material: "colores",
-            pregunta1: $('#pregunta1:checked').val(),
-            pregunta2: $('#pregunta2:checked').val(),
-            pregunta3: $('#pregunta3:checked').val(),
-            pregunta4: $('#pregunta4:checked').val(),
+            pregunta1: $('input[name="pregunta1"]:checked').val(),
+            pregunta2: $('input[name="pregunta2"]:checked').val(),
+            pregunta3: $('input[name="pregunta3"]:checked').val(),
+            pregunta4: $('input[name="pregunta4"]:checked').val(),
         };
 
         // Validar que se haya seleccionado una respuesta para cada pregunta
@@ -824,7 +639,81 @@ $(document).ready(function() {
         });
     }
 
-    $('#logout').on('click', function(e) {
+    $(document).ready(function() {
+        // Verifica si la página actual es la correcta
+        if (window.location.pathname.includes('mas-datos-tutor.php')) {
+            let id_sesion = localStorage.getItem('id_sesion');
+    
+            // Verifica si hay una sesión activa
+            if (!id_sesion) {
+                alert("No se encontró una sesión activa.");
+                window.location.href = '../frontend/login.php'; // Redirige al login si no hay sesión
+                return;
+            }
+    
+            // Solicita los datos del tutor al backend
+            $.ajax({
+                url: '../backend/eduplay-datosTutor.php', // Ruta del backend para obtener los datos del tutor
+                type: 'POST',
+                data: JSON.stringify({ id_sesion: id_sesion }),
+                contentType: 'application/json; charset=utf-8',
+                success: function(response) {
+                    try {
+                        let result = JSON.parse(response);
+    
+                        if (result.status === 'success') {
+                            const tutor = result.datos;
+    
+                            // Actualiza los campos en el DOM con los datos del tutor
+                            $('.datos').eq(0).find('p').text(tutor.nombres || 'N/A');
+                            $('.datos').eq(1).find('p').text(tutor.apellidos || 'N/A');
+                            $('.datos').eq(2).find('p').text(tutor.email || 'N/A');
+                            $('.datos').eq(3).find('p').text(tutor.fecha_nacimiento || 'N/A');
+                            $('.datos').eq(4).find('p').text('********'); // Ocultamos la contraseña
+                        } else {
+                            alert(result.message || 'Error al cargar los datos del tutor.');
+                        }
+                    } catch (e) {
+                        console.error('Error procesando la respuesta del servidor:', response);
+                        alert("Hubo un problema al procesar los datos.");
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
+                    alert("Hubo un error al obtener los datos del tutor.");
+                }
+            });
+        }
+    });
+
+    $('#eliminar-cuenta').click(function(e) {
+        e.preventDefault();  // Evita que el enlace realice su acción por defecto
+
+        // Alerta de confirmación
+        if (!confirm("¿Estás seguro de que deseas eliminar tu cuenta? Esta acción es irreversible.")) {
+            return;  // Si el usuario cancela, no hacer nada
+        }
+
+        // Realizar la solicitud AJAX para eliminar la cuenta
+        $.ajax({
+            url: '../backend/eliminar-cuenta.php',  // Ruta del script PHP que manejará la eliminación de la cuenta
+            type: 'POST',
+            data: { 
+                id_sesion: localStorage.getItem('id_sesion') // Asegúrate de enviar el ID de sesión o cualquier dato necesario
+            },
+            success: function(response) {
+                alert('Cuenta eliminada correctamente.');
+                // Redirigir al login u otra página después de eliminar la cuenta
+                localStorage.removeItem('id_sesion');  // Eliminar el ID de sesión del localStorage
+                window.location.href = '../frontend/inicio.php';   
+            },
+            error: function() {
+                alert("Hubo un error al intentar eliminar la cuenta.");
+            }
+        });
+    });
+
+    $('#logout').click( function(e) {
         e.preventDefault();  // Evita que el enlace realice su acción por defecto
         
         //Alerta de confirmación
@@ -835,23 +724,16 @@ $(document).ready(function() {
         // Realizar la solicitud AJAX para cerrar sesión en el servidor
         $.ajax({
             url: '../backend/eduplay-logout.php',  // Ruta del script PHP para cerrar sesión
-            type: 'POST',
-            data: { action: 'logout' },  // Enviar un dato para identificar que es un cierre de sesión
-            success: function(response) {
-                // Si el cierre de sesión en el servidor es exitoso
-                let result = JSON.parse(response);
-                if (result.status === 'success') {
-                    // Eliminar el id de sesión en el localStorage
-                    localStorage.removeItem('id_sesion');
+            type: 'GET',
+            success: function() {
+                alert('Sesión cerrada correctamente.');
+                // Eliminar el id de sesión en el localStorage
+                localStorage.removeItem('id_sesion');
     
-                    // Redirigir a la página de inicio de sesión
-                    window.location.href = '../backend/incio.php';
-                } else {
-                    alert('Hubo un error al cerrar sesión. Inténtalo de nuevo.');
-                }
+                // Redirigir a la página de inicio de sesión
+                window.location.href = '../backend/incio.php';   
             },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.error('Error en la solicitud:', textStatus, errorThrown);
+            error: function() {
                 alert("Hubo un error al intentar cerrar sesión.");
             }
         });

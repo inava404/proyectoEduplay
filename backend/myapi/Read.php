@@ -3,7 +3,6 @@ namespace EDUPLAY\MYAPI;
 
 use EDUPLAY\MYAPI\DataBase;
 require_once __DIR__ . '/DataBase.php';
-
 class Read extends DataBase {
 
     public function __construct($db) {
@@ -30,7 +29,6 @@ class Read extends DataBase {
                         $this->data['status'] = 'success';
                         $this->data['message'] = 'Usuario encontrado';
                         $this->data['id'] = $jsonOBJ->ID;
-                        $_SESSION['ID'] = $result->fetch_assoc()['ID'];
                     } else {
                         $this->data['status'] = 'error';
                         $this->data['message'] = 'Usuario o contraseña incorrectos.';
@@ -144,7 +142,52 @@ class Read extends DataBase {
         $this->conexion->close();
     }
 
-
+    public function listTutor($id) {
+        if (isset($id)) {
+            // Consultar el ID del tutor a partir del ID de sesión
+            $tutor = $this->conexion->query("SELECT ID_Tutor FROM sesiones WHERE ID = {$id} AND eliminado = 0");
+            
+            if ($tutor && $tutor->num_rows > 0) {
+                $tutor_id = $tutor->fetch_assoc()['ID_Tutor'];
+                
+                // Consulta principal para obtener la información del tutor
+                $query = "
+                    SELECT 
+                        nombre,
+                        apellido_paterno,
+                        apellido_materno,
+                        email,
+                        fecha_nacimiento
+                    FROM tutores
+                    WHERE ID = {$tutor_id} AND eliminado = 0
+                ";
+    
+                if ($result = $this->conexion->query($query)) {
+                    $this->data = [];
+    
+                    // Construir los datos del tutor
+                    while ($row = $result->fetch_assoc()) {
+                        $this->data = [
+                            'perfil' => [
+                                'nombre' => $row['nombre'],
+                                'apellido_paterno' => $row['apellido_paterno'],
+                                'apellido_materno' => $row['apellido_materno'],
+                                'email' => $row['email'],
+                                'fecha_nacimiento' => $row['fecha_nacimiento']
+                            ]
+                        ];
+                    }
+                    $result->free();
+                } else {
+                    die('Query Error: ' . mysqli_error($this->conexion));
+                }
+            } else {
+                die('No se encontró un tutor asociado a esta sesión.');
+            }
+        }
+        $this->conexion->close();
+    }
+    
 
     public function listRetos($id) {
         // SE VERIFICA HABER RECIBIDO EL ID
@@ -196,6 +239,19 @@ class Read extends DataBase {
             }
             $this->conexion->close();
         }
+    }
+
+    public function logout(){
+        // Verifica si la sesión está activa antes de destruirla
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    
+        // Elimina las variables de sesión
+        session_unset();
+    
+        // Destruye la sesión
+        session_destroy();
     }
 
 }
