@@ -13,22 +13,16 @@
     </nav>
 
     <div class="wrapper"> 
-      <h1>Iniciar Sesión</h1>
+      <h1>Recuperar contraseña</h1>
 
-      <form action="login.php" method="POST">
-        <input type="email" name="email" id="email" placeholder="Email" required>
-        <input type="password" name="password" id="password" placeholder="Contraseña" required>
-        <div class="recover">
-          <a href="recover.php">¿Olvidaste tu contraseña?</a>
-        </div>
+      <form action="recover.php" method="POST">
+        <input type="email" name="email" id="email" placeholder="Email asociado a cuenta" required>
       </form>
       <div class="section-inicio-btns">
-        <button type="submit" id="login"><span>Iniciar Sesión</span></button>
+        <button type="submit" id="recover"><span>Enviar contraseña temporal</span></button>
       </div>
       <div class="member">
-        ¿No tienes cuenta? <a href="signup.php">
-          ¡Registrate aquí!
-        </a>
+        <a href="inicio.php">Volver al inicio de sesión</a>
       </div>
     </div>
 
