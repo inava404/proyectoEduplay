@@ -33,10 +33,10 @@
                     <img src="src/img/perfil.png" alt="Avatar" class="perfil-avatar-icon">
                 </div>
                 <div class="perfil-detalles">
-                    <h3>Kevin Ethan Levin</h3>
-                    <h3>Apodo: Kevin Levin</h3>
-                    <h3>Grado: Segundo</h3>
-                    <h3>Edad: 4 años</h3>
+                    <h3><input type="text"></input></h3>
+                    <h3><input type="text"></input></h3>
+                    <h3><input type="text"></input></h3>
+                    <h3><input type="text"></input></h3>
                 </div>
             </div>
             <div class="section-progreso">

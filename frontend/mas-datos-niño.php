@@ -51,9 +51,6 @@
                 </div>
             </div>
         </div>
-        <div class="section-inicio-btns">
-        <a href="#"><span>Editar</span></a>
-      </div>
     </section>
     </div>
 
