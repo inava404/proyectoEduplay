@@ -35,20 +35,24 @@ $(document).ready(function() {
                 data: JSON.stringify(finalJSON),  // Convertir el objeto JSON a string
                 contentType: 'application/json; charset=utf-8',  // Enviar como JSON
                 success: function(response) {
-                    console.log(response);  // Mostrar la respuesta del servidor
-                    let result = JSON.parse(response);  // Parsear la respuesta JSON
-                    if (result.status === 'success') {
-                        localStorage.setItem('id_sesion', result.id_sesion);  // Almacenar el ID de sesión
-                        console.log(result.id_sesion);
-                        alert('Login exitoso.');
-                        window.location.href = '../frontend/principal.php';  // Redirigir a la página principal
-                    } else {
-                        alert('Error en el login: ' + result.message);  // Mostrar el mensaje de error
+                    try {
+                        let result = JSON.parse(response); // Parsear la respuesta como JSON
+                        if (result.status === 'success') {
+                            localStorage.setItem('id_sesion', result.id); // Usa el ID correcto
+                            console.log(result.id); // Muestra el ID del usuario
+                            alert('Login exitoso.');
+                            window.location.href = '../frontend/principal.php';
+                        } else {
+                            alert('Error en el login: ' + result.message);
+                        }
+                    } catch (error) {
+                        console.error('Error al procesar la respuesta del servidor:', error);
+                        alert('Respuesta no válida del servidor.');
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    console.error('Error en la solicitud:', textStatus, errorThrown);  // Manejo de errores
-                    alert("Hubo un error al procesar el login.");
+                    console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
+                    alert('Error al procesar la solicitud.');
                 }
             });
     });
@@ -585,57 +589,69 @@ $(document).ready(function() {
             }
         });
     });
-
-    // Al cargar la página, obtener el perfil del usuario
-    if (window.location.pathname.includes('../frontend/perfil.php')) {
-        id_sesion = localStorage.getItem('id_sesion');
-
-        if (!id_sesion) {
-            alert("No se encontró una sesión activa.");
-            window.location.href = '../frontend/login.php'; // Redirigir al login si no hay sesión
-            return;
-        }
-
-        // Solicitar datos del perfil
-        $.ajax({
-            url: '../backend/eduplay-listAlumn.php',
-            type: 'POST',
-            data: JSON.stringify({ id_sesion: id_sesion }),
-            contentType: 'application/json; charset=utf-8',
-            success: function(response) {
-                let result = JSON.parse(response);
-                if (result.status === 'success') {
-                    const perfil = result.perfil;
-                    const progreso = result.progreso;
-                    const grados = {
-                        1: 'Primer Grado',
-                        2: 'Segundo Grado',
-                        3: 'Tercer Grado'
+    
+        // Al cargar la página perfil.php
+        if (window.location.pathname.includes('perfil.php')) {
+            // Obtener el id_sesion del localStorage (asegúrate de que lo has guardado correctamente)
+            let id_sesion = localStorage.getItem('id_sesion');
+    
+            if (!id_sesion) {
+                alert("No se encontró una sesión activa.");
+                window.location.href = 'login.php'; // Redirigir al login si no hay sesión
+                return;
+            }
+    
+            console.log('ID de sesión:', id_sesion);
+    
+            // Hacer la solicitud AJAX al backend para obtener el perfil del usuario
+            $.ajax({
+                url: '../backend/eduplay-listAlumn.php',
+                type: 'POST',
+                data: JSON.stringify({ id_sesion: id_sesion }),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',  // Especifica que la respuesta será JSON
+                success: function(response) {
+                    console.log('Respuesta del servidor:', response); // Ahora la respuesta es un objeto JavaScript automáticamente
+                    if (response.status === 'success') {
+                        const perfil = response.perfil;
+                        const progreso = response.progreso;
+            
+                        // Actualizar los datos del perfil en el DOM
+                        $('.perfil-detalles').html(`
+                            <h3>${perfil.nombre}</h3>
+                            <h3>Apodo: ${perfil.apodo}</h3>
+                            <h3>Grado: ${perfil.grado === 1 ? 'Primer Grado' : perfil.grado === 2 ? 'Segundo Grado' : 'Tercer Grado'}</h3>
+                            <h3>Edad: ${calcularEdad(perfil.fecha_nacimiento)} años</h3>
+                        `);
+            
+                        // Actualizar las barras de progreso de los cursos
+                        $('.curso .progreso').eq(0).css('width', progreso.Espanol + '%');
+                        $('.curso .progreso').eq(1).css('width', progreso.Matematicas + '%');
+                        $('.curso .progreso').eq(2).css('width', progreso.Ingles + '%');
+                    } else {
+                        alert(response.message || 'Error al cargar el perfil.');
                     }
-                    let grado = grados[perfil.grado] || "Grado no disponible";
-
-                    // Actualizar datos del perfil en el DOM
-                    $('.perfil-detalles').html(`
-                        <h3>${perfil.nombre}</h3>
-                        <h3>Apodo: ${perfil.apodo}</h3>
-                        <h3>Grado: ${grado}</h3>
-                        <h3>Edad: ${calcularEdad(perfil.fecha_nacimiento)} años</h3>
-                    `);
-
-                    // Asumiendo orden en el DOM: Español, Matemáticas, Inglés
-                    $('.curso .progreso').eq(0).css('width', progreso.Español + '%');
-                    $('.curso .progreso').eq(1).css('width', progreso.Matemáticas + '%');
-                    $('.curso .progreso').eq(2).css('width', progreso.Inglés + '%');
-                } else {
-                    alert(result.message || 'Error al cargar el perfil.');
-                }
-            },
+                },
                 error: function(jqXHR, textStatus, errorThrown) {
-                console.error('Error en la solicitud:', textStatus, errorThrown);
-                alert("Hubo un error al cargar el perfil.");
+                    console.error('Error en la solicitud:', textStatus, errorThrown);
+                    alert("Hubo un error al cargar el perfil.");
                 }
-        });
+            });
+        }
+                        
+    
+    // Función para calcular la edad a partir de la fecha de nacimiento
+    function calcularEdad(fechaNacimiento) {
+        let nacimiento = new Date(fechaNacimiento);
+        let hoy = new Date();
+        let edad = hoy.getFullYear() - nacimiento.getFullYear();
+        let m = hoy.getMonth() - nacimiento.getMonth();
+        if (m < 0 || (m === 0 && hoy.getDate() < nacimiento.getDate())) {
+            edad--;
+        }
+        return edad;
     }
+    
 
         // Verifica si la página actual es la correcta
         if (window.location.pathname.includes('mas-datos-tutor.php')) {

@@ -12,7 +12,7 @@ class Read extends DataBase {
 
     public function encontrarUsuario($jsonOBJ) {
         // Realiza la consulta para obtener los resultados
-        if ($result = $this->conexion->query("SELECT * FROM sesiones WHERE usuario = '{$jsonOBJ->email}'")) {
+    if ($result = $this->conexion->query("SELECT * FROM sesiones WHERE usuario = '{$jsonOBJ->email}'")) {
         // Verificar si se encontró algún usuario
         if ($result->num_rows > 0) {
             // Obtener la primera fila del resultado
@@ -23,7 +23,7 @@ class Read extends DataBase {
                 // Si la contraseña es correcta, devuelve la información del usuario
                 $this->data['status'] = 'success';
                 $this->data['message'] = 'Usuario encontrado';
-                $this->data['id'] = $row['ID'];  // Aquí deberías asignar el ID del usuario correctamente
+                $this->data['id'] = $row['ID'];
             } else {
                 // Si la contraseña no es válida
                 $this->data['status'] = 'error';
@@ -44,8 +44,7 @@ class Read extends DataBase {
 
     // Cerrar la conexión
     $this->conexion->close();
-    
-    }
+}
 
 
     public function verifResp($jsonOBJ) {
@@ -88,56 +87,67 @@ class Read extends DataBase {
             $this->conexion->close();
         }
 
-    public function listAlumn($id) {
-        if (isset($id)){
-            // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
-            $alumno = $this->conexion->query("SELECT ID_Alumno FROM sesiones WHERE ID = {$id} AND eliminado = 0");
-            if($alumno){
-                $query = "
-                    SELECT
-                        a.ID,
-                        a.nombre,
-                        a.apellido_paterno,
-                        a.apellido_materno,
-                        a.grado,
-                        a.fecha_nacimiento,
-                        b.porcen_español,
-                        b.porcen_matematicas,
-                        b.porcen_ingles
-                    FROM
-                        alumnos a
-                    LEFT JOIN
-                        estadisticas b
-                    WHERE
-                        a.ID = {$alumno} AND a.ID_Estadisticas = b.ID AND a.eliminado = 0
-
-                        ";
-            };
-            if ($result = $this->conexion->query($query)) {
-                $this->data = [];
-
-                while ($row = $result->fetch_assoc()) {
-                    $this->data = [
-                        'perfil' => [
-                            'nombre' => $row['nombre'],
-                            'apodo' => $row['apodo'],
-                            'grado' => $row['grado'],
-                            'fecha_nacimiento' => $row['fecha_nacimiento'],
-                        ],
-                        'progreso' => [
-                            'Español' => $row['porcen_español'],
-                            'Matemáticas' => $row['porcen_matematicas'],
-                            'Inglés' => $row['porcen_ingles']
-                        ]
-                    ];
+        public function listAlumn($id) {
+            if (isset($id) && is_numeric($id)) {  // Verifica que el ID sea un número
+                // Consulta para obtener el ID del alumno
+                $alumno = $this->conexion->query("SELECT ID_Alumno FROM sesiones WHERE ID = {$id} AND eliminado = 0");
+        
+                if ($alumno && $alumno->num_rows > 0) {
+                    $row = $alumno->fetch_assoc();
+                    $alumnoId = $row['ID_Alumno'];  // Obtenemos el ID del alumno de la sesión
+        
+                    // Consulta para obtener los datos del alumno y su progreso
+                    $query = "
+                        SELECT
+                            a.ID,
+                            a.nombres,
+                            a.apellidos,
+                            a.apodo,
+                            a.grado_curso,
+                            a.fecha_nacimiento,
+                            b.porcen_español,
+                            b.porcen_matematicas,
+                            b.porcen_ingles
+                        FROM
+                            alumnos a
+                        LEFT JOIN
+                            estadisticas b
+                        ON
+                            a.ID_Estadisticas = b.ID
+                        WHERE
+                            a.ID = {$alumnoId} AND a.eliminado = 0
+                    ";
+        
+                    if ($result = $this->conexion->query($query)) {
+                        $this->data = [];
+                        
+                        while ($row = $result->fetch_assoc()) {
+                            $this->data = [
+                                'perfil' => [
+                                    'nombre' => $row['nombres'].' '.$row['apellidos'],
+                                    'apodo' => $row['apodo'],  // Asegúrate de que este campo exista en tu base de datos
+                                    'grado' => $row['grado_curso'],
+                                    'fecha_nacimiento' => $row['fecha_nacimiento'],
+                                ],
+                                'progreso' => [
+                                    'Espanol' => $row['porcen_español'],
+                                    'Matematicas' => $row['porcen_matematicas'],
+                                    'Ingles' => $row['porcen_ingles']
+                                ]
+                            ];
+                        }
+                        $result->free();
+                    } else {
+                        die('Query Error: ' . $this->conexion->error);  // Manejo de error de consulta
+                    }
+                } else {
+                    die('Error: No se encontró el alumno en la sesión');
                 }
-                $result->free();
             } else {
-                die('Query Error: '.mysqli_error($this->conexion));
+                die('Error: ID inválido');
             }
         }
-        $this->conexion->close();
-    }
+                
 
     public function listTutor($id) {
         if (isset($id)) {
@@ -246,18 +256,22 @@ class Read extends DataBase {
         );
     
         // Realizar la consulta
-        $query = "SELECT clave FROM sesiones WHERE id = '{$jsonOBJ->id}' AND eliminado = 0";
+        if(isset($jsonOBJ->id))
+        $query = "SELECT * FROM sesiones WHERE ID = '{$jsonOBJ->id}'";
         if ($result = $this->conexion->query($query)) {
             // Verificar si hay resultados
             if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc(); // Obtener la primera fila
+                $row = $result->fetch_assoc(MYSQLI_ASSOC); // Obtener la primera fila
                 $claveGuardada = $row['clave'];
-    
-                // Comparar la clave proporcionada con la almacenada
-                if ($jsonOBJ->clave == $claveGuardada) {
-                    $this->data['status'] = 'success';
-                    $this->data['message'] = 'Clave correcta';
+                
+                if(!is_null($row)){
+                    // Comparar la clave proporcionada con la almacenada
+                    if ($jsonOBJ->clave == $row['clave']) {
+                        $this->data['status'] = 'success';
+                        $this->data['message'] = 'Clave correcta';
+                    }
                 }
+                
             } else {
                 $this->data['message'] = 'ID no encontrado o eliminado.';
             }
