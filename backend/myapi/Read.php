@@ -10,27 +10,46 @@ class Read extends DataBase {
         parent::__construct($db, 'root', 'Buap123');
     }
 
-    public function encontrarUsuario($jsonOBJ) {
-        // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
-        if ( $result = $this->conexion->query("SELECT * FROM sesiones WHERE usuario = '{$jsonOBJ->email}' AND contrasena = '{$jsonOBJ->password}'") ) {
-             // Verificar si se encontró un usuario
-            if ($result->num_rows > 0) {
-                // Si se encuentran resultados, almacenar los datos en el array $data
-                while ($row = $result->fetch_assoc()) {
-                    $this->data[] = $row;  // Guardamos cada fila de la consulta en el arreglo de datos
+
+        public function encontrarUsuario($jsonOBJ) {
+            // Preparar la consulta para evitar inyección SQL
+            $stmt = $this->conexion->prepare("SELECT * FROM sesiones WHERE usuario = ?");
+            
+            if ($stmt) {
+                // Asociar los parámetros a la consulta
+                $stmt->bind_param("s", $jsonOBJ->email);
+                
+                // Ejecutar la consulta
+                $stmt->execute();
+                
+                // Obtener el resultado
+                $result = $stmt->get_result();
+                
+                if ($result->num_rows > 0) {
+                    if(password_verify($jsonOBJ->password, $result->fetch_assoc()['contrasena'])) {
+                        $this->data['status'] = 'success';
+                        $this->data['message'] = 'Usuario encontrado';
+                        $this->data['id'] = $jsonOBJ->ID;
+                        $_SESSION['ID'] = $result->fetch_assoc()['ID'];
+                    } else {
+                        $this->data['status'] = 'error';
+                        $this->data['message'] = 'Usuario o contraseña incorrectos.';
+                    }
+                } else {
+                    // Si no se encuentra el usuario
+                    $this->data['status'] = 'error';
+                    $this->data['message'] = 'Usuario o contraseña incorrectos.';
                 }
-                $this->data['status'] = 'success';
-                $this->data['message'] = 'Usuario encontrado';
-                $this->data['id'] = $this->data[0]['ID'];
+                
+                // Liberar el resultado y cerrar el statement
+                $result->free();
+                $stmt->close();
             } else {
-                // Si no se encuentra el usuario
                 $this->data['status'] = 'error';
-                $this->data['message'] = 'Usuario o contraseña incorrectos.';
+                $this->data['message'] = 'Error al preparar la consulta: ' . $this->conexion->error;
             }
-        $result->free();
-        } else {
-            die('Query Error: '.mysqli_error($this->conexion));
-        }
+        
+        // Cerrar la conexión
         $this->conexion->close();
         }
 
@@ -77,26 +96,55 @@ class Read extends DataBase {
     public function listAlumn($id) {
         if (isset($id)){
             // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
-            $alumno = $this->conexion->query("SELECT ID_Alumno FROM sesiones WHERE ID = {$id}");
-            if ( $result = $this->conexion->query("SELECT * FROM alumnos WHERE id = $alumno AND eliminado = 0") ) {
-                // SE OBTIENEN LOS RESULTADOS
-                $rows = $result->fetch_all(MYSQLI_ASSOC);
+            $alumno = $this->conexion->query("SELECT ID_Alumno FROM sesiones WHERE ID = {$id} AND eliminado = 0");
+            if($alumno){
+                $query = "
+                    SELECT
+                        a.ID,
+                        a.nombre,
+                        a.apellido_paterno,
+                        a.apellido_materno,
+                        a.grado,
+                        a.fecha_nacimiento,
+                        b.porcen_español,
+                        b.porcen_matematicas,
+                        b.porcen_ingles
+                    FROM
+                        alumnos a
+                    LEFT JOIN
+                        estadisticas b
+                    WHERE
+                        a.ID = {$alumno} AND a.ID_Estadisticas = b.ID AND a.eliminado = 0
 
-                if(!is_null($rows)) {
-                    // SE CODIFICAN A UTF-8 LOS DATOS Y SE MAPEAN AL ARREGLO DE RESPUESTA
-                    foreach($rows as $num => $row) {
-                        foreach($row as $key => $value) {
-                            $this->data[$num][$key] = $value;
-                        }
-                    }
+                        ";
+            };
+            if ($result = $this->conexion->query($query)) {
+                $this->data = [];
+
+                while ($row = $result->fetch_assoc()) {
+                    $this->data = [
+                        'perfil' => [
+                            'nombre' => $row['nombre'],
+                            'apodo' => $row['apodo'],
+                            'grado' => $row['grado'],
+                            'fecha_nacimiento' => $row['fecha_nacimiento'],
+                        ],
+                        'progreso' => [
+                            'Español' => $row['porcen_español'],
+                            'Matemáticas' => $row['porcen_matematicas'],
+                            'Inglés' => $row['porcen_ingles']
+                        ]
+                    ];
                 }
                 $result->free();
             } else {
                 die('Query Error: '.mysqli_error($this->conexion));
             }
-            $this->conexion->close();
         }
+        $this->conexion->close();
     }
+
+
 
     public function listRetos($id) {
         // SE VERIFICA HABER RECIBIDO EL ID

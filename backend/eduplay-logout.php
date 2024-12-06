@@ -3,6 +3,6 @@
     require_once __DIR__.'/vendor/autoload.php';
 
     $edu = new Read('eduplay');
-    $edu->listAlumn($_POST['id']);
+    $edu->verifiCorreo($_POST['id']);
     echo $edu->getData();
 ?>

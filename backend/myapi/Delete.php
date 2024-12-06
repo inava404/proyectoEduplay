@@ -11,6 +11,7 @@ class Delete extends DataBase {
     }
 
     public function delete($id) {
+        session_start();
         // SE CREA EL ARREGLO QUE SE VA A DEVOLVER EN FORMA DE JSON
         $this->data = array(
             'status'  => 'error',
@@ -21,6 +22,8 @@ class Delete extends DataBase {
             // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
             $sql = "UPDATE sesiones SET eliminado=1 WHERE id = {$id}";
             if ( $this->conexion->query($sql) ) {
+                session_unset();
+                session_destroy();
                 $this->data['status'] =  "success";
                 $this->data['message'] =  "Cuenta eliminada";
             } else {

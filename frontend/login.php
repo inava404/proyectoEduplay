@@ -14,9 +14,10 @@
 
     <div class="wrapper"> 
       <h1>Iniciar Sesión</h1>
+
       <form action="login.php" method="POST">
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
+        <input type="email" name="email" id="email" placeholder="Email" required>
+        <input type="password" name="password" id="password" placeholder="Contraseña" required>
         <div class="recover">
           <a href="#">¿Olvidaste tu contraseña?</a>
         </div>
@@ -36,6 +37,7 @@
       crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
     <script src="../backend/app.js"></script>
   </body>
   </html>
