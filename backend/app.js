@@ -39,6 +39,7 @@ $(document).ready(function() {
                     let result = JSON.parse(response);  // Parsear la respuesta JSON
                     if (result.status === 'success') {
                         localStorage.setItem('id_sesion', result.id_sesion);  // Almacenar el ID de sesión
+                        console.log(result.id_sesion);
                         alert('Login exitoso.');
                         window.location.href = '../frontend/principal.php';  // Redirigir a la página principal
                     } else {
@@ -636,7 +637,6 @@ $(document).ready(function() {
         });
     }
 
-    $(document).ready(function() {
         // Verifica si la página actual es la correcta
         if (window.location.pathname.includes('mas-datos-tutor.php')) {
             let id_sesion = localStorage.getItem('id_sesion');
@@ -681,7 +681,6 @@ $(document).ready(function() {
                 }
             });
         }
-    });
 
     $('#eliminar-cuenta').click(function(e) {
         e.preventDefault();  // Evita que el enlace realice su acción por defecto
@@ -718,23 +717,83 @@ $(document).ready(function() {
             return;
         }
 
-        // Realizar la solicitud AJAX para cerrar sesión en el servidor
-        $.ajax({
-            url: '../backend/eduplay-logout.php',  // Ruta del script PHP para cerrar sesión
-            type: 'GET',
-            success: function() {
-                alert('Sesión cerrada correctamente.');
-                // Eliminar el id de sesión en el localStorage
-                localStorage.removeItem('id_sesion');
+        alert('Sesión cerrada correctamente.');
+        // Eliminar el id de sesión en el localStorage
+        localStorage.removeItem('id_sesion');
 
-                // Redirigir a la página de inicio de sesión
-                window.location.href = '../backend/incio.php';   
-
-            },
-            error: function() {
-                alert("Hubo un error al intentar cerrar sesión.");
-            }
-        });
+        // Redirigir a la página de inicio de sesión
+        window.location.href = '../backend/incio.php';
     });
+    
+    // SE ASIGNA EL EVENTO CLICK AL BOTÓN DE ENVIAR CONTRASEÑA TEMPORAL
+    $('#recover').on('click', function(e) {
+        e.preventDefault(); // Evita que el formulario se envíe automáticamente
+
+        // Validación del email
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        let emailValue = $('input[name="email"]').val();
+        if (!emailRegex.test(emailValue)) {
+            alert("Por favor introduce un email válido.");
+            return;
+        }
+
+        alert('Contraseña enviada, favor de volver al inicio.');
+        window.location.href = '../frontend/login.php'; // Redirigir al login o inicio
+
+        // Crear un objeto JSON con el email
+        let emailJSON = {
+            'email': emailValue
+        };
+    });
+
+    // SE ASIGNA EL EVENTO CLICK AL BOTÓN DE MAS
+    $('#mas').on('click', function(e) {
+        e.preventDefault(); // Evita que el formulario se envíe automáticamente
+
+        let id_sesion = localStorage.getItem('id_sesion');
+    
+        // Verifica si hay una sesión activa
+        if (!id_sesion) {
+            alert("No se encontró una sesión activa.");
+            window.location.href = '../frontend/login.php'; // Redirige al login si no hay sesión
+            return;
+        }
+
+        // Mostrar prompt para pedir la clave
+        const userInput = prompt("Por favor, introduce la clave:");
+
+        
+
+        // Crear el objeto JSON con los datos de la validació
+        let val = {
+            'id': id_sesion,
+            'clave': userInput  
+        };
+        console.log(val);
+
+        if (userInput) {
+            // Realizar la petición AJAX
+            $.ajax({
+                url: '../backend/eduplay-validarClave.php', // Archivo PHP para validar la clave
+                type: 'POST',
+                data: JSON.stringify({ validar: val}),  // Enviar ambos objetos JSON
+                contentType: 'application/json; charset=utf-8',// Enviar la clave como POST
+                success: function (response) {
+                    if (response.status === 'success') {
+                        alert('Clave válida, puedes continuar.');
+                        window.location.href = 'mas.php'; // Redirigir al enlace
+                    } else {
+                        alert('Clave incorrecta. Inténtalo de nuevo.');
+                    }
+                },
+                error: function () {
+                    alert('Hubo un error al validar la clave. Inténtalo más tarde.');
+                }
+            });
+        } else {
+            alert("No se ingresó ninguna clave.");
+        }
+    });
+
 });
 

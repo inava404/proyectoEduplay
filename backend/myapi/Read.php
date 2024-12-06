@@ -12,7 +12,7 @@ class Read extends DataBase {
 
     public function encontrarUsuario($jsonOBJ) {
         // Realiza la consulta para obtener los resultados
-    if ($result = $this->conexion->query("SELECT * FROM sesiones WHERE usuario = '{$jsonOBJ->email}'")) {
+        if ($result = $this->conexion->query("SELECT * FROM sesiones WHERE usuario = '{$jsonOBJ->email}'")) {
         // Verificar si se encontró algún usuario
         if ($result->num_rows > 0) {
             // Obtener la primera fila del resultado
@@ -44,20 +44,22 @@ class Read extends DataBase {
 
     // Cerrar la conexión
     $this->conexion->close();
-}
-
-        public function verifResp($jsonOBJ) {
-            // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
-            if ( $result = $this->conexion->query("SELECT actividad, respuesta FROM material WHERE materia = '{$jsonOBJ->materia}' AND tipo_material = '{$jsonOBJ->tipo_material}'") ) {
-                // Verificar si se encontró un usuario
-                if ($result->num_rows > 0) {
-                    // Si se encuentran resultados, almacenar los datos en el array $data
-                    $data = [];
-                    while ($row = $result->fetch_assoc()) {
-                        $this->data[$row['actividad']] = $row['respuesta'];  // Guardamos cada fila de la consulta en el arreglo de datos
-                    }
     
-                    // Procesar las respuestas proporcionadas por el usuario
+    }
+
+
+    public function verifResp($jsonOBJ) {
+        // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
+        if ( $result = $this->conexion->query("SELECT actividad, respuesta FROM material WHERE materia = '{$jsonOBJ->materia}' AND tipo_material = '{$jsonOBJ->tipo_material}'") ) {
+            // Verificar si se encontró un usuario
+            if ($result->num_rows > 0) {
+                // Si se encuentran resultados, almacenar los datos en el array $data
+                $data = [];
+                while ($row = $result->fetch_assoc()) {
+                    $this->data[$row['actividad']] = $row['respuesta'];  // Guardamos cada fila de la consulta en el arreglo de datos
+                }
+    
+                // Procesar las respuestas proporcionadas por el usuario
                 $respuestas_correctas_usuario = 0;
                 foreach ($jsonOBJ->respuestas as $pregunta => $respuesta_usuario){
                     if (isset($data[$pregunta]) && trim(strtolower($respuesta_usuario)) == trim(strtolower($data[$pregunta]))) {
@@ -236,19 +238,44 @@ class Read extends DataBase {
         }
     }
 
-    public function logout(){
-        // Verifica si la sesión está activa antes de destruirla
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
+    public function validClave($jsonOBJ) {
+        // Inicializar el array de respuesta
+        $this->data = array(
+            'status' => 'error',
+            'message' => 'Clave incorrecta'
+        );
+    
+        // Realizar la consulta
+        $query = "SELECT clave FROM sesiones WHERE id = '{$jsonOBJ->id}' AND eliminado = 0";
+        if ($result = $this->conexion->query($query)) {
+            // Verificar si hay resultados
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc(); // Obtener la primera fila
+                $claveGuardada = $row['clave'];
+    
+                // Comparar la clave proporcionada con la almacenada
+                if ($jsonOBJ->clave == $claveGuardada) {
+                    $this->data['status'] = 'success';
+                    $this->data['message'] = 'Clave correcta';
+                }
+            } else {
+                $this->data['message'] = 'ID no encontrado o eliminado.';
+            }
+    
+            // Liberar el resultado
+            $result->free();
+        } else {
+            $this->data['message'] = 'Error en la consulta: ' . $this->conexion->error;
         }
     
-        // Elimina las variables de sesión
-        session_unset();
+        // Cerrar la conexión
+        $this->conexion->close();
     
-        // Destruye la sesión
-        session_destroy();
+        // Retornar el resultado como JSON
+        return json_encode($this->data);
     }
-
+    
+    
 }
 
 ?>
