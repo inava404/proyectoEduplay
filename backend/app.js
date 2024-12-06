@@ -722,7 +722,7 @@ $(document).ready(function() {
         localStorage.removeItem('id_sesion');
 
         // Redirigir a la página de inicio de sesión
-        window.location.href = '../backend/incio.php';
+        window.location.href = '../frontend/inicio.php';
     });
     
     // SE ASIGNA EL EVENTO CLICK AL BOTÓN DE ENVIAR CONTRASEÑA TEMPORAL
