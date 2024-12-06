@@ -3,7 +3,6 @@ namespace EDUPLAY\MYAPI;
 
 use EDUPLAY\MYAPI\DataBase;
 require_once __DIR__ . '/DataBase.php';
-
 class Read extends DataBase {
 
     public function __construct($db) {
@@ -11,47 +10,41 @@ class Read extends DataBase {
     }
 
 
-        public function encontrarUsuario($jsonOBJ) {
-            // Preparar la consulta para evitar inyección SQL
-            $stmt = $this->conexion->prepare("SELECT * FROM sesiones WHERE usuario = ?");
+    public function encontrarUsuario($jsonOBJ) {
+        // Realiza la consulta para obtener los resultados
+    if ($result = $this->conexion->query("SELECT * FROM sesiones WHERE usuario = '{$jsonOBJ->email}'")) {
+        // Verificar si se encontró algún usuario
+        if ($result->num_rows > 0) {
+            // Obtener la primera fila del resultado
+            $row = $result->fetch_assoc();  // Guardamos la primera fila de la consulta en $row
             
-            if ($stmt) {
-                // Asociar los parámetros a la consulta
-                $stmt->bind_param("s", $jsonOBJ->email);
-                
-                // Ejecutar la consulta
-                $stmt->execute();
-                
-                // Obtener el resultado
-                $result = $stmt->get_result();
-                
-                if ($result->num_rows > 0) {
-                    if(password_verify($jsonOBJ->password, $result->fetch_assoc()['contrasena'])) {
-                        $this->data['status'] = 'success';
-                        $this->data['message'] = 'Usuario encontrado';
-                        $this->data['id'] = $jsonOBJ->ID;
-                        $_SESSION['ID'] = $result->fetch_assoc()['ID'];
-                    } else {
-                        $this->data['status'] = 'error';
-                        $this->data['message'] = 'Usuario o contraseña incorrectos.';
-                    }
-                } else {
-                    // Si no se encuentra el usuario
-                    $this->data['status'] = 'error';
-                    $this->data['message'] = 'Usuario o contraseña incorrectos.';
-                }
-                
-                // Liberar el resultado y cerrar el statement
-                $result->free();
-                $stmt->close();
+            // Verificar si la contraseña proporcionada coincide con la almacenada en la base de datos
+            if (password_verify($jsonOBJ->password, $row['contrasena'])) {
+                // Si la contraseña es correcta, devuelve la información del usuario
+                $this->data['status'] = 'success';
+                $this->data['message'] = 'Usuario encontrado';
+                $this->data['id'] = $row['ID'];  // Aquí deberías asignar el ID del usuario correctamente
             } else {
+                // Si la contraseña no es válida
                 $this->data['status'] = 'error';
-                $this->data['message'] = 'Error al preparar la consulta: ' . $this->conexion->error;
+                $this->data['message'] = 'Usuario o contraseña incorrectos.';
             }
-        
-        // Cerrar la conexión
-        $this->conexion->close();
+        } else {
+            // Si no se encuentra el usuario
+            $this->data['status'] = 'error';
+            $this->data['message'] = 'Usuario o contraseña incorrectos.';
         }
+
+        // Liberar el resultado
+        $result->free();
+    } else {
+        // Si ocurre un error al ejecutar la consulta
+        die('Query Error: ' . mysqli_error($this->conexion));
+    }
+
+    // Cerrar la conexión
+    $this->conexion->close();
+}
 
         public function verifResp($jsonOBJ) {
             // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
@@ -144,7 +137,52 @@ class Read extends DataBase {
         $this->conexion->close();
     }
 
-
+    public function listTutor($id) {
+        if (isset($id)) {
+            // Consultar el ID del tutor a partir del ID de sesión
+            $tutor = $this->conexion->query("SELECT ID_Tutor FROM sesiones WHERE ID = {$id} AND eliminado = 0");
+            
+            if ($tutor && $tutor->num_rows > 0) {
+                $tutor_id = $tutor->fetch_assoc()['ID_Tutor'];
+                
+                // Consulta principal para obtener la información del tutor
+                $query = "
+                    SELECT 
+                        nombre,
+                        apellido_paterno,
+                        apellido_materno,
+                        email,
+                        fecha_nacimiento
+                    FROM tutores
+                    WHERE ID = {$tutor_id} AND eliminado = 0
+                ";
+    
+                if ($result = $this->conexion->query($query)) {
+                    $this->data = [];
+    
+                    // Construir los datos del tutor
+                    while ($row = $result->fetch_assoc()) {
+                        $this->data = [
+                            'perfil' => [
+                                'nombre' => $row['nombre'],
+                                'apellido_paterno' => $row['apellido_paterno'],
+                                'apellido_materno' => $row['apellido_materno'],
+                                'email' => $row['email'],
+                                'fecha_nacimiento' => $row['fecha_nacimiento']
+                            ]
+                        ];
+                    }
+                    $result->free();
+                } else {
+                    die('Query Error: ' . mysqli_error($this->conexion));
+                }
+            } else {
+                die('No se encontró un tutor asociado a esta sesión.');
+            }
+        }
+        $this->conexion->close();
+    }
+    
 
     public function listRetos($id) {
         // SE VERIFICA HABER RECIBIDO EL ID
@@ -196,6 +234,19 @@ class Read extends DataBase {
             }
             $this->conexion->close();
         }
+    }
+
+    public function logout(){
+        // Verifica si la sesión está activa antes de destruirla
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    
+        // Elimina las variables de sesión
+        session_unset();
+    
+        // Destruye la sesión
+        session_destroy();
     }
 
 }
