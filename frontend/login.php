@@ -14,15 +14,15 @@
 
     <div class="wrapper"> 
       <h1>Iniciar Sesión</h1>
-      <form action="#">
-        <input type="text" placeholder="Email">
-        <input type="password" placeholder="Contraseña">
+      <form action="#" id="form-login">
+        <input type="email" placeholder="Email" id="email">
+        <input type="password" placeholder="Contraseña" id="password">
         <div class="recover">
           <a href="#">¿Olvidaste tu contraseña?</a>
         </div>
       </form>
       <div class="section-inicio-btns">
-        <a id="login" href="#"><span>Iniciar Sesión</span></a>
+        <a id="login" href="#" role="button"><span>Iniciar Sesión</span></a>
       </div>
       <div class="member">
         ¿No tienes cuenta? <a href="signup.php">
@@ -36,6 +36,7 @@
       crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
     <script src="../backend/app.js"></script>
   </body>
   </html>

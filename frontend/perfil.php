@@ -46,19 +46,19 @@
                         <div class="curso">
                             <span>Español<img src="src/img/español.png" alt="Español" class="curso-img"></span>
                             <div class="barra-progreso">
-                            <div class="progreso" style="width: 78%;"></div>
+                            <div class="progreso" style="width: 0%;"></div>
                             </div>
                         </div>
                         <div class="curso">
                             <span>Matemáticas <img src="src/img/matematicas.png" alt="Matemáticas" class="curso-img"></span>
                             <div class="barra-progreso">
-                            <div class="progreso" style="width: 42%;"></div>
+                            <div class="progreso" style="width: 0%;"></div>
                             </div>
                         </div>
                         <div class="curso">
                             <span>Inglés <img src="src/img/ingles.png" alt="Inglés" class="curso-img"></span>
                             <div class="barra-progreso">
-                            <div class="progreso" style="width: 58%;"></div>
+                            <div class="progreso" style="width: 0%;"></div>
                             </div>
                         </div>
                     </div>

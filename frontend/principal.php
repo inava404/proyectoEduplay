@@ -13,7 +13,7 @@
             <h1>Cursos  <img src="src/img/cursos.png" alt="Cursos" width= "34px" height= "34px;"></h1>
         </div>
     </header>
-
+    
     <aside class="sidebar">
         <a href="principal.php"><img src="src/img/EduplayLogo.png" alt="Eduplay Logo" width="270px"></a>
         <ul>
@@ -36,6 +36,10 @@
             </ul>
         </div>
     </div>
+
+    <?php
+        session_start();
+    ?>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
