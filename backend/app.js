@@ -845,7 +845,7 @@ $(document).ready(function() {
                     localStorage.removeItem('id_sesion');
     
                     // Redirigir a la página de inicio de sesión
-                    window.location.href = '../backend/incio.php';
+                    window.location.href = '../backend/inicio.php';
                 } else {
                     alert('Hubo un error al cerrar sesión. Inténtalo de nuevo.');
                 }
