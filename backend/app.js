@@ -548,9 +548,9 @@ $(document).ready(function() {
     });
 
     // SE ASIGNA EL EVENTO CLICK AL BOTON DE ENVIAR FORMULARIO DE COLORES ING
-    $('#colores-en').submit(function(e){
+    $('#colores-en').submit(function (e) {
         e.preventDefault();
-
+    
         // Obtener las respuestas seleccionadas para cada pregunta
         var respuestas = {
             materia: "ingles",
@@ -561,34 +561,50 @@ $(document).ready(function() {
             pregunta4: $('input[name="pregunta4"]:checked').val(),
         };
 
+        console.log(respuestas);
+    
         // Validar que se haya seleccionado una respuesta para cada pregunta
         for (var pregunta in respuestas) {
-            if (!respuestas[pregunta]) {
-                alert("Por favor, responde a la pregunta " + pregunta.substring(8));
-                return;  // Detener la ejecución si falta una respuesta
+            if (pregunta !== "materia" && pregunta !== "tipo_material" && !respuestas[pregunta]) {
+                alert("Por favor, responde a la " + pregunta);
+                return; // Detener la ejecución si falta una respuesta
+            }
+    
+            // Validar que la respuesta esté dentro de las opciones permitidas
+            if (
+                pregunta !== "materia" &&
+                pregunta !== "tipo_material" &&
+                !["A", "B", "C", "D"].includes(respuestas[pregunta])
+            ) {
+                alert("Respuesta inválida en la " + pregunta + ". Solo se permiten A, B, C o D.");
+                return;
             }
         }
-
+    
         // Enviar las respuestas al servidor mediante AJAX
         $.ajax({
             url: '../backend/eduplay-verifResp.php',
             type: 'POST',
-            data: { respuestas: respuestas },  // Enviar las respuestas seleccionadas
-            success: function(response) {
-                // Procesar la respuesta del servidor
-                if (response.status === 'correcto') {
-                    alert("¡Felicidades, las respuestas son correctas!");
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({ respuestas: respuestas }), // Enviar las respuestas seleccionadas
+            success: function (response) {
+                console.log('Respuesta del servidor:', response);
+    
+                if (response.status === 'success') {
+                    alert(response.message);
                     window.location.href = '../frontend/ingles.php';
                 } else {
-                    alert("Algunas respuestas son incorrectas. Vuelve a intentarlo.");
+                    alert(response.message || "Algunas respuestas son incorrectas. Vuelve a intentarlo.");
                 }
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 console.error("Error en la solicitud AJAX:", status, error);
                 alert("Hubo un error al enviar las respuestas.");
             }
         });
     });
+    
+
     
         // Al cargar la página perfil.php
         if (window.location.pathname.includes('perfil.php')) {
@@ -693,17 +709,18 @@ $(document).ready(function() {
 
     // Al cargar la página mas-datos-nino
     if (window.location.pathname.includes('mas-datos-niño.php')) {
-        // Obtener el id_sesion del localStorage (asegúrate de que lo has guardado correctamente)
+        // Obtener el id_sesion del localStorage
         let id_sesion = localStorage.getItem('id_sesion');
+
+        console.log('ID de sesión:', id_sesion);
 
         if (!id_sesion) {
             alert("No se encontró una sesión activa.");
-            window.location.href = 'login.php'; // Redirigir al login si no hay sesión
+            window.location.href = '../frontend/login.php'; // Redirigir al login si no hay sesión
             return;
         }
 
         console.log('ID de sesión:', id_sesion);
-
         // Hacer la solicitud AJAX al backend para obtener el perfil del usuario
         $.ajax({
             url: '../backend/eduplay-listAlumn.php',

@@ -48,44 +48,64 @@ class Read extends DataBase {
 
 
     public function verifResp($jsonOBJ) {
-        // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
-        if ( $result = $this->conexion->query("SELECT respuesta FROM material WHERE materia = '{$jsonOBJ->materia}' AND tipo_material = '{$jsonOBJ->tipo_material}'") ) {
-            // Verificar si se encontró un usuario
-            if ($result->num_rows > 0) {
-                // Si se encuentran resultados, almacenar los datos en el array $data
-                $data = [];
-                while ($row = $result->fetch_assoc()) {
-                    $this->data[$row['actividad']] = $row['respuesta'];  // Guardamos cada fila de la consulta en el arreglo de datos
-                }
-    
-                // Procesar las respuestas proporcionadas por el usuario
-                $respuestas_correctas_usuario = 0;
-                foreach ($jsonOBJ->respuestas as $pregunta => $respuesta_usuario){
-                    if (isset($data[$pregunta]) && trim(strtolower($respuesta_usuario)) == trim(strtolower($data[$pregunta]))) {
-                        $respuestas_correctas_usuario++;
-                    }                    
-                }
-    
-                // Construir el mensaje basado en el resultado
-                $this->data['status'] = 'success';
-                $this->data['message'] = "Respuestas correctas: $respuestas_correctas_usuario de " . count($data);
-    
-                } else {
-                    // Si no se encontraron respuestas correctas en la base de datos
-                    $this->data['status'] = 'error';
-                    $this->data['message'] = 'No se encontraron preguntas para esta materia y tipo de material.';
-                }
-    
-                $result->free();
-    
-            } else {
-                // Manejar errores en la consulta
-                $this->data['status'] = 'error';
-                $this->data['message'] = 'Error en la consulta: ' . $this->conexion->error;
-            }
-    
-            $this->conexion->close();
+        // Validar que existan las propiedades requeridas en el JSON
+        if (!isset($jsonOBJ->materia, $jsonOBJ->tipo_material, $jsonOBJ->respuestas)) {
+            $this->data['status'] = 'error';
+            $this->data['message'] = 'Datos incompletos. Verifique materia, tipo_material y respuestas.';
+            return;
         }
+
+        // Validar respuestas enviadas (opcional, por seguridad)
+        foreach ($jsonOBJ->respuestas as $pregunta => $respuesta) {
+            if (!in_array(strtoupper($respuesta), ['A', 'B', 'C', 'D'])) {
+                $this->data['status'] = 'error';
+                $this->data['message'] = "Respuesta inválida en $pregunta. Solo se permiten A, B, C o D.";
+                return;
+            }
+        }
+
+        // Obtener las respuestas correctas de la base de datos
+        $query = "
+            SELECT actividad, respuesta 
+            FROM material 
+            WHERE materia = '{$jsonOBJ->materia}' 
+            AND tipo_material = '{$jsonOBJ->tipo_material}'
+        ";
+
+        if ($result = $this->conexion->query($query)) {
+            if ($result->num_rows > 0) {
+                // Procesar las respuestas correctas de la base de datos
+                $respuestas_correctas = [];
+                while ($row = $result->fetch_assoc()) {
+                    $respuestas_correctas[$row['actividad']] = strtolower(trim($row['respuesta']));
+                }
+
+                $result->free();
+
+                // Validar respuestas del usuario
+                $respuestas_correctas_usuario = 0;
+                foreach ($jsonOBJ->respuestas as $pregunta => $respuesta_usuario) {
+                    if (
+                        isset($respuestas_correctas[$pregunta]) &&
+                        strtolower(trim($respuesta_usuario)) === $respuestas_correctas[$pregunta]
+                    ) {
+                        $respuestas_correctas_usuario++;
+                    }
+                }
+
+                // Devolver resultado
+                $this->data['status'] = 'success';
+                $this->data['message'] = "Respuestas correctas: $respuestas_correctas_usuario de " . count($respuestas_correctas);
+            } else {
+                $this->data['status'] = 'error';
+                $this->data['message'] = 'No se encontraron preguntas para esta materia y tipo de material.';
+            }
+        } else {
+            $this->data['status'] = 'error';
+            $this->data['message'] = 'Error en la consulta: ' . $this->conexion->error;
+        }
+    }
+
 
         public function listAlumn($id) {
             if (isset($id) && is_numeric($id)) {  // Verifica que el ID sea un número
