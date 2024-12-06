@@ -19,7 +19,7 @@
         <input type="email" name="email" id="email" placeholder="Email asociado a cuenta" required>
       </form>
       <div class="section-inicio-btns">
-        <button type="submit" id="login"><span>Enviar contraseña temporal</span></button>
+        <button type="submit" id="recover"><span>Enviar contraseña temporal</span></button>
       </div>
       <div class="member">
         <a href="inicio.php">Volver al inicio de sesión</a>
