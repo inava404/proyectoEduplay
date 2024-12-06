@@ -18,9 +18,6 @@ $(document).ready(function() {
             return;
         }
     
-        // Si ambas validaciones pasan
-        alert("Validaciones correctas, puedes proceder.");
-    
         // SE OBTIENEN LOS VALORES DE LOS INPUTS
         let email = $('input[name="email"]').val();
         let password = $('input[name="password"]').val();

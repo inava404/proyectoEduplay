@@ -30,10 +30,12 @@ class Create extends DataBase {
                     $tut = $this->conexion->insert_id;
                     if($this->conexion->query($sqlEstadis)){
                         $est = $this->conexion->insert_id;
-                        $sqlAlumno = "INSERT INTO alumnos VALUES (null, '{$jsonOBJ2->nombre}', '{$jsonOBJ2->apellidos}','User', '{$jsonOBJ2->fecha_nac}', '{$jsonOBJ2->grado_curso}',$est ,0)";
+                        $sqlAlumno = "INSERT INTO alumnos VALUES (null, '{$jsonOBJ2->nombre}', '{$jsonOBJ2->apellidos}','User', '{$jsonOBJ2->fecha_nac}', '{$jsonOBJ2->grado_curso}',{$est} ,0)";
                         if($this->conexion->query($sqlAlumno)){
                             $alum = $this->conexion->insert_id;
-                            $sqlUser = "INSERT INTO sesiones VALUES (null, '{$jsonOBJ->usuario}', '{$jsonOBJ->contrasena}', $alum, '$tut', 12345, 0)";
+                            
+                            $hashedPassword = password_hash($jsonOBJ->contrasena, PASSWORD_DEFAULT);
+                            $sqlUser = "INSERT INTO sesiones VALUES (null, '{$jsonOBJ->usuario}', '{$hashedPassword}', {$alum}, {$tut}, 12345, 0)";
                             if($this->conexion->query($sqlUser)){
                                 $this->data['status'] =  "success";
                                 $this->data['message'] =  "Usuario agregado";
